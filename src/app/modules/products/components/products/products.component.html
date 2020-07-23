@@ -1,1 +1,19 @@
-<p>products works!</p>
+<div class="container">
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Nazwa</th>
+      <th scope="col">Opis</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let prod of products">
+      <td><img src="data:image/jpeg;base64,{{prod.productImage}}" alt="obrazek produktu"
+                 height="150px"> </td>
+      <td>{{ prod.name }}</td>
+      <td>{{ prod.description }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
