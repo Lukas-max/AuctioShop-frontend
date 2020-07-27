@@ -1,3 +1,4 @@
+
 export interface Product {
   productId?: number;
   sku: string;

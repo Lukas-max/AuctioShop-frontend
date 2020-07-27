@@ -1,6 +1,9 @@
-<div class="container">
+<div class="container prod-table table-responsive">
+  <div class="menu-header menu-text">
+    KATEGORIA: {{ categoryName }}
+  </div>
   <table class="table">
-    <thead class="thead-light">
+    <thead>
     <tr>
       <th scope="col"></th>
       <th scope="col">Nazwa</th>
@@ -10,7 +13,7 @@
     <tbody>
     <tr *ngFor="let prod of products">
       <td><img src="data:image/jpeg;base64,{{prod.productImage}}" alt="obrazek produktu"
-                 height="150px"> </td>
+                 height="100px"> </td>
       <td>{{ prod.name }}</td>
       <td>{{ prod.description }}</td>
     </tr>
