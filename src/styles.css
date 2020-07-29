@@ -176,6 +176,10 @@ header {
   color: lime;
 }
 
+.prod-table .table img {
+  /*margin: 0 50px;*/
+}
+
 @media (min-width: 576px) {
   .prod-table {
     top: 150%;
@@ -188,5 +192,129 @@ header {
     left: 200px;
     right: 0;
     width: 75%;
+  }
+}
+
+/* SINGLE PRODUCT PAGE*/
+.underline {
+  margin: 10px auto 0;
+  height: 2px;
+  width: 120px;
+  background-color: blue;
+}
+
+.product-header {
+  height: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 42px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.product-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px;
+}
+
+.product-details .prod-table {
+  border: 2px solid black;
+}
+
+.product-details img {
+  padding: 30px 0;
+}
+
+.second-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-content .inner-bar-one span{
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.product-content .inner-bar-two {
+  display: none;
+  margin-top: 40px;
+}
+
+.product-content .last-bar {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.product-content button {
+  width: 100px;
+}
+
+.product-content .p-name {
+  text-align: center;
+  font-size: 19px;
+}
+
+@media (min-width: 400px) {
+  .inner-wrapper img {
+    width: 300px;
+  }
+}
+
+@media (min-width: 576px) {
+  .product-header {
+    font-size: 20px;
+  }
+
+  .product-wrapper {
+    align-items: flex-start;
+  }
+
+  .inner-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .inner-wrapper img {
+    width: 200px;
+  }
+
+  .product-content .inner-bar-one {
+    margin-top: 30px;
+  }
+
+  .product-content .inner-bar-two {
+    display: block;
+  }
+
+  .product-content .last-bar {
+    margin-top: 0;
+  }
+
+  .product-content .p-name {
+    text-align: left;
+  }
+}
+
+@media (min-width: 765px){
+  .inner-wrapper img {
+    width: 300px;
+  }
+}
+
+@media (min-width: 992px){
+  .product-header {
+    font-size: 24px;
+  }
+
+  .inner-wrapper img {
+    width: 350px;
+  }
+
+  .second-bar {
+    margin-left: 30px;
   }
 }

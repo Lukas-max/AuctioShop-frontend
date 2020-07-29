@@ -1,22 +1,29 @@
 <div class="container prod-table table-responsive">
   <div class="menu-header menu-text">
-    KATEGORIA: {{ categoryName }}
+    {{ categoryName }}
   </div>
   <table class="table">
     <thead>
     <tr>
       <th scope="col"></th>
       <th scope="col">Nazwa</th>
-      <th scope="col">Opis</th>
+      <th scope="col">Cena</th>
+      <th scope="col">Dostępność (szt.)</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let prod of products">
+    <tr *ngFor="let prod of products" routerLink="/products/{{ prod.productId }}">
       <td><img src="data:image/jpeg;base64,{{prod.productImage}}" alt="obrazek produktu"
-                 height="100px"> </td>
+                 height="150px"> </td>
       <td>{{ prod.name }}</td>
-      <td>{{ prod.description }}</td>
+      <td>{{ prod.unitPrice }}</td>
+      <td>{{ prod.unitsInStock }}</td>
     </tr>
     </tbody>
   </table>
+
+  <div *ngIf="products?.length == 0" class="alert alert-dark" role="alert">
+    <p>Nie znaleziono produktów o podanym kryterium.</p>
+    <img src="assets/images/not_found/not_found.jpg" alt="obraz z owca - nie znaleziono produktu">
+  </div>
 </div>

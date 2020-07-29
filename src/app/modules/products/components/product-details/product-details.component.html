@@ -1,0 +1,35 @@
+<div class="product-details">
+  <div class="container prod-table">
+    <div *ngIf="product">
+      <div class="product-header">{{ product.name }}</div>
+      <div class="underline"></div>
+      <hr>
+      <div class="product-content">
+        <div class="product-wrapper">
+
+          <div class="inner-wrapper">
+            <div class="first-bar">
+              <img src="data:image/jpeg;base64,{{product.productImage}}"
+                   alt="obrazek produktu wybranego" width="200px">
+            </div>
+            <div class="second-bar">
+              <div class="inner-bar-one">
+                <p><span>{{ product.unitPrice }}</span> PLN</p>
+                <button type="button" class="btn btn-dark">Kup</button>
+              </div>
+              <div class="inner-bar-two">
+                <span>{{ active }}</span> <br>
+                <span>Ilość w magazynie: {{ product.unitsInStock }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="last-bar alert alert-dark">
+            <p class="p-name">{{ product.name }}</p>
+            <p>{{ product.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

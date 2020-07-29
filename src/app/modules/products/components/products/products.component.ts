@@ -12,17 +12,26 @@ export class ProductsComponent implements OnInit {
   products: Product[];
   currentCategoryId: number;
   categoryName: string;
+  searchMode: boolean;
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute) {
   }
   ngOnInit(): void {
+    this.categoryName = 'Wszystkie';
     this.route.paramMap.subscribe(() => {
       this.getProducts();
     });
-    this.categoryName = 'Wszystkie';
   }
   private getProducts(){
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+    if (this.searchMode){
+      this.downloadSearchedProduct();
+    }else {
+      this.downloadListProducts();
+    }
+  }
+  private downloadListProducts(){
     const hasProductCategoryId: boolean = this.route.snapshot.paramMap.has('id');
     const hasProductCategoryName: boolean = this.route.snapshot.paramMap.has('name');
     if (hasProductCategoryName){
@@ -38,5 +47,16 @@ export class ProductsComponent implements OnInit {
         this.products = dataProducts;
       });
     }
+  }
+  private downloadSearchedProduct(){
+    const theWord: string = this.route.snapshot.paramMap.get('keyword');
+    this.productService.searchProductsByName(theWord).subscribe(searchedProducts => {
+      this.products = searchedProducts;
+      if (this.products.length === 0){
+        this.categoryName = 'Nie znaleziono - 404';
+      }else {
+        this.categoryName = 'Znalezione';
+      }
+    });
   }
 }

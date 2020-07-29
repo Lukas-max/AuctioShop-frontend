@@ -9,8 +9,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn  my-2 my-sm-0" type="submit">Search</button>
+      <input #input class="form-control mr-sm-2" type="search" placeholder="Szukaj..." aria-label="Search"
+             (keyup.enter)="search(input.value)" >
+      <button class="btn  my-2 my-sm-0" (click)="search(input.value)" >Szukaj</button>
     </form>
     <div class="navbar-nav ">
       <a class="nav-item nav-link active" href="#">Home</a>
@@ -20,7 +21,7 @@
 <!--          Dropdown button-->
 <!--        </button>-->
 <!--        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >-->
-<!--          <a href="#" *ngFor="let c of categories" [(ngModel)]="selectedCategory" >{{ c }}</a>-->
+<!--          <a href="#" *ngFor="let c of categories">{{ c }}</a>-->
 <!--        </div>-->
 <!--      </div>-->
 

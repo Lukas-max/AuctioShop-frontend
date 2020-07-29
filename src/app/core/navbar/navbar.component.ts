@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductCategoryService} from '../../modules/products/services/product-category.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +7,11 @@ import {ProductCategoryService} from '../../modules/products/services/product-ca
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
+  }
+  public search(input: string){
+    this.route.navigateByUrl(`searchBar/${input}`);
   }
 }

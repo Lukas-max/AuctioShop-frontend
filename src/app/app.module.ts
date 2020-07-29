@@ -14,7 +14,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +23,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ProductsModule,
     HttpClientModule
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })
