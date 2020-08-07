@@ -6,8 +6,8 @@
 
     <div *ngIf="cartItems.length > 0" class="container">
       <div *ngFor="let item of cartItems">
-        <div class="ccc">
-          <div class="bbb">
+        <div class="cart-wrapper">
+          <div class="inner-cart-first-wrapper">
             <div>
               <img src="data:image/jpeg;base64,{{ item.productImage }}"
                    alt="obrazek wybranego produktu" width="100px">
@@ -17,7 +17,7 @@
               <p class="first-cart-price"><span>{{ item.unitPrice }}</span> PLN</p>
             </div>
           </div>
-          <div class="aaa">
+          <div class="inner-cart-second-wrapper">
             <button type="button" (click)="increment(item)" class="btn btn-primary">
               +
             </button>

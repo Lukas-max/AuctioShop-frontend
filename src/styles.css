@@ -349,28 +349,28 @@ ngb-pagination .page-item .page-link {
   text-align: center;
 }
 
-.aaa {
+.inner-cart-second-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
   padding: 20px;
 }
 
-.bbb {
+.inner-cart-first-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.bbb div {
+.inner-cart-first-wrapper div {
   margin: 0 10px;
 }
 
-.aaa p {
+.inner-cart-second-wrapper p {
   margin: 0 10px;
 }
 
-.aaa .btn {
+.inner-cart-second-wrapper .btn {
   height: 40px;
   width: 40px;
   font-size: 22px;
@@ -400,7 +400,7 @@ ngb-pagination .page-item .page-link {
 }
 
 @media (min-width: 765px) {
-  .ccc {
+  .cart-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
