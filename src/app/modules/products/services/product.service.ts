@@ -1,7 +1,9 @@
+/* tslint:disable */
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Product} from '../model/product';
 import {Observable} from 'rxjs';
+import {ResponseProduct} from '../model/responseProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +13,22 @@ export class ProductService {
 
   constructor(private http: HttpClient) {
   }
+  //get one product by its ID:
   getProductById(id: number): Observable<Product>{
     return this.http.get<Product>(`${this.productsUrl}/product=${id}`);
   }
-  getProducts(): Observable<Product[]>{
-    return this.http.get<Product[]>(`${this.productsUrl}`);
+  //get all products, with pagination:
+  getProducts(pageNo: number, size: number): Observable<ResponseProduct[]>{
+    return this.http.get<ResponseProduct[]>(`${this.productsUrl}/page=${pageNo}&size=${size}`);
   }
-  searchProductsByName(keyWord: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.productsUrl}/name=${keyWord}`);
+  //search products by name, with pagination:
+  searchProductsByName(keyWord: string, pageNo: number, size: number): Observable<Product[]> {
+    return this.http
+      .get<Product[]>(`${this.productsUrl}/name=${keyWord}&page=${pageNo}&size=${size}`);
   }
-  getProductByCategoryId(categoryId: number): Observable<Product[]>{
-    return this.http.get<Product[]>(`${this.productsUrl}/getByCategoryId/${categoryId}`);
+  // this is for searching for products using the sidebar categories
+  getProductByCategoryId(categoryId: number, pageNo: number, size: number): Observable<Product[]>{
+    return this.http
+      .get<Product[]>(`${this.productsUrl}/getByCategoryId=${categoryId}$page=${pageNo}$size=${size}`);
   }
 }

@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './modules/products/products.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' }
@@ -22,7 +23,8 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forRoot(routes),
     ProductsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
   ],
   exports: [
   ],

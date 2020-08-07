@@ -8,7 +8,7 @@
       <th scope="col"></th>
       <th scope="col">Nazwa</th>
       <th scope="col">Cena</th>
-      <th scope="col">Dostępność (szt.)</th>
+      <th scope="col">Dostępność</th>
     </tr>
     </thead>
     <tbody>
@@ -17,13 +17,33 @@
                  height="150px"> </td>
       <td>{{ prod.name }}</td>
       <td>{{ prod.unitPrice }}</td>
-      <td>{{ prod.unitsInStock }}</td>
+      <td>{{ prod.unitsInStock }} (szt.)</td>
     </tr>
     </tbody>
   </table>
 
   <div *ngIf="products?.length == 0" class="alert alert-dark" role="alert">
     <p>Nie znaleziono produktów o podanym kryterium.</p>
-    <img src="assets/images/not_found/not_found.jpg" alt="obraz z owca - nie znaleziono produktu">
+    <img src="assets/images/not_found/not_found.jpg" alt="obraz z owcą - nie znaleziono produktu">
+  </div>
+
+  <div>
+    <div>
+    <ngb-pagination [(page)]="pageNumber"
+                    [pageSize]="pageSize"
+                    [collectionSize]="totalElements"
+                    (pageChange)="getProducts()">
+    </ngb-pagination>
+    </div>
+
+    <div>
+    <span>Ilość elementów: </span>
+      <select (change)="changePageSize($event.target.value)">
+        <option selected="true">4</option>
+        <option>5</option>
+        <option>10</option>
+        <option>20</option>
+      </select>
+    </div>
   </div>
 </div>

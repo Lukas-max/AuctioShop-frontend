@@ -4,6 +4,8 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { ProductsModule } from '../modules/products/products.module';
+import { MessageToastrService } from './services/message-toastr.service';
 
 @NgModule({
   declarations: [
@@ -11,10 +13,13 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     SidebarComponent
   ],
-  providers: [],
+  providers: [
+    MessageToastrService
+  ],
   imports: [
     SharedModule,
-    RouterModule
+    RouterModule,
+    ProductsModule
   ],
   exports: [
     NavbarComponent,

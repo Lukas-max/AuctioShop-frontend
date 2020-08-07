@@ -10,23 +10,24 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <form class="form-inline">
       <input #input class="form-control mr-sm-2" type="search" placeholder="Szukaj..." aria-label="Search"
-             (keyup.enter)="search(input.value)" >
-      <button class="btn  my-2 my-sm-0" (click)="search(input.value)" >Szukaj</button>
+             (keyup.enter)="search(input.value)">
+      <button class="btn  my-2 my-sm-0" (click)="search(input.value)">Szukaj</button>
     </form>
     <div class="navbar-nav ">
       <a class="nav-item nav-link active" href="#">Home</a>
 
-<!--      <div class="dropdown">-->
-<!--        <button class="btn btn-secondary-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--          Dropdown button-->
-<!--        </button>-->
-<!--        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >-->
-<!--          <a href="#" *ngFor="let c of categories">{{ c }}</a>-->
-<!--        </div>-->
-<!--      </div>-->
+      <!--      <div class="dropdown">-->
+      <!--        <button class="btn btn-secondary-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+      <!--          Dropdown button-->
+      <!--        </button>-->
+      <!--        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >-->
+      <!--          <a href="#" *ngFor="let c of categories">{{ c }}</a>-->
+      <!--        </div>-->
+      <!--      </div>-->
 
       <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link" href="#">Kliknij</a>
     </div>
   </div>
+  <app-cart-status></app-cart-status>
 </nav>
