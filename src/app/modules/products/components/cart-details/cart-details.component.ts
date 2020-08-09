@@ -35,6 +35,8 @@ export class CartDetailsComponent implements OnInit {
   }
 
   removeItem(item: CartItem){
-    this.cartService.removeItem(item);
+    if (confirm('Chcesz usunąć produkt: ' + item.name + '?')){
+      this.cartService.removeItem(item);
+    }
   }
 }

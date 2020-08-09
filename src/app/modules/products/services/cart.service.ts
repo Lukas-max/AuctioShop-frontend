@@ -8,8 +8,8 @@ import { Subject } from 'rxjs';
 export class CartService {
   private cartItems: Array<CartItem> = [];
   private alreadyExistsInCart: boolean;
-  totalPriceValue: number;
-  totalQuantityValue: number;
+  private totalPriceValue: number;
+  private totalQuantityValue: number;
 
   totalQuantity: Subject<number> = new Subject<number>();
   totalPrice: Subject<number> = new Subject<number>();
@@ -77,7 +77,11 @@ export class CartService {
     cartItem.quantity--;
 
     if (cartItem.quantity === 0){
-      this.removeItem(cartItem);
+      if (confirm('Czy chcesz usunąć produkt: ' + cartItem.name + '?')){
+        this.removeItem(cartItem);
+      }else {
+        cartItem.quantity++;
+      }
     }else {
       this.computeTotals();
     }

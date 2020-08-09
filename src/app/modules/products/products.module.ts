@@ -7,12 +7,14 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartService } from './services/cart.service';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   { path: 'searchBar/:keyword', component: ProductsComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'products/:id/:name', component: ProductsComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'cart', component: CartDetailsComponent }
 ];
 
@@ -22,6 +24,7 @@ const routes: Routes = [
     ProductDetailsComponent,
     CartStatusComponent,
     CartDetailsComponent,
+    CheckoutComponent,
   ],
   imports: [
     SharedModule,
@@ -31,7 +34,8 @@ const routes: Routes = [
     ProductsComponent,
     ProductDetailsComponent,
     CartStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   providers: [
     ProductService,

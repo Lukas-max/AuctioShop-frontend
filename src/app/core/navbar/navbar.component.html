@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top">
-  <a class="navbar-brand" href="#">AuctioShop</a>
+  <a class="navbar-brand" routerLink="/products">AuctioShop</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup"
@@ -14,19 +14,7 @@
       <button class="btn  my-2 my-sm-0" (click)="search(input.value)">Szukaj</button>
     </form>
     <div class="navbar-nav ">
-      <a class="nav-item nav-link active" href="#">Home</a>
-
-      <!--      <div class="dropdown">-->
-      <!--        <button class="btn btn-secondary-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-      <!--          Dropdown button-->
-      <!--        </button>-->
-      <!--        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >-->
-      <!--          <a href="#" *ngFor="let c of categories">{{ c }}</a>-->
-      <!--        </div>-->
-      <!--      </div>-->
-
-      <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Kliknij</a>
+      <a class="nav-item nav-link active" routerLink="/products">Home</a>
     </div>
   </div>
   <app-cart-status></app-cart-status>

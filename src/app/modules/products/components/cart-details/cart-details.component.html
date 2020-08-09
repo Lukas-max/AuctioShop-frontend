@@ -1,49 +1,48 @@
-<div class="center-details shopping-cart">
-  <div class="container prod-table">
-    <div class="product-header">Twój koszyk</div>
-    <div class="underline"></div>
-    <hr>
+<div class="container center-details prod-table shopping-cart">
+  <div class="product-header">Twój koszyk</div>
+  <div class="underline"></div>
+  <hr>
 
-    <div *ngIf="cartItems.length > 0" class="container">
-      <div *ngFor="let item of cartItems">
-        <div class="cart-wrapper">
-          <div class="inner-cart-first-wrapper">
-            <div>
-              <img src="data:image/jpeg;base64,{{ item.productImage }}"
-                   alt="obrazek wybranego produktu" width="100px">
-            </div>
-            <div>
-              <p>{{ item.name }}</p>
-              <p class="first-cart-price"><span>{{ item.unitPrice }}</span> PLN</p>
-            </div>
-          </div>
-          <div class="inner-cart-second-wrapper">
-            <button type="button" (click)="increment(item)" class="btn btn-primary">
-              +
-            </button>
-            <p>Ilość: {{ item.quantity }}</p>
-            <button type="button" (click)="decrement(item)" class="btn btn-primary">
-              -
-            </button>
+  <div *ngIf="cartItems.length > 0" class="container">
+    <div *ngFor="let item of cartItems">
+      <div class="cart-wrapper">
+        <div class="inner-cart-first-wrapper">
+          <div>
+            <img src="data:image/jpeg;base64,{{ item.productImage }}"
+                 alt="obrazek wybranego produktu" width="100px">
           </div>
           <div>
-            <p class="second-cart-price">Cena: <span>{{ item.quantity * item.unitPrice }}</span> PLN</p>
-            <button type="button" (click)="removeItem(item)" class="btn btn-dark">Usuń</button>
+            <p>{{ item.name }}</p>
+            <p class="first-cart-price"><span>{{ item.unitPrice }}</span> PLN</p>
           </div>
         </div>
-        <hr>
+        <div class="inner-cart-second-wrapper">
+          <button type="button" (click)="increment(item)" class="btn btn-primary">
+            +
+          </button>
+          <p>Ilość: {{ item.quantity }}</p>
+          <button type="button" (click)="decrement(item)" class="btn btn-primary">
+            -
+          </button>
+        </div>
+        <div>
+          <p class="second-cart-price">Cena: <span>{{ item.quantity * item.unitPrice }}</span> PLN</p>
+          <button type="button" (click)="removeItem(item)" class="btn btn-dark">Usuń</button>
+        </div>
       </div>
-      <div class="alert alert-info" role="alert">
-        <p>Ilość przedmiotów: {{ totalQuantity }}</p>
-        <p class="second-cart-price">SUMA: <span>{{ totalPrice }}</span> PLN</p>
-      </div>
+      <hr>
     </div>
-
-    <div *ngIf="cartItems?.length == 0" class="empty-cart">
-      <div class="alert alert-info" role="alert">
-        <p>Twój koszyk jest pusty.</p>
-      </div>
+    <div class="alert alert-info" role="alert">
+      <p>Ilość przedmiotów: {{ totalQuantity }}</p>
+      <p class="second-cart-price">SUMA: <span>{{ totalPrice }}</span> PLN</p>
+      <button type="button" routerLink="/checkout" class="btn btn-dark">Zamów</button>
     </div>
-
   </div>
+
+  <div *ngIf="cartItems?.length == 0" class="empty-cart">
+    <div class="alert alert-info" role="alert">
+      <p>Twój koszyk jest pusty.</p>
+    </div>
+  </div>
+
 </div>
