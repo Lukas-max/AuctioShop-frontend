@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../model/product';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
+import {MessageToastrService} from '../../../../core/services/message-toastr.service';
 
 @Component({
   selector: 'app-products',
@@ -20,7 +21,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private messageToastrService: MessageToastrService) {
   }
 
   ngOnInit(): void {
@@ -88,5 +90,12 @@ export class ProductsComponent implements OnInit {
     this.pageSize = pageSize;
     this.pageNumber = 1;
     this.getProducts();
+  }
+
+  public deleteProductById(productId: number){
+    this.productService.deleteProductById(productId).subscribe(() => {
+      this.getProducts();
+      this.messageToastrService.success('Pomyślnie usunięto produkt.');
+    });
   }
 }

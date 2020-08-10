@@ -9,15 +9,17 @@
       <th scope="col">Nazwa</th>
       <th scope="col">Cena</th>
       <th scope="col">Dostępność</th>
+      <th scope="col">Usuń</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let prod of products" routerLink="/products/{{ prod.productId }}">
+    <tr *ngFor="let prod of products">
       <td><img src="data:image/jpeg;base64,{{prod.productImage}}" alt="obrazek produktu"
-                 height="150px"> </td>
-      <td>{{ prod.name }}</td>
+                 height="150px" routerLink="/products/{{ prod.productId }}"> </td>
+      <td routerLink="/products/{{ prod.productId }}">{{ prod.name }}</td>
       <td>{{ prod.unitPrice }}</td>
       <td>{{ prod.unitsInStock }} (szt.)</td>
+      <td><button type="button" (click)="deleteProductById(prod.productId)" >Usuń</button></td>
     </tr>
     </tbody>
   </table>
