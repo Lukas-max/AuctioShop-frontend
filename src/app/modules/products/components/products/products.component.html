@@ -9,7 +9,7 @@
       <th scope="col">Nazwa</th>
       <th scope="col">Cena</th>
       <th scope="col">Dostępność</th>
-      <th scope="col">Usuń</th>
+      <th scope="col" *ngIf="isLogged">Usuń</th>
     </tr>
     </thead>
     <tbody>
@@ -19,7 +19,7 @@
       <td routerLink="/products/{{ prod.productId }}">{{ prod.name }}</td>
       <td>{{ prod.unitPrice }}</td>
       <td>{{ prod.unitsInStock }} (szt.)</td>
-      <td><button type="button" (click)="deleteProductById(prod.productId)" >Usuń</button></td>
+      <td *ngIf="isLogged"><button type="button" (click)="deleteProductById(prod.productId)" >Usuń</button></td>
     </tr>
     </tbody>
   </table>

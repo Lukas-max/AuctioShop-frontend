@@ -123,6 +123,12 @@ header {
   box-shadow: 0 40px 90px black;
 }
 
+/* LOGIN */
+.login-form {
+  margin: 70px auto;
+  width: 80%;
+}
+
 /* SIDEBAR */
 .menu-sidebar {
   position: absolute;
@@ -157,6 +163,10 @@ header {
   .menu-sidebar {
     height: 60%;
   }
+
+  .login-form {
+    width: 50%;
+  }
 }
 
 @media (min-width: 992px) {
@@ -171,6 +181,10 @@ header {
   .sidebar-navbar li {
     margin-left: 30px;
     text-align: left;
+  }
+
+  .login-form {
+    width: 30%;
   }
 }
 

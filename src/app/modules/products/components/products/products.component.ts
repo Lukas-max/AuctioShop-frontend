@@ -3,6 +3,7 @@ import { Product } from '../../model/product';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import {MessageToastrService} from '../../../../core/services/message-toastr.service';
+import {BasicAuthenticationService} from '../../../../core/services/basic-authentication.service';
 
 @Component({
   selector: 'app-products',
@@ -14,6 +15,7 @@ export class ProductsComponent implements OnInit {
   currentCategoryId: number;
   categoryName: string;
   searchMode: boolean;
+  isLogged: boolean;
   // pagination:
   pageSize: number;
   pageNumber: number;
@@ -22,7 +24,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private messageToastrService: MessageToastrService) {
+    private messageToastrService: MessageToastrService,
+    private basicAuthenticationService: BasicAuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -32,6 +35,7 @@ export class ProductsComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.getProducts();
     });
+    this.isLogged = this.basicAuthenticationService.isUserLoggedIn();
   }
 
   public getProducts(){
@@ -93,9 +97,11 @@ export class ProductsComponent implements OnInit {
   }
 
   public deleteProductById(productId: number){
-    this.productService.deleteProductById(productId).subscribe(() => {
-      this.getProducts();
-      this.messageToastrService.success('Pomyślnie usunięto produkt.');
-    });
+    if (confirm('Czy na pewno chcesz usunąc ten produkt?')){
+      this.productService.deleteProductById(productId).subscribe(() => {
+        this.getProducts();
+        this.messageToastrService.success('Pomyślnie usunięto produkt.');
+      });
+    }
   }
 }

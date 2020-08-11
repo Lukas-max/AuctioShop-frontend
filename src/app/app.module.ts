@@ -8,9 +8,11 @@ import { ProductsModule } from './modules/products/products.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
+import {LoginComponent} from './core/login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'products', pathMatch: 'full' }
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

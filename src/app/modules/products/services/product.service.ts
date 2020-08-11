@@ -1,6 +1,6 @@
 /* tslint:disable */
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Product} from '../model/product';
 import {Observable} from 'rxjs';
 import {ResponseProduct} from '../model/responseProduct';
