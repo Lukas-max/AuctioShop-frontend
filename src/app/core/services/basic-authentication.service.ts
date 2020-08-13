@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { API_URL } from '../../app.consts';
+
+export const TOKEN = 'token';
+export const AUTH_USER = 'authenticatedUser';
 
 @Injectable({
   providedIn: 'root'
@@ -15,26 +19,26 @@ export class BasicAuthenticationService {
       Authorization: basicAuthHeader
     });
 
-    return this.http.get('http://localhost:8080/user',
+    return this.http.get(`${API_URL}/user`,
       { headers: header}).pipe(map(data => {
-        sessionStorage.setItem('authenticatedUser', username);
-        sessionStorage.setItem('token', basicAuthHeader);
+        sessionStorage.setItem(AUTH_USER, username);
+        sessionStorage.setItem(TOKEN, basicAuthHeader);
         return data;
     }));
   }
 
   public getAuthenticatedUser(){
-    return sessionStorage.getItem('authenticatedUser');
+    return sessionStorage.getItem(AUTH_USER);
   }
 
   public getAuthenticationToken(){
     if (this.getAuthenticatedUser()){
-      return sessionStorage.getItem('token');
+      return sessionStorage.getItem(TOKEN);
     }
   }
 
   public isUserLoggedIn(){
-    const user = sessionStorage.getItem('authenticatedUser');
+    const user = sessionStorage.getItem(AUTH_USER);
     return !(user === null);
   }
 

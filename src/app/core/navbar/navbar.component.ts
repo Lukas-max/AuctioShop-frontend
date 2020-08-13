@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {BasicAuthenticationService} from '../services/basic-authentication.service';
+import {JwtAuthenticationService} from '../services/jwt-authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,17 +10,23 @@ import {BasicAuthenticationService} from '../services/basic-authentication.servi
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(
-    private route: Router,
-    public basicAuthenticationService: BasicAuthenticationService) { }
+  constructor(private route: Router,
+              public basicAuthenticationService: BasicAuthenticationService,
+              public jwtAuthenticationService: JwtAuthenticationService) {
+  }
 
   ngOnInit(): void {
   }
-  public search(input: string){
+
+  public search(input: string) {
     this.route.navigateByUrl(`searchBar/${input}`);
   }
 
-  public logout(){
+  public logout() {
     this.basicAuthenticationService.logout();
+  }
+
+  public jwtAuthLogout(){
+    this.jwtAuthenticationService.logout();
   }
 }

@@ -124,9 +124,17 @@ header {
 }
 
 /* LOGIN */
+.login-screen {
+  height: 400px;
+}
+
 .login-form {
   margin: 70px auto;
   width: 80%;
+}
+
+.login-form button {
+  margin-bottom: 20px;
 }
 
 /* SIDEBAR */

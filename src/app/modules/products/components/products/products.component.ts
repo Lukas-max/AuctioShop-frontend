@@ -4,6 +4,7 @@ import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import {MessageToastrService} from '../../../../core/services/message-toastr.service';
 import {BasicAuthenticationService} from '../../../../core/services/basic-authentication.service';
+import {JwtAuthenticationService} from '../../../../core/services/jwt-authentication.service';
 
 @Component({
   selector: 'app-products',
@@ -25,7 +26,8 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private messageToastrService: MessageToastrService,
-    private basicAuthenticationService: BasicAuthenticationService) {
+    private basicAuthenticationService: BasicAuthenticationService,
+    public jwtAuthenticationService: JwtAuthenticationService) {
   }
 
   ngOnInit(): void {

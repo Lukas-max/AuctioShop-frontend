@@ -15,9 +15,9 @@
     </form>
     <div class="navbar-nav ">
       <a class="nav-item nav-link active" routerLink="/products">Home</a>
-      <a *ngIf="!basicAuthenticationService.isUserLoggedIn()" class="nav-item nav-link" routerLink="/login">Zaloguj się</a>
-      <a *ngIf="basicAuthenticationService.isUserLoggedIn()" class="nav-item nav-link"
-         (click)="logout()" routerLink="/login">Wyloguj się</a>
+      <a *ngIf="!jwtAuthenticationService.isUserLoggedIn()" class="nav-item nav-link" routerLink="/login">Zaloguj się</a>
+      <a *ngIf="jwtAuthenticationService.isUserLoggedIn()" class="nav-item nav-link"
+         (click)="jwtAuthLogout()" routerLink="/products">Wyloguj się</a>
     </div>
   </div>
   <app-cart-status></app-cart-status>

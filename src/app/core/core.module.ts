@@ -10,18 +10,24 @@ import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.s
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicAuthenticationService } from './services/basic-authentication.service';
 import { LoginComponent } from './login/login.component';
+import {JwtAuthenticationService} from './services/jwt-authentication.service';
+import { JwtLoginComponent } from './jwtlogin/jwt-login.component';
+import {JwtAuthInterceptorService} from './services/jwt-auth-interceptor.service';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     HeaderComponent,
     SidebarComponent,
-    LoginComponent
+    LoginComponent,
+    JwtLoginComponent
   ],
   providers: [
     MessageToastrService,
-    BasicAuthenticationService,
-    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptorService, multi: true }
+    // BasicAuthenticationService,
+    JwtAuthenticationService,
+    // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtAuthInterceptorService, multi: true }
   ],
   imports: [
     SharedModule,
@@ -32,7 +38,8 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     HeaderComponent,
     SidebarComponent,
-    LoginComponent
+    LoginComponent,
+    JwtLoginComponent
   ]
 })
 export class CoreModule { }
