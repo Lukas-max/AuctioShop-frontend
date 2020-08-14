@@ -32,7 +32,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.pageNumber = 1;
-    this.pageSize = 4;
+    this.pageSize = 8;
     this.categoryName = 'Wszystkie';
     this.route.paramMap.subscribe(() => {
       this.getProducts();
@@ -105,5 +105,9 @@ export class ProductsComponent implements OnInit {
         this.messageToastrService.success('Pomyślnie usunięto produkt.');
       });
     }
+  }
+
+  public updateProductById(productId: number){
+    console.log(productId);
   }
 }

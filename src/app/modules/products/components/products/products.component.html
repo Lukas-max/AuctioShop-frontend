@@ -1,37 +1,42 @@
-<div class="container prod-table table-responsive">
+<div class="container prod-table">
   <div class="menu-header menu-text">
     {{ categoryName }}
   </div>
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Nazwa</th>
-      <th scope="col">Cena</th>
-      <th scope="col">Dostępność</th>
-      <th scope="col" *ngIf="isLogged">Usuń</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let prod of products">
-      <td><img src="data:image/jpeg;base64,{{prod.productImage}}" alt="obrazek produktu"
-               height="150px" routerLink="/products/{{ prod.productId }}"></td>
-      <td routerLink="/products/{{ prod.productId }}">{{ prod.name }}</td>
-      <td>{{ prod.unitPrice }}</td>
-      <td>{{ prod.unitsInStock }} (szt.)</td>
-      <td *ngIf="jwtAuthenticationService.isAdminLoggedIn()">
-        <button type="button" (click)="deleteProductById(prod.productId)">Usuń</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <button type="button" class="btn btn-success btn-add-product">Dodaj produkt</button>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let prod of products">
+      <div class="product-box">
+        <div>
+          <div class="pick-product" routerLink="/products/{{ prod.productId }}">
+            <img src="data:image/jpeg;base64,{{prod.productImage}}" alt="obrazek produktu">
+            <p class="product-name"> {{ prod.name }}</p>
+          </div>
+          <p><span>{{ prod.unitPrice }}</span> PLN</p>
+          <hr>
+          <button type="button" class="btn btn-dark">Kup</button>
+          <br>
+          <button type="button" class="btn btn-danger"
+                  (click)="deleteProductById(prod.productId)"
+          >Usuń
+          </button>
+          <br>
+          <button type="button" class="btn btn-danger"
+                  (click)="updateProductById(prod.productId)">Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div *ngIf="products?.length == 0" class="alert alert-dark" role="alert">
     <p>Nie znaleziono produktów o podanym kryterium.</p>
-    <img src="assets/images/not_found/not_found.jpg" alt="obraz z owcą - nie znaleziono produktu">
+    <div class="not-found-img"></div>
   </div>
 
-  <div>
+  <hr>
+  <div class="page-options">
     <div>
       <ngb-pagination [(page)]="pageNumber"
                       [pageSize]="pageSize"
@@ -40,13 +45,12 @@
       </ngb-pagination>
     </div>
 
-    <div>
+    <div class="pager">
       <span>Ilość elementów: </span>
-      <select (change)="changePageSize($event.target.value)">
-        <option selected="true">4</option>
-        <option>5</option>
-        <option>10</option>
-        <option>20</option>
+      <select (change)="changePageSize($event.target.value)" class="form-control">
+        <option>4</option>
+        <option selected="true">8</option>
+        <option>16</option>
       </select>
     </div>
   </div>
