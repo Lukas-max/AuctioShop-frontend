@@ -1,0 +1,53 @@
+<div class="container prod-table">
+  <div class="menu-header menu-text">Dodaj produkt do bazy</div>
+  <hr>
+
+  <div class="container">
+    <form #addProductForm="ngForm" (ngSubmit)="createProduct(addProductForm)"
+          enctype="multipart/form-data">
+
+      <div class="form-row">
+        <div class="col">
+          <label>Sku:</label>
+          <input type="text" class="form-control" name="sku" [(ngModel)]="sku">
+        </div>
+        <div class="col">
+          <label>Nazwa produktu:</label>
+          <input type="text" class="form-control" name="name" [(ngModel)]="name">
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Opis produktu:</label>
+        <textarea class="form-control" rows="4" name="description" [(ngModel)]="description"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <label>Cena:</label>
+          <input type="number" class="form-control" min="1" name="unitPrice" [(ngModel)]="unitPrice">
+        </div>
+        <div class="col">
+          <label>Ilość sztuk:</label>
+          <input type="number" class="form-control" min="1" name="unitsInStock"
+                 [(ngModel)]="unitsInStock">
+        </div>
+      </div>
+      <br>
+      <div class="form-group" *ngIf="categories">
+        <label>Kategoria produktu:</label>
+        <select class="form-control" [(ngModel)]="productCategory" name="productCategory">
+          <option *ngFor="let cat of categories" [ngValue]="cat">
+            {{ cat[1] }}</option>
+        </select>
+      </div>
+      <br>
+      <div class="custom-file">
+        <input type="file" accept="image/*"
+               (change)="onFileChange($event)">
+      </div>
+
+
+      <button type="submit" class="btn btn-success">Dodaj produkt</button>
+    </form>
+  </div>
+</div>

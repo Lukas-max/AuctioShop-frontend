@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CartService} from '../../services/cart.service';
 
 @Component({
@@ -19,10 +19,10 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
-        firstName: [''],
-        lastName: [''],
+        firstName: ['', [Validators.required, Validators.minLength(2)]],
+        lastName: ['', [Validators.required, Validators.minLength(2)]],
         telephone: [''],
-        email: ['']
+        email: ['', Validators.required]
       }),
       address: this.formBuilder.group({
         country: [''],
@@ -40,6 +40,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   public submitForm(){
-    console.log(this.checkoutFormGroup.value);
+    console.log(this.checkoutFormGroup);
   }
 }

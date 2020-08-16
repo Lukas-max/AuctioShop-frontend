@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../model/product';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
-import {MessageToastrService} from '../../../../core/services/message-toastr.service';
-import {BasicAuthenticationService} from '../../../../core/services/basic-authentication.service';
-import {JwtAuthenticationService} from '../../../../core/services/jwt-authentication.service';
+import { MessageToastrService } from '../../../../core/services/message-toastr.service';
+import { CartItem } from '../../model/cartItem';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -16,18 +16,15 @@ export class ProductsComponent implements OnInit {
   currentCategoryId: number;
   categoryName: string;
   searchMode: boolean;
-  isLogged: boolean;
   // pagination:
   pageSize: number;
   pageNumber: number;
   totalElements: number;
 
-  constructor(
-    private productService: ProductService,
-    private route: ActivatedRoute,
-    private messageToastrService: MessageToastrService,
-    private basicAuthenticationService: BasicAuthenticationService,
-    public jwtAuthenticationService: JwtAuthenticationService) {
+  constructor(private productService: ProductService,
+              private route: ActivatedRoute,
+              private messageToastrService: MessageToastrService,
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -37,40 +34,39 @@ export class ProductsComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.getProducts();
     });
-    this.isLogged = this.basicAuthenticationService.isUserLoggedIn();
   }
 
-  public getProducts(){
+  public getProducts() {
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
-    if (this.searchMode){
+    if (this.searchMode) {
       this.downloadSearchBarProduct();
-    }else {
+    } else {
       this.downloadListProducts();
     }
   }
 
-  private downloadListProducts(){
+  private downloadListProducts() {
     const hasProductCategoryId: boolean = this.route.snapshot.paramMap.has('id');
     const hasProductCategoryName: boolean = this.route.snapshot.paramMap.has('name');
-    if (hasProductCategoryId && hasProductCategoryName){
+    if (hasProductCategoryId && hasProductCategoryName) {
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
       this.categoryName = this.route.snapshot.paramMap.get('name');
       this.productService.getProductByCategoryId(
-                this.currentCategoryId, this.pageNumber - 1, this.pageSize)
+        this.currentCategoryId, this.pageNumber - 1, this.pageSize)
         .subscribe(this.processResponse());
-    }else {
+    } else {
       this.productService.getProducts(this.pageNumber - 1, this.pageSize)
         .subscribe(this.processResponse());
     }
   }
 
-  private downloadSearchBarProduct(){
+  private downloadSearchBarProduct() {
     const theWord: string = this.route.snapshot.paramMap.get('keyword');
     this.productService.searchProductsByName(theWord, this.pageNumber - 1, this.pageSize)
       .subscribe(this.processSearchBarResponse());
   }
 
-  private processResponse(){
+  private processResponse() {
     return dataProducts => {
       this.products = dataProducts.content;
       this.pageSize = dataProducts.pageable.pageSize;
@@ -78,28 +74,28 @@ export class ProductsComponent implements OnInit {
     };
   }
 
-  private processSearchBarResponse(){
+  private processSearchBarResponse() {
     return dataProducts => {
       this.products = dataProducts.content;
       this.pageSize = dataProducts.pageable.pageSize;
       this.totalElements = dataProducts.totalElements;
 
-      if (this.products.length < 1){
+      if (this.products.length < 1) {
         this.categoryName = 'Nie znaleziono - 404';
-      }else {
+      } else {
         this.categoryName = 'Znalezione';
       }
     };
   }
 
-  public changePageSize(pageSize: number){
+  public changePageSize(pageSize: number) {
     this.pageSize = pageSize;
     this.pageNumber = 1;
     this.getProducts();
   }
 
-  public deleteProductById(productId: number){
-    if (confirm('Czy na pewno chcesz usunąc ten produkt?')){
+  public deleteProductById(productId: number) {
+    if (confirm('Czy na pewno chcesz usunąc ten produkt?')) {
       this.productService.deleteProductById(productId).subscribe(() => {
         this.getProducts();
         this.messageToastrService.success('Pomyślnie usunięto produkt.');
@@ -107,7 +103,12 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  public updateProductById(productId: number){
+  public updateProductById(productId: number) {
     console.log(productId);
+  }
+
+  public addToCart(product: Product) {
+    const cartItem = new CartItem(product);
+    this.cartService.addToCart(cartItem);
   }
 }

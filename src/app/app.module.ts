@@ -8,8 +8,9 @@ import { ProductsModule } from './modules/products/products.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
-import {LoginComponent} from './core/login/login.component';
-import {JwtLoginComponent} from './core/jwtlogin/jwt-login.component';
+import { LoginComponent } from './core/login/login.component';
+import { JwtLoginComponent } from './core/jwtlogin/jwt-login.component';
+import { UsersModule } from './modules/users/users.module';
 
 const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
@@ -18,7 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +27,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forRoot(routes),
     ProductsModule,
+    UsersModule,
     HttpClientModule,
     ToastrModule.forRoot(),
   ],

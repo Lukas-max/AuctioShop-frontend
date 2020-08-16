@@ -40,7 +40,7 @@ export class CartService {
   //   this.computeTotals();
   // }
 
-  public addToCart2(cartItem: CartItem){
+  public addToCart(cartItem: CartItem){
     let existingItem: CartItem;
 
     if (this.cartItems.length > 0){

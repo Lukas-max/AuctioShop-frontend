@@ -11,21 +11,61 @@
 
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label>Imię:</label>
-            <input type="text" class="form-control" formControlName="firstName">
+            <label>Imię*:</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="firstName"
+                   [ngClass]="{'is-invalid':checkoutFormGroup.get('customer.firstName').errors
+                   && checkoutFormGroup.get('customer.firstName').touched}"
+                   required>
+            <div class="alert alert-danger"
+                 *ngIf="checkoutFormGroup.invalid && checkoutFormGroup.touched">
+              <div *ngIf="checkoutFormGroup.get('customer.firstName').hasError('minlength')">
+                Pole musi mieć przynajmniej 2 znaki.
+              </div>
+              <div *ngIf="checkoutFormGroup.get('customer.firstName').hasError('required')">
+                Pole nie może być puste.
+              </div>
+            </div>
           </div>
+
           <div class="form-group col-md-6">
-            <label>Nazwisko:</label>
-            <input type="text" class="form-control" formControlName="lastName">
+            <label>Nazwisko*:</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="lastName"
+                   [ngClass]="{'is-invalid':checkoutFormGroup.get('customer.lastName').errors
+                   && checkoutFormGroup.get('customer.lastName').touched}"
+                   required>
+            <div class="alert alert-danger"
+                 *ngIf="checkoutFormGroup.invalid && checkoutFormGroup.touched">
+              <div *ngIf="checkoutFormGroup.get('customer.lastName').hasError('minlength')">
+                Pole musi mieć przynajmniej 2 znaki.
+              </div>
+              <div *ngIf="checkoutFormGroup.get('customer.lastName').hasError('required')">
+                Pole nie może być puste.
+              </div>
+            </div>
           </div>
         </div>
+
         <div class="form-group">
           <label>Numer telefonu:</label>
           <input type="number" class="form-control" formControlName="telephone">
         </div>
+
         <div class="form-group">
-          <label>Adres Email:</label>
-          <input type="email" class="form-control" formControlName="email">
+          <label>Adres Email*:</label>
+          <input type="email"
+                 class="form-control"
+                 formControlName="email"
+                 [ngClass]="{'is-invalid':checkoutFormGroup.get('customer.email').errors
+                   && checkoutFormGroup.get('customer.email').touched}">
+          <div class="alert alert-danger" *ngIf="checkoutFormGroup.invalid && checkoutFormGroup.touched">
+            <div *ngIf="checkoutFormGroup.get('customer.email').hasError('required')">
+              Pole wymagane.
+            </div>
+          </div>
         </div>
       </div>
 
@@ -69,7 +109,9 @@
           </div>
         </div>
         <div class="text-center">
-          <button type="submit" class="btn btn-dark">Zamów</button>
+          <button type="submit" class="btn btn-dark" [disabled]="!checkoutFormGroup.valid">
+            Zamów
+          </button>
         </div>
       </div>
     </form>

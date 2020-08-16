@@ -3,7 +3,13 @@
     {{ categoryName }}
   </div>
 
-  <button type="button" class="btn btn-success btn-add-product">Dodaj produkt</button>
+  <div>
+    <button type="button" class="btn btn-success btn-add-product"
+            routerLink="/products/add">Dodaj produkt
+    </button>
+    <hr>
+  </div>
+
 
   <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let prod of products">
@@ -15,7 +21,7 @@
           </div>
           <p><span>{{ prod.unitPrice }}</span> PLN</p>
           <hr>
-          <button type="button" class="btn btn-dark">Kup</button>
+          <button type="button" class="btn btn-dark" (click)="addToCart(prod)">Kup</button>
           <br>
           <button type="button" class="btn btn-danger"
                   (click)="deleteProductById(prod.productId)"

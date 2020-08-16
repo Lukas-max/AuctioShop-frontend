@@ -125,7 +125,7 @@ header {
 
 /* LOGIN */
 .login-screen {
-  height: 400px;
+  height: 500px;
 }
 
 .login-form {
@@ -162,13 +162,19 @@ header {
   text-align: center;
   margin-bottom: 10px;
   color: rgba(0,0,0, .7);
-  font-size: 20px;
+  font-size: 19px;
   font-weight: bold;
   text-transform: capitalize;
 }
 
+.sidebar-navbar a:hover {
+  text-decoration: none;
+  color: blueviolet;
+}
+
 @media (min-width: 576px){
   .menu-sidebar {
+    width: 40%;
     height: 60%;
   }
 
@@ -244,8 +250,8 @@ header {
 .btn-add-product {
   display: block;
   margin: 20px auto;
-  width: 150px;
-  height: 100px;
+  width: 300px;
+  height: 50px;
   color: white;
 }
 
