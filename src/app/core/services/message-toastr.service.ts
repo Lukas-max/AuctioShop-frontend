@@ -11,4 +11,8 @@ export class MessageToastrService {
   public success(message: string){
     this.toastrService.success(message);
   }
+
+  public error(message: string){
+    this.toastrService.error(message);
+  }
 }

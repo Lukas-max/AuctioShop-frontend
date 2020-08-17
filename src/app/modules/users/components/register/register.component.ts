@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import {MessageToastrService} from '../../../../core/services/message-toastr.service';
 import {Router} from '@angular/router';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
   username: string;
   password: string;
+  checkUser: string;
 
   constructor(private userService: UsersService,
               private route: Router,
@@ -21,6 +23,19 @@ export class RegisterComponent implements OnInit {
   }
 
   public register(){
+    this.userService.getUserByName(this.username).subscribe(data => {
+      this.checkUser = data.username;
+      if (this.checkUser === null){
+        this.createUserInDatabase();
+      }else {
+        this.messageToastrService.error('Użytkownik już istnieje w bazie danych');
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  private createUserInDatabase(){
     this.userService.createUser({
       username: this.username,
       password: this.password

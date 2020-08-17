@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../model/cartItem';
 import { Subject } from 'rxjs';
+import { MessageToastrService } from '../../../core/services/message-toastr.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class CartService {
   totalQuantity: Subject<number> = new Subject<number>();
   totalPrice: Subject<number> = new Subject<number>();
 
-  constructor() {
+  constructor(private messageToastrService: MessageToastrService) {
     this.totalPriceValue = 0;
     this.totalQuantityValue = 0;
   }
@@ -56,6 +57,7 @@ export class CartService {
     }
 
     this.alreadyExistsInCart = false;
+    this.messageToastrService.success('Dodano do koszyka');
     this.computeTotals();
   }
 

@@ -7,27 +7,27 @@
 
     <div class="form-group">
       <input required type="text" class="form-control" [(ngModel)]="username"
-             name="username" placeholder="Nazwa użytkownika" minlength="5"
+             name="username" placeholder="Nazwa użytkownika" minlength="3"
              maxlength="50" #nameModel="ngModel"/>
       <div class="alert alert-danger" *ngIf="nameModel.invalid && nameModel.touched">
         <div *ngIf="nameModel.errors.required">
           <span>Nazwa użytkownika jest wymagana.</span>
         </div>
         <div *ngIf="nameModel.errors.minlength">
-          <span>Nazwa użytkownika jest wymagana.</span>
+          <span>Pole musi zawierać przynajmniej 3 znaki.</span>
         </div>
       </div>
     </div>
 
     <div class="form-group">
       <input required type="password" class="form-control" [(ngModel)]="password"
-             name="password" placeholder="Hasło" minlength="5" maxlength="50" #passModel="ngModel"/>
+             name="password" placeholder="Hasło" minlength="3" maxlength="50" #passModel="ngModel"/>
       <div class="alert alert-danger" *ngIf="passModel.invalid && passModel.touched">
         <div *ngIf="passModel.errors.required">
           <span>Hasło jest wymagane.</span>
         </div>
         <div *ngIf="passModel.errors.minlength">
-          <span>Pole musi zawierać przynajmniej 5 znaków.</span>
+          <span>Pole musi zawierać przynajmniej 3 znaki.</span>
         </div>
       </div>
     </div>

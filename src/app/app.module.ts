@@ -29,7 +29,7 @@ const routes: Routes = [
     ProductsModule,
     UsersModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({ positionClass: 'toast-custom' }),
   ],
   exports: [
   ],

@@ -17,8 +17,7 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
-              private cartService: CartService,
-              private messageService: MessageToastrService) {
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -42,6 +41,5 @@ export class ProductDetailsComponent implements OnInit {
   public addToCart(product: Product) {
     const cartItem = new CartItem(product);
     this.cartService.addToCart(cartItem);
-    // this.messageService.success('Dodano do koszyka');
   }
 }
