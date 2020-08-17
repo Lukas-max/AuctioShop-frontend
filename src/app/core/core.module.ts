@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import {JwtAuthenticationService} from './services/jwt-authentication.service';
 import { JwtLoginComponent } from './jwtlogin/jwt-login.component';
 import {JwtAuthInterceptorService} from './services/jwt-auth-interceptor.service';
+import {ErrorHandlerInterceptorService} from './services/error-handler-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {JwtAuthInterceptorService} from './services/jwt-auth-interceptor.service
     // BasicAuthenticationService,
     JwtAuthenticationService,
     // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptorService, multi: true }
-    { provide: HTTP_INTERCEPTORS, useClass: JwtAuthInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtAuthInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptorService, multi: true }
   ],
   imports: [
     SharedModule,

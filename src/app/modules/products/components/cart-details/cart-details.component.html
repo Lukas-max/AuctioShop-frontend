@@ -34,7 +34,7 @@
     </div>
     <div class="alert alert-info" role="alert">
       <p>Ilość przedmiotów: {{ totalQuantity }}</p>
-      <p class="second-cart-price">SUMA: <span>{{ totalPrice }}</span> PLN</p>
+      <p class="second-cart-price">SUMA: <span>{{ totalPrice | number:'1.0-2' }}</span> PLN</p>
       <button type="button" routerLink="/checkout" class="btn btn-dark">Zamów</button>
     </div>
   </div>

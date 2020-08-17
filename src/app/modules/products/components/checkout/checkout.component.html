@@ -105,7 +105,7 @@
           <div class="head">Twoje zamówienie:</div>
           <div class="text-center">
             <p>Ilość: <span>{{ totalQuantity }}</span></p>
-            <p>Cena całkowita: <span>{{ totalPrice }}</span> PLN</p>
+            <p>Cena całkowita: <span>{{ totalPrice | number:'1.0-2' }}</span> PLN</p>
           </div>
         </div>
         <div class="text-center">
