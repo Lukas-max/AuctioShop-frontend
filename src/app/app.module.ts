@@ -11,10 +11,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './core/login/login.component';
 import { JwtLoginComponent } from './core/jwtlogin/jwt-login.component';
 import { UsersModule } from './modules/users/users.module';
+import {AuthenticationLoginGuard} from './core/services/authentication-login.guard';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
-  { path: 'login', component: JwtLoginComponent }
+  { path: '**', redirectTo: 'products', pathMatch: 'full' }
 ];
 
 @NgModule({

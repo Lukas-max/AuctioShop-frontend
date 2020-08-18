@@ -42,4 +42,16 @@ export class CheckoutComponent implements OnInit {
   public submitForm(){
     console.log(this.checkoutFormGroup);
   }
+
+  get firstName(){
+    return this.checkoutFormGroup.get('customer.firstName');
+  }
+
+  get lastName(){
+    return this.checkoutFormGroup.get('customer.lastName');
+  }
+
+  get email(){
+    return this.checkoutFormGroup.get('customer.email');
+  }
 }

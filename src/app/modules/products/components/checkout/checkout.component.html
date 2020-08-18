@@ -15,15 +15,15 @@
             <input type="text"
                    class="form-control"
                    formControlName="firstName"
-                   [ngClass]="{'is-invalid':checkoutFormGroup.get('customer.firstName').errors
-                   && checkoutFormGroup.get('customer.firstName').touched}"
+                   [ngClass]="{'is-invalid':firstName.errors
+                   && firstName.touched}"
                    required>
             <div class="alert alert-danger"
                  *ngIf="checkoutFormGroup.invalid && checkoutFormGroup.touched">
-              <div *ngIf="checkoutFormGroup.get('customer.firstName').hasError('minlength')">
+              <div *ngIf="firstName.hasError('minlength')">
                 Pole musi mieć przynajmniej 2 znaki.
               </div>
-              <div *ngIf="checkoutFormGroup.get('customer.firstName').hasError('required')">
+              <div *ngIf="firstName.hasError('required')">
                 Pole nie może być puste.
               </div>
             </div>
@@ -34,15 +34,15 @@
             <input type="text"
                    class="form-control"
                    formControlName="lastName"
-                   [ngClass]="{'is-invalid':checkoutFormGroup.get('customer.lastName').errors
-                   && checkoutFormGroup.get('customer.lastName').touched}"
+                   [ngClass]="{'is-invalid':lastName.errors
+                   && lastName.touched}"
                    required>
             <div class="alert alert-danger"
                  *ngIf="checkoutFormGroup.invalid && checkoutFormGroup.touched">
-              <div *ngIf="checkoutFormGroup.get('customer.lastName').hasError('minlength')">
+              <div *ngIf="lastName.hasError('minlength')">
                 Pole musi mieć przynajmniej 2 znaki.
               </div>
-              <div *ngIf="checkoutFormGroup.get('customer.lastName').hasError('required')">
+              <div *ngIf="lastName.hasError('required')">
                 Pole nie może być puste.
               </div>
             </div>
@@ -59,10 +59,11 @@
           <input type="email"
                  class="form-control"
                  formControlName="email"
-                 [ngClass]="{'is-invalid':checkoutFormGroup.get('customer.email').errors
-                   && checkoutFormGroup.get('customer.email').touched}">
-          <div class="alert alert-danger" *ngIf="checkoutFormGroup.invalid && checkoutFormGroup.touched">
-            <div *ngIf="checkoutFormGroup.get('customer.email').hasError('required')">
+                 [ngClass]="{'is-invalid':email.errors
+                   && email.touched}">
+          <div class="alert alert-danger"
+               *ngIf="checkoutFormGroup.invalid && checkoutFormGroup.touched">
+            <div *ngIf="email.hasError('required')">
               Pole wymagane.
             </div>
           </div>
@@ -109,7 +110,7 @@
           </div>
         </div>
         <div class="text-center">
-          <button type="submit" class="btn btn-dark" [disabled]="!checkoutFormGroup.valid">
+          <button type="submit" class="btn btn-dark" [disabled]="checkoutFormGroup.invalid">
             Zamów
           </button>
         </div>
