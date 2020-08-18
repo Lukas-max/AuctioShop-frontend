@@ -44,7 +44,7 @@ export class JwtAuthenticationService {
     }
   }
 
-  public isUserLoggedIn(){
+  public isLoggedIn(){
     const user = sessionStorage.getItem(JWT_AUTH_USER);
     return !(user === null);
   }

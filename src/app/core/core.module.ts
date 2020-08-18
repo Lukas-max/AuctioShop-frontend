@@ -3,7 +3,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
-import { RouterModule } from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import { ProductsModule } from '../modules/products/products.module';
 import { MessageToastrService } from './services/message-toastr.service';
 import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.service';
@@ -14,6 +14,12 @@ import {JwtAuthenticationService} from './services/jwt-authentication.service';
 import { JwtLoginComponent } from './jwtlogin/jwt-login.component';
 import {JwtAuthInterceptorService} from './services/jwt-auth-interceptor.service';
 import {ErrorHandlerInterceptorService} from './services/error-handler-interceptor.service';
+import {AuthenticationGuard} from './services/authentication.guard';
+
+
+const routes: Routes = [
+  { path: 'login', component: JwtLoginComponent },
+];
 
 @NgModule({
   declarations: [
@@ -27,6 +33,7 @@ import {ErrorHandlerInterceptorService} from './services/error-handler-intercept
     MessageToastrService,
     // BasicAuthenticationService,
     JwtAuthenticationService,
+    AuthenticationGuard,
     // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptorService, multi: true }
     { provide: HTTP_INTERCEPTORS, useClass: JwtAuthInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptorService, multi: true }
@@ -35,6 +42,7 @@ import {ErrorHandlerInterceptorService} from './services/error-handler-intercept
     SharedModule,
     RouterModule,
     ProductsModule,
+    RouterModule.forChild(routes)
   ],
   exports: [
     NavbarComponent,

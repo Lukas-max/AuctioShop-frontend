@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top">
-  <a class="navbar-brand" routerLink="/products">AuctioShop</a>
+  <a class="navbar-brand" routerLink="/products" data-toggle="collapse"
+     data-target=".navbar-collapse.show">AuctioShop</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup"
@@ -11,13 +12,19 @@
     <form class="form-inline">
       <input #input class="form-control mr-sm-2" type="search" placeholder="Szukaj..." aria-label="Search"
              (keyup.enter)="search(input.value)">
-      <button class="btn  my-2 my-sm-0" (click)="search(input.value)">Szukaj</button>
+      <button class="btn  my-2 my-sm-0" (click)="search(input.value)"
+              data-toggle="collapse" data-target=".navbar-collapse.show">Szukaj
+      </button>
     </form>
     <div class="navbar-nav ">
-      <a class="nav-item nav-link active" routerLink="/products">Home</a>
-      <a *ngIf="!jwtAuthenticationService.isUserLoggedIn()" class="nav-item nav-link" routerLink="/login">Zaloguj się</a>
-      <a *ngIf="jwtAuthenticationService.isUserLoggedIn()" class="nav-item nav-link"
-         (click)="jwtAuthLogout()" routerLink="/products">Wyloguj się</a>
+      <a class="nav-item nav-link active" routerLink="/products" data-toggle="collapse"
+         data-target=".navbar-collapse.show">Home</a>
+      <a *ngIf="!isLoggedIn()" class="nav-item nav-link"
+         routerLink="/login"
+         data-toggle="collapse" data-target=".navbar-collapse.show">Zaloguj się</a>
+      <a *ngIf="isLoggedIn()" class="nav-item nav-link"
+         (click)="jwtAuthLogout()" routerLink="/products" data-toggle="collapse"
+         data-target=".navbar-collapse.show">Wyloguj się</a>
     </div>
   </div>
   <app-cart-status></app-cart-status>

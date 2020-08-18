@@ -9,10 +9,11 @@ import { CartService } from './services/cart.service';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
+import {AuthenticationGuard} from '../../core/services/authentication.guard';
 
 const routes: Routes = [
   { path: 'searchBar/:keyword', component: ProductsComponent },
-  { path: 'products/add', component: ProductAddComponent },
+  { path: 'products/add', component: ProductAddComponent, canActivate: [ AuthenticationGuard] },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'products/:id/:name', component: ProductsComponent },
   { path: 'products', component: ProductsComponent },
@@ -27,19 +28,14 @@ const routes: Routes = [
     CartStatusComponent,
     CartDetailsComponent,
     CheckoutComponent,
-    ProductAddComponent,
+    ProductAddComponent
   ],
   imports: [
     SharedModule,
     RouterModule.forChild(routes)
   ],
   exports: [
-    ProductsComponent,
-    ProductDetailsComponent,
-    CartStatusComponent,
-    CartDetailsComponent,
-    CheckoutComponent,
-    ProductAddComponent
+    CartStatusComponent
   ],
   providers: [
     ProductService,

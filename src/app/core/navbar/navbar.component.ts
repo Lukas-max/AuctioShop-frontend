@@ -29,4 +29,8 @@ export class NavbarComponent implements OnInit {
   public jwtAuthLogout(){
     this.jwtAuthenticationService.logout();
   }
+
+  public isLoggedIn(): boolean {
+    return this.jwtAuthenticationService.isLoggedIn();
+  }
 }

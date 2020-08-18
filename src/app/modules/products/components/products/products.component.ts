@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MessageToastrService } from '../../../../core/services/message-toastr.service';
 import { CartItem } from '../../model/cartItem';
 import { CartService } from '../../services/cart.service';
+import { JwtAuthenticationService } from '../../../../core/services/jwt-authentication.service';
+import { BasicAuthenticationService } from '../../../../core/services/basic-authentication.service';
 
 @Component({
   selector: 'app-products',
@@ -24,7 +26,9 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
               private messageToastrService: MessageToastrService,
-              private cartService: CartService) {
+              private cartService: CartService,
+              public jwtAuthenticationService: JwtAuthenticationService,
+              private basicAuthenticationService: BasicAuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -110,5 +114,9 @@ export class ProductsComponent implements OnInit {
   public addToCart(product: Product) {
     const cartItem = new CartItem(product);
     this.cartService.addToCart(cartItem);
+  }
+
+  public isAdminLoggedIn(): boolean{
+    return  this.jwtAuthenticationService.isAdminLoggedIn();
   }
 }

@@ -37,7 +37,7 @@ export class BasicAuthenticationService {
     }
   }
 
-  public isUserLoggedIn(){
+  public isLoggedIn(){
     const user = sessionStorage.getItem(AUTH_USER);
     return !(user === null);
   }
