@@ -255,12 +255,13 @@ header {
 .btn-add-product {
   display: block;
   margin: 20px auto;
-  width: 300px;
+  width: 150px;
   height: 50px;
   color: white;
 }
 
 .product-box img {
+  max-width: 180px;
   height: 150px;
   cursor: pointer;
 }
@@ -283,6 +284,17 @@ header {
   background-image: url('../src/assets/images/not_found/not_found.jpg');
   background-size: cover;
   background-position: center;
+}
+
+@media (min-width: 576px) {
+  .btn-add-product {
+    width: 300px;
+  }
+}
+
+/* PRODUCT ADD*/
+.add-product {
+  margin: 50px;
 }
 
 /* PAGINATION */

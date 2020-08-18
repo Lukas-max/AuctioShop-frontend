@@ -39,7 +39,7 @@ export class ProductService {
 
   //add product from productAddComponent
   public addProduct(product: Product){
-    return this.http.post(`${API_URL}/${this.productsUrl}`, product);
+    return this.http.post<Product>(`${API_URL}/${this.productsUrl}`, product);
   }
 
 //  delete product by its ID:

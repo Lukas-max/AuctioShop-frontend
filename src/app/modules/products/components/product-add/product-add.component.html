@@ -9,11 +9,23 @@
       <div class="form-row">
         <div class="col">
           <label>Sku:</label>
-          <input type="text" class="form-control" name="sku" [(ngModel)]="sku">
+          <input type="text" class="form-control" name="sku" [(ngModel)]="sku"
+                 #skuModel="ngModel" required maxlength="200">
+          <div class="alert alert-danger" *ngIf="skuModel.invalid && skuModel.touched">
+            <div *ngIf="skuModel.errors.required">
+              Pole sku jest wymagane.
+            </div>
+          </div>
         </div>
         <div class="col">
           <label>Nazwa produktu:</label>
-          <input type="text" class="form-control" name="name" [(ngModel)]="name">
+          <input type="text" class="form-control" name="name" [(ngModel)]="name"
+                 #nameModel="ngModel" required maxlength="255">
+          <div class="alert alert-danger" *ngIf="nameModel.invalid && nameModel.touched">
+            <div *ngIf="nameModel.errors.required">
+              Nazwa produktu jest wymagana.
+            </div>
+          </div>
         </div>
       </div>
       <br>
@@ -24,21 +36,38 @@
       <div class="form-row">
         <div class="col">
           <label>Cena:</label>
-          <input type="number" class="form-control" min="1" name="unitPrice" [(ngModel)]="unitPrice">
+          <input type="number" class="form-control" name="unitPrice" [(ngModel)]="unitPrice"
+                 #priceModel="ngModel" required min="1">
+          <div class="aler alert-danger" *ngIf="priceModel.touched && priceModel.invalid">
+            <div *ngIf="priceModel.errors.required">
+              Cena jest wymagana.
+            </div>
+          </div>
         </div>
         <div class="col">
           <label>Ilość sztuk:</label>
-          <input type="number" class="form-control" min="1" name="unitsInStock"
-                 [(ngModel)]="unitsInStock">
+          <input type="number" class="form-control" name="unitsInStock"
+                 [(ngModel)]="unitsInStock" #unitsModel="ngModel" required min="1">
+          <div class="aler alert-danger" *ngIf="unitsModel.touched && unitsModel.invalid">
+            <div *ngIf="unitsModel.errors.required">
+              Wpisz ilość sztuk. Minimum jedna.
+            </div>
+          </div>
         </div>
       </div>
       <br>
       <div class="form-group" *ngIf="categories">
         <label>Kategoria produktu:</label>
-        <select class="form-control" [(ngModel)]="productCategory" name="productCategory">
-          <option *ngFor="let cat of categories" [ngValue]="cat">
+        <select class="form-control" [(ngModel)]="category" name="productCategory"
+                #categoryModel="ngModel" required>
+          <option *ngFor="let cat of categories" [ngValue]="cat[0]">
             {{ cat[1] }}</option>
         </select>
+        <div *ngIf="categoryModel.invalid && categoryModel.touched">
+          <div class="alert alert-danger" *ngIf="categoryModel.errors.required">
+            Wybierz kategorię.
+          </div>
+        </div>
       </div>
       <br>
       <div class="custom-file">
@@ -46,8 +75,12 @@
                (change)="onFileChange($event)">
       </div>
 
-
-      <button type="submit" class="btn btn-success">Dodaj produkt</button>
+      <div class="text-center add-product">
+        <button type="submit" class="btn btn-success"
+                [disabled]="addProductForm.invalid">Dodaj produkt
+        </button>
+      </div>
     </form>
+
   </div>
 </div>
