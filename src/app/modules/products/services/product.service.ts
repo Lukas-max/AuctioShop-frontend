@@ -38,8 +38,13 @@ export class ProductService {
   }
 
   //add product from productAddComponent
-  public addProduct(product: Product){
+  public addProduct(product: Product): Observable<Product>{
     return this.http.post<Product>(`${API_URL}/${this.productsUrl}`, product);
+  }
+
+  // update product from productUpdateComponent
+  public updateProduct(product: Product){
+    return this.http.put<Product>(`${API_URL}/${this.productsUrl}`, product);
   }
 
 //  delete product by its ID:

@@ -107,10 +107,6 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  public updateProductById(productId: number) {
-    console.log(productId);
-  }
-
   public addToCart(product: Product) {
     const cartItem = new CartItem(product);
     this.cartService.addToCart(cartItem);

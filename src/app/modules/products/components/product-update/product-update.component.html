@@ -1,15 +1,15 @@
 <div class="container prod-table">
-  <div class="menu-header menu-text">Dodaj produkt do bazy</div>
+  <div class="menu-header menu-text">Zmień dane</div>
   <hr>
 
   <div class="container">
-    <form #addProductForm="ngForm" (ngSubmit)="createProduct(addProductForm)"
+    <form #updateProductForm="ngForm" (ngSubmit)="updateProduct()"
           enctype="multipart/form-data">
 
       <div class="form-row">
         <div class="col">
           <label>Sku:</label>
-          <input type="text" class="form-control" name="sku" [(ngModel)]="sku"
+          <input type="text" class="form-control" name="sku" [(ngModel)]="product.sku"
                  #skuModel="ngModel" required maxlength="200">
           <div class="alert alert-danger" *ngIf="skuModel.invalid && skuModel.touched">
             <div *ngIf="skuModel.errors.required">
@@ -19,7 +19,7 @@
         </div>
         <div class="col">
           <label>Nazwa produktu:</label>
-          <input type="text" class="form-control" name="name" [(ngModel)]="name"
+          <input type="text" class="form-control" name="name" [(ngModel)]="product.name"
                  #nameModel="ngModel" required maxlength="255">
           <div class="alert alert-danger" *ngIf="nameModel.invalid && nameModel.touched">
             <div *ngIf="nameModel.errors.required">
@@ -31,12 +31,14 @@
       <br>
       <div class="form-group">
         <label>Opis produktu:</label>
-        <textarea class="form-control" rows="4" name="description" [(ngModel)]="description"></textarea>
+        <textarea class="form-control" rows="4" name="description"
+                  [(ngModel)]="product.description"></textarea>
       </div>
       <div class="form-row">
         <div class="col">
           <label>Cena:</label>
-          <input type="number" class="form-control" name="unitPrice" [(ngModel)]="unitPrice"
+          <input type="number" class="form-control" name="unitPrice"
+                 [(ngModel)]="product.unitPrice"
                  #priceModel="ngModel" required min="0">
           <div class="aler alert-danger" *ngIf="priceModel.touched && priceModel.invalid">
             <div *ngIf="priceModel.errors.required">
@@ -47,7 +49,7 @@
         <div class="col">
           <label>Ilość sztuk:</label>
           <input type="number" class="form-control" name="unitsInStock"
-                 [(ngModel)]="unitsInStock" #unitsModel="ngModel" required min="1">
+                 [(ngModel)]="product.unitsInStock" #unitsModel="ngModel" required min="0">
           <div class="aler alert-danger" *ngIf="unitsModel.touched && unitsModel.invalid">
             <div *ngIf="unitsModel.errors.required">
               Wpisz ilość sztuk. Minimum jedna.
@@ -58,8 +60,8 @@
       <br>
       <div class="form-group" *ngIf="categories">
         <label>Kategoria produktu:</label>
-        <select class="form-control" [(ngModel)]="category" name="productCategory"
-                #categoryModel="ngModel" required>
+        <select class="form-control" [(ngModel)]="category"
+                name="productCategory" #categoryModel="ngModel" required>
           <option *ngFor="let cat of categories" [ngValue]="cat[0]">
             {{ cat[1] }}</option>
         </select>
@@ -77,7 +79,7 @@
 
       <div class="text-center add-product">
         <button type="submit" class="btn btn-success"
-                [disabled]="addProductForm.invalid">Dodaj produkt
+                [disabled]="updateProductForm.invalid">Zmień produkt
         </button>
       </div>
     </form>

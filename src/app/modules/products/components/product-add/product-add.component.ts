@@ -58,10 +58,13 @@ export class ProductAddComponent implements OnInit {
 
   public onFileChange(event) {
     const reader = new FileReader();
-    this.base64data = '';
-    reader.onload = () => {
-      this.base64data = String(reader.result);
-    };
-    reader.readAsDataURL(event.target.files[0]);
+    this.base64data = null;
+
+    if (event.target.files[0]) {
+      reader.onload = () => {
+        this.base64data = String(reader.result);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 }

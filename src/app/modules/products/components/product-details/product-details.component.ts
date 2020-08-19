@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../model/product';
 import {MessageToastrService} from '../../../../core/services/message-toastr.service';
 import {CartService} from '../../services/cart.service';
 import {CartItem} from '../../model/cartItem';
+import {JwtAuthenticationService} from '../../../../core/services/jwt-authentication.service';
 
 @Component({
   selector: 'app-product-details',
@@ -17,7 +18,9 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
-              private cartService: CartService) {
+              private linkRoute: Router,
+              private cartService: CartService,
+              private jwtAuthenticationService: JwtAuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -41,5 +44,17 @@ export class ProductDetailsComponent implements OnInit {
   public addToCart(product: Product) {
     const cartItem = new CartItem(product);
     this.cartService.addToCart(cartItem);
+  }
+
+  public deleteProductById(productId: any) {
+    if (confirm('Czy na pewno chcesz usunąc ten produkt?')) {
+      this.productService.deleteProductById(productId).subscribe(() => {
+        this.linkRoute.navigate(['products']);
+      });
+    }
+  }
+
+  public isAdminLoggedIn() {
+    return this.jwtAuthenticationService.isAdminLoggedIn();
   }
 }

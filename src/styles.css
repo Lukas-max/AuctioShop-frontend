@@ -354,6 +354,11 @@ header {
   align-items: center;
 }
 
+.product-wrapper .inner-bar-one button{
+  display: block;
+  margin-bottom: 5px;
+}
+
 .product-wrapper .inner-bar-one span{
   font-size: 20px;
   font-weight: bold;

@@ -8,10 +8,7 @@ import { ProductsModule } from './modules/products/products.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
-import { LoginComponent } from './core/login/login.component';
-import { JwtLoginComponent } from './core/jwtlogin/jwt-login.component';
 import { UsersModule } from './modules/users/users.module';
-import {AuthenticationLoginGuard} from './core/services/authentication-login.guard';
 
 
 const routes: Routes = [

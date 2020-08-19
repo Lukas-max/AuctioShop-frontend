@@ -14,6 +14,15 @@
           <p><span>{{ product.unitPrice }}</span> PLN</p>
           <button type="button" class="btn btn-dark" (click)="addToCart(product)"
                   *ngIf="product.active">Kup</button>
+
+          <button type="button" class="btn btn-danger" *ngIf="isAdminLoggedIn()"
+                  (click)="deleteProductById(product.productId)">Usuń
+          </button>
+          <button type="button" class="btn btn-warning" style="color: white"
+                  *ngIf="isAdminLoggedIn()"
+                  routerLink="/products/update/"  [state]="{ product: product }">Update
+          </button>
+
         </div>
         <div class="inner-bar-two">
           <span>{{ activeMessage }}</span> <br>

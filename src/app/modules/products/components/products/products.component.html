@@ -27,8 +27,10 @@
                   (click)="deleteProductById(prod.productId)">Usuń
           </button>
           <br>
-          <button type="button" class="btn btn-danger"
-                  (click)="updateProductById(prod.productId)">Update
+          <button type="button" class="btn btn-warning" style="color: white"
+                  *ngIf="isAdminLoggedIn()"
+                  routerLink="/products/update/"  [state]="{ product: prod }">
+            Update
           </button>
         </div>
       </div>
