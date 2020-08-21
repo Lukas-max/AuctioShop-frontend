@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../model/product';
-import {MessageToastrService} from '../../../../core/services/message-toastr.service';
 import {CartService} from '../../services/cart.service';
 import {CartItem} from '../../model/cartItem';
 import {JwtAuthenticationService} from '../../../../core/services/jwt-authentication.service';
@@ -43,7 +42,7 @@ export class ProductDetailsComponent implements OnInit {
 
   public addToCart(product: Product) {
     const cartItem = new CartItem(product);
-    this.cartService.addToCart(cartItem);
+    this.cartService.addToCart(cartItem, false);
   }
 
   public deleteProductById(productId: any) {

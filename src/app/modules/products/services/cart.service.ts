@@ -20,32 +20,11 @@ export class CartService {
     this.totalQuantityValue = 0;
   }
 
-  // public addToCart(cartItem: CartItem){
-  //   if (this.cartItems.length > 0) {
-  //     for (const item of this.cartItems){
-  //       if (item.id === cartItem.id){
-  //         this.alreadyExistsInCart = true;
-  //         item.quantity++;
-  //         break;
-  //       }
-  //     }
-  //     if (this.alreadyExistsInCart === false){
-  //       this.cartItems.push(cartItem);
-  //     }
-  //
-  //   }else {
-  //     this.cartItems.push(cartItem);
-  //   }
-  //
-  //   this.alreadyExistsInCart = false;
-  //   this.computeTotals();
-  // }
-
-  public addToCart(cartItem: CartItem){
+  public addToCart(cartItem: CartItem, isFromCartDetailsComp: boolean){
     let existingItem: CartItem;
 
     if (this.cartItems.length > 0){
-      // jeśli nie znajdzie w tablicy zwracas undefined
+      // jeśli nie znajdzie w tablicy zwraca undefined
       existingItem = this.cartItems.find(item => item.id === cartItem.id);
     }
     this.alreadyExistsInCart = (existingItem !== undefined);
@@ -56,8 +35,11 @@ export class CartService {
       this.cartItems.push(cartItem);
     }
 
+    if (!isFromCartDetailsComp){
+      this.messageToastrService.success('Dodano do koszyka');
+    }
+
     this.alreadyExistsInCart = false;
-    this.messageToastrService.success('Dodano do koszyka');
     this.computeTotals();
   }
 

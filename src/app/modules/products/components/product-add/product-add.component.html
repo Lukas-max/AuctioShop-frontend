@@ -47,10 +47,10 @@
         <div class="col">
           <label>Ilość sztuk:</label>
           <input type="number" class="form-control" name="unitsInStock"
-                 [(ngModel)]="unitsInStock" #unitsModel="ngModel" required min="1">
+                 [(ngModel)]="unitsInStock" #unitsModel="ngModel" required min="0">
           <div class="aler alert-danger" *ngIf="unitsModel.touched && unitsModel.invalid">
             <div *ngIf="unitsModel.errors.required">
-              Wpisz ilość sztuk. Minimum jedna.
+              Wpisz ilość sztuk. Minimum zero.
             </div>
           </div>
         </div>

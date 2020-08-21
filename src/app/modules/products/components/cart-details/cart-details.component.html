@@ -26,7 +26,7 @@
           </button>
         </div>
         <div>
-          <p class="second-cart-price">Cena: <span>{{ item.quantity * item.unitPrice }}</span> PLN</p>
+          <p class="second-cart-price">Cena: <span>{{ item.quantity * item.unitPrice | number:'1.0-2' }}</span> PLN</p>
           <button type="button" (click)="removeItem(item)" class="btn btn-dark">Usuń</button>
         </div>
       </div>

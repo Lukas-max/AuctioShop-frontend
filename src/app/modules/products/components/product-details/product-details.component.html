@@ -25,8 +25,8 @@
 
         </div>
         <div class="inner-bar-two">
-          <span>{{ activeMessage }}</span> <br>
-          <span>Ilość w magazynie: {{ product.unitsInStock }}</span>
+          <span [class.isActive]="!product.active">{{ activeMessage }}</span> <br>
+          <span *ngIf="product.active">Ilość w magazynie: {{ product.unitsInStock }}</span>
         </div>
       </div>
     </div>

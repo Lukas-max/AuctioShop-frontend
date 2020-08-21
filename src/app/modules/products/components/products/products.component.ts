@@ -109,7 +109,7 @@ export class ProductsComponent implements OnInit {
 
   public addToCart(product: Product) {
     const cartItem = new CartItem(product);
-    this.cartService.addToCart(cartItem);
+    this.cartService.addToCart(cartItem, false);
   }
 
   public isAdminLoggedIn(): boolean{

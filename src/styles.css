@@ -408,6 +408,10 @@ header {
     width: 200px;
   }
 
+  .second-bar {
+    margin-left: 20px;
+  }
+
   .product-wrapper .inner-bar-one {
     margin-top: 30px;
   }
