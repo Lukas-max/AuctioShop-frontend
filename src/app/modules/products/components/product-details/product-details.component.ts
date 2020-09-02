@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ProductService} from '../../services/product.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Product} from '../../model/product';
-import {CartService} from '../../services/cart.service';
-import {CartItem} from '../../model/cartItem';
-import {JwtAuthenticationService} from '../../../../core/services/jwt-authentication.service';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../services/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from '../../model/product';
+import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../model/cartItem';
+import { JwtAuthenticationService } from '../../../../core/services/jwt-authentication.service';
 
 @Component({
   selector: 'app-product-details',
