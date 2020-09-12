@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Injectable } from '@angular/core';
 import {User} from '../model/user';
 import {HttpClient} from '@angular/common/http';
@@ -20,6 +21,10 @@ export class UsersService {
 
   // check if user exists, RegisterComponent:
   public getUserByName(username: string){
-    return this.http.get<any>(`${API_URL}/${this.usersUrl}/user=${username}`);
+    const httpOptions = {
+      params: { 'username': username }
+    };
+
+    return this.http.get<any>(`${API_URL}/${this.usersUrl}/user`, httpOptions);
   }
 }

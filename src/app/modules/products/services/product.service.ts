@@ -1,10 +1,10 @@
 /* tslint:disable */
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Product } from '../model/product';
-import { Observable } from 'rxjs';
-import { ResponseProduct } from '../model/responseProduct';
-import { API_URL } from '../../../app.consts';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Product} from '../model/product';
+import {Observable} from 'rxjs';
+import {ResponseProduct} from '../model/responseProduct';
+import {API_URL} from '../../../app.consts';
 
 @Injectable({
   providedIn: 'root'
@@ -22,28 +22,43 @@ export class ProductService {
 
   //get all products, with pagination:
   public getProducts(pageNo: number, size: number): Observable<ResponseProduct[]> {
-    return this.http.get<ResponseProduct[]>(`${API_URL}/${this.productsUrl}/page=${pageNo}&size=${size}`);
+    const httpOptions = {
+      params: {'page': pageNo.toString(), 'size': size.toString()}
+    };
+
+    return this.http.get<ResponseProduct[]>(`${API_URL}/${this.productsUrl}`,
+      httpOptions);
   }
 
   //search products by name, with pagination:
   public searchProductsByName(keyWord: string, pageNo: number, size: number): Observable<Product[]> {
+    const httpOptions = {
+      params: {'keyWord': keyWord.toString() , 'page': pageNo.toString(), 'size': size.toString() }
+    };
+
     return this.http
-      .get<Product[]>(`${API_URL}/${this.productsUrl}/name=${keyWord}&page=${pageNo}&size=${size}`);
+      .get<Product[]>(`${API_URL}/${this.productsUrl}/name`,
+        httpOptions);
   }
 
   // this is for searching for products using the sidebar categories
   public getProductByCategoryId(categoryId: number, pageNo: number, size: number): Observable<Product[]> {
+    const httpOptions = {
+      params: {'categoryId': categoryId.toString() , 'page': pageNo.toString(), 'size': size.toString() }
+    };
+
     return this.http
-      .get<Product[]>(`${API_URL}/${this.productsUrl}/getByCategoryId=${categoryId}$page=${pageNo}$size=${size}`);
+      .get<Product[]>(`${API_URL}/${this.productsUrl}/getByCategoryId`,
+        httpOptions);
   }
 
   //add product from productAddComponent
-  public addProduct(product: Product): Observable<Product>{
+  public addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(`${API_URL}/${this.productsUrl}`, product);
   }
 
   // update product from productUpdateComponent
-  public updateProduct(product: Product){
+  public updateProduct(product: Product) {
     return this.http.put<Product>(`${API_URL}/${this.productsUrl}`, product);
   }
 
