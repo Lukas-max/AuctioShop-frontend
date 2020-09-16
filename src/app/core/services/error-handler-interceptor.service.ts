@@ -20,7 +20,7 @@ export class ErrorHandlerInterceptorService implements HttpInterceptor {
         this.messageToastrService.error(error.error.message);
       }
 
-      // this one will catch messages from ResponseEnitity - bad request
+      // this one will catch messages from ResponseEntity - bad request
       for (const e of error.error) {
         this.messageToastrService.error(e);
       }
