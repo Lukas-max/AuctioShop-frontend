@@ -19,7 +19,7 @@
                    && firstName.touched}"
                    required>
             <div class="alert alert-danger"
-                 *ngIf="checkoutFormGroup.invalid && checkoutFormGroup.touched">
+                 *ngIf="firstName.invalid && firstName.touched">
               <div *ngIf="firstName.hasError('minlength')">
                 Pole musi mieć przynajmniej 2 znaki.
               </div>
@@ -38,7 +38,7 @@
                    && lastName.touched}"
                    required>
             <div class="alert alert-danger"
-                 *ngIf="checkoutFormGroup.invalid && checkoutFormGroup.touched">
+                 *ngIf="lastName.invalid && lastName.touched">
               <div *ngIf="lastName.hasError('minlength')">
                 Pole musi mieć przynajmniej 2 znaki.
               </div>
@@ -62,9 +62,12 @@
                  [ngClass]="{'is-invalid':email.errors
                    && email.touched}">
           <div class="alert alert-danger"
-               *ngIf="checkoutFormGroup.invalid && checkoutFormGroup.touched">
+               *ngIf="email.invalid && email.touched">
             <div *ngIf="email.hasError('required')">
               Pole wymagane.
+            </div>
+            <div *ngIf="email.hasError('pattern')">
+              Niepoprawny email
             </div>
           </div>
         </div>

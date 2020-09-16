@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import {MessageToastrService} from '../../../../core/services/message-toastr.service';
 import {Router} from '@angular/router';
@@ -13,21 +13,38 @@ export class RegisterComponent implements OnInit {
 
   username: string;
   password: string;
+  email: string;
   checkUser: string;
 
   constructor(private userService: UsersService,
               private route: Router,
-              private messageToastrService: MessageToastrService) { }
+              private messageToastrService: MessageToastrService) {
+  }
 
   ngOnInit(): void {
   }
 
-  public register(){
+  public register() {
+    this.userService.createUser({
+      username: this.username,
+      password: this.password,
+      email: this.email
+    }).subscribe(() => {
+      this.username = null;
+      this.password = null;
+      this.route.navigate(['products']);
+      this.messageToastrService.success('Zarejestrowano użytkownika');
+    }, error => {
+      // console.log(error);
+    });
+  }
+
+  public register1() {
     this.userService.getUserByName(this.username).subscribe(data => {
       this.checkUser = data.username;
-      if (this.checkUser === null){
-        this.createUserInDatabase();
-      }else {
+      if (this.checkUser === null) {
+        // this.createUserInDatabase();
+      } else {
         this.messageToastrService.error('Użytkownik już istnieje w bazie danych');
       }
     }, error => {
@@ -35,10 +52,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  private createUserInDatabase(){
+  private createUserInDatabase() {
     this.userService.createUser({
       username: this.username,
-      password: this.password
+      password: this.password,
+      email: this.email
     }).subscribe(() => {
       this.username = null;
       this.password = null;

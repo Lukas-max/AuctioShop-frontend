@@ -15,11 +15,6 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  //get one product by its ID:
-  public getProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(`${API_URL}/${this.productsUrl}/product=${id}`);
-  }
-
   //get all products, with pagination:
   public getProducts(pageNo: number, size: number): Observable<ResponseProduct[]> {
     const httpOptions = {
@@ -30,15 +25,9 @@ export class ProductService {
       httpOptions);
   }
 
-  //search products by name, with pagination:
-  public searchProductsByName(keyWord: string, pageNo: number, size: number): Observable<Product[]> {
-    const httpOptions = {
-      params: {'keyWord': keyWord.toString() , 'page': pageNo.toString(), 'size': size.toString() }
-    };
-
-    return this.http
-      .get<Product[]>(`${API_URL}/${this.productsUrl}/name`,
-        httpOptions);
+  //get one product by its ID:
+  public getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${API_URL}/${this.productsUrl}/product/${id}`);
   }
 
   // this is for searching for products using the sidebar categories
@@ -52,6 +41,18 @@ export class ProductService {
         httpOptions);
   }
 
+  //search products by name, with pagination:
+  public searchProductsByName(keyWord: string, pageNo: number, size: number): Observable<Product[]> {
+    const httpOptions = {
+      params: {'keyWord': keyWord.toString() , 'page': pageNo.toString(), 'size': size.toString() }
+    };
+
+    return this.http
+      .get<Product[]>(`${API_URL}/${this.productsUrl}/name`,
+        httpOptions);
+  }
+
+
   //add product from productAddComponent
   public addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(`${API_URL}/${this.productsUrl}`, product);
@@ -64,6 +65,6 @@ export class ProductService {
 
 //  delete product by its ID:
   public deleteProductById(productId: number) {
-    return this.http.delete(`${API_URL}/${this.productsUrl}/product=${productId}`);
+    return this.http.delete(`${API_URL}/${this.productsUrl}/product/${productId}`);
   }
 }

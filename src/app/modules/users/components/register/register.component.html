@@ -6,9 +6,9 @@
   <form (ngSubmit)="register()" class="login-form text-center" #registerForm="ngForm">
 
     <div class="form-group">
-      <input type="text" class="form-control" [(ngModel)]="username"
-             name="username" placeholder="Nazwa użytkownika" #nameModel="ngModel"
-             required minlength="3" maxlength="50" />
+      <input type="text" class="form-control" name="username" placeholder="Nazwa użytkownika"
+             #nameModel="ngModel" [(ngModel)]="username"
+             required minlength="3" maxlength="25"/>
       <div class="alert alert-danger" *ngIf="nameModel.invalid && nameModel.touched">
         <div *ngIf="nameModel.errors.required">
           <span>Nazwa użytkownika jest wymagana.</span>
@@ -20,8 +20,9 @@
     </div>
 
     <div class="form-group">
-      <input required type="password" class="form-control" [(ngModel)]="password"
-             name="password" placeholder="Hasło" minlength="3" maxlength="50" #passModel="ngModel"/>
+      <input type="password" class="form-control" name="password" placeholder="Hasło"
+             #passModel="ngModel" [(ngModel)]="password"
+             required minlength="3" maxlength="250"/>
       <div class="alert alert-danger" *ngIf="passModel.invalid && passModel.touched">
         <div *ngIf="passModel.errors.required">
           <span>Hasło jest wymagane.</span>
@@ -30,6 +31,13 @@
           <span>Pole musi zawierać przynajmniej 3 znaki.</span>
         </div>
       </div>
+    </div>
+
+    <div class="form-group">
+      <input type="email" class="form-control" name="email" placeholder="Email"
+             #emailModel="ngModel" [(ngModel)]="email"
+             required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+             [ngClass]="{'is-invalid':emailModel.invalid && emailModel.touched}"/>
     </div>
 
     <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
