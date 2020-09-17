@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CartService} from '../../services/cart.service';
+import {Customer} from '../../model/customer';
 
 @Component({
   selector: 'app-checkout',
@@ -11,12 +12,14 @@ export class CheckoutComponent implements OnInit {
   totalPrice: number;
   totalQuantity: number;
   checkoutFormGroup: FormGroup;
+  customer: Customer;
 
   constructor(
     private formBuilder: FormBuilder,
     private cartService: CartService) { }
 
   ngOnInit(): void {
+
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),

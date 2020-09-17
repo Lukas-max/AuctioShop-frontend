@@ -2,45 +2,70 @@
   <div class="menu-header menu-text">
     Zarejestruj się
   </div>
-
-  <form (ngSubmit)="register()" class="login-form text-center" #registerForm="ngForm">
+  <form class="login-form text-center"
+        [formGroup]="registration" (ngSubmit)="register()">
 
     <div class="form-group">
-      <input type="text" class="form-control" name="username" placeholder="Nazwa użytkownika"
-             #nameModel="ngModel" [(ngModel)]="username"
-             required minlength="3" maxlength="25"/>
-      <div class="alert alert-danger" *ngIf="nameModel.invalid && nameModel.touched">
-        <div *ngIf="nameModel.errors.required">
+      <input type="text"
+             class="form-control"
+             formControlName="username"
+             placeholder="Nazwa użytkownika"
+             required/>
+
+      <div class="alert alert-danger" *ngIf="username.invalid && username.touched">
+        <div *ngIf="username.hasError('required')">
           <span>Nazwa użytkownika jest wymagana.</span>
         </div>
-        <div *ngIf="nameModel.errors.minlength">
+        <div *ngIf="username.hasError('minlength')">
           <span>Pole musi zawierać przynajmniej 3 znaki.</span>
         </div>
       </div>
     </div>
 
     <div class="form-group">
-      <input type="password" class="form-control" name="password" placeholder="Hasło"
-             #passModel="ngModel" [(ngModel)]="password"
-             required minlength="3" maxlength="250"/>
-      <div class="alert alert-danger" *ngIf="passModel.invalid && passModel.touched">
-        <div *ngIf="passModel.errors.required">
-          <span>Hasło jest wymagane.</span>
-        </div>
-        <div *ngIf="passModel.errors.minlength">
-          <span>Pole musi zawierać przynajmniej 3 znaki.</span>
+      <input type="email"
+             class="form-control"
+             formControlName="email"
+             placeholder="Email"
+             required
+             [ngClass]="{'is-invalid':email.touched && email.invalid }"/>
+    </div>
+
+
+      <div class="form-group">
+        <input type="password"
+               class="form-control"
+               formControlName="password"
+               placeholder="Hasło"
+               required/>
+
+        <div class="alert alert-danger" *ngIf="password.invalid && password.touched">
+          <div *ngIf="password.hasError('required')">
+            <span>Hasło jest wymagane.</span>
+          </div>
+          <div *ngIf="password.hasError('minlength')">
+            <span>Pole musi zawierać przynajmniej 3 znaki.</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <input type="email" class="form-control" name="email" placeholder="Email"
-             #emailModel="ngModel" [(ngModel)]="email"
-             required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-             [ngClass]="{'is-invalid':emailModel.invalid && emailModel.touched}"/>
-    </div>
+      <div class="form-group">
+        <input type="password"
+               class="form-control"
+               formControlName="confirmPassword"
+               placeholder="Powtórz hasło"/>
 
-    <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+        <div class="alert alert-danger" *ngIf="confirmPassword.touched && confirmPassword.invalid">
+          <div *ngIf="confirmPassword.hasError('mustMatch')">
+            <span>Hasła muszą się zgadzać.</span>
+          </div>
+          <div *ngIf="confirmPassword.hasError('required')">
+            <span>Hasło jest wymagane.</span>
+          </div>
+        </div>
+      </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="registration.invalid">
       Zarejestruj
     </button>
   </form>
