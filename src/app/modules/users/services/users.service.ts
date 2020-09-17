@@ -22,15 +22,6 @@ export class UsersService {
       .pipe(catchError(this.handleError));
   }
 
-  // check if user exists, RegisterComponent:
-  public getUserByName(username: string){
-    const httpOptions = {
-      params: { 'username': username }
-    };
-
-    return this.http.get<any>(`${API_URL}/${this.usersUrl}/user`, httpOptions);
-  }
-
   private handleError(error){
     // console.log(error);
     return throwError(error);
