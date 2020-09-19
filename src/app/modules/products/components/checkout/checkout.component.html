@@ -12,17 +12,11 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Imię*:</label>
-            <input type="text"
-                   class="form-control"
-                   formControlName="firstName"
-                   [ngClass]="{'is-invalid':firstName.errors
-                   && firstName.touched}"
-                   required>
+            <input type="text" class="form-control" formControlName="firstName" required
+                   [ngClass]="{'is-invalid':firstName.errors && firstName.touched}">
+
             <div class="alert alert-danger"
                  *ngIf="firstName.invalid && firstName.touched">
-              <div *ngIf="firstName.hasError('minlength')">
-                Pole musi mieć przynajmniej 2 znaki.
-              </div>
               <div *ngIf="firstName.hasError('required')">
                 Pole nie może być puste.
               </div>
@@ -31,17 +25,11 @@
 
           <div class="form-group col-md-6">
             <label>Nazwisko*:</label>
-            <input type="text"
-                   class="form-control"
-                   formControlName="lastName"
-                   [ngClass]="{'is-invalid':lastName.errors
-                   && lastName.touched}"
-                   required>
+            <input type="text" class="form-control" formControlName="lastName" required
+                   [ngClass]="{'is-invalid':lastName.errors && lastName.touched}">
+
             <div class="alert alert-danger"
                  *ngIf="lastName.invalid && lastName.touched">
-              <div *ngIf="lastName.hasError('minlength')">
-                Pole musi mieć przynajmniej 2 znaki.
-              </div>
               <div *ngIf="lastName.hasError('required')">
                 Pole nie może być puste.
               </div>
@@ -56,11 +44,9 @@
 
         <div class="form-group">
           <label>Adres Email*:</label>
-          <input type="email"
-                 class="form-control"
-                 formControlName="email"
-                 [ngClass]="{'is-invalid':email.errors
-                   && email.touched}">
+          <input type="email" class="form-control" formControlName="email" required
+                 [ngClass]="{'is-invalid':email.errors && email.touched}">
+
           <div class="alert alert-danger"
                *ngIf="email.invalid && email.touched">
             <div *ngIf="email.hasError('required')">
@@ -80,27 +66,64 @@
           <label>Państwo: </label>
           <input type="text" class="form-control" formControlName="country">
         </div>
+
         <div class="form-group">
-          <label>Ulica:</label>
-          <input type="text" class="form-control" formControlName="street">
+          <label>Ulica*:</label>
+          <input type="text" class="form-control" formControlName="street" required
+                 [ngClass]="{'is-invalid':street.errors && street.touched}">
+
+          <div class="alert alert-danger"
+               *ngIf="street.invalid && street.touched">
+            <div *ngIf="street.hasError('required')">
+              Pole nie może być puste.
+            </div>
+          </div>
         </div>
+
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label>Nr domu:</label>
-            <input type="number" class="form-control" formControlName="houseNumber">
+            <label>Nr domu*:</label>
+            <input type="number" class="form-control" formControlName="houseNumber" required
+                   [ngClass]="{'is-invalid':houseNumber.errors && houseNumber.touched}">
+
+            <div class="alert alert-danger"
+                 *ngIf="houseNumber.invalid && houseNumber.touched">
+              <div *ngIf="houseNumber.hasError('required')">
+                Pole nie może być puste.
+              </div>
+            </div>
           </div>
+
           <div class="form-group col-md-6">
             <label>Nr lokalu:</label>
             <input type="number" class="form-control" formControlName="apartmentNumber">
           </div>
         </div>
+
         <div class="form-group">
-          <label>Kod pocztowy:</label>
-          <input type="number" class="form-control" formControlName="postalCode">
+          <label>Kod pocztowy*:</label>
+          <input type="text" class="form-control" formControlName="postalCode" required
+                 [ngClass]="{'is-invalid':postalCode.errors && postalCode.touched}">
+
+          <div class="alert alert-danger"
+               *ngIf="postalCode.invalid && postalCode.touched">
+            <div *ngIf="postalCode.hasError('required')">
+              Pole nie może być puste.
+            </div>
+          </div>
         </div>
+
         <div class="form-group">
-          <label>Miasto:</label>
-          <input type="text" class="form-control" formControlName="city">
+          <label>Miasto/Poczta*:</label>
+          <input type="text" class="form-control" formControlName="city" required
+                 [ngClass]="{'is-invalid':city.errors && city.touched}">
+
+          <div class="alert alert-danger"
+               *ngIf="city.invalid && city.touched">
+            <div *ngIf="city.hasError('required')">
+              Pole nie może być puste.
+            </div>
+          </div>
         </div>
       </div>
 

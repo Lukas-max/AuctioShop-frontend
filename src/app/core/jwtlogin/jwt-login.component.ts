@@ -28,7 +28,6 @@ export class JwtLoginComponent implements OnInit {
       this.messageToastrService.success('Zalogowano pomyślnie');
     }, error => {
       this.loginError = true;
-      console.log(error);
     });
   }
 }

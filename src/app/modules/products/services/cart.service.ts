@@ -39,7 +39,6 @@ export class CartService {
       this.messageToastrService.success('Dodano do koszyka');
     }
 
-    this.alreadyExistsInCart = false;
     this.computeTotals();
   }
 
@@ -77,6 +76,11 @@ export class CartService {
     if (index > -1){
       this.cartItems.splice(index, 1);
     }
+    this.computeTotals();
+  }
+
+  public clearCart(){
+    this.cartItems.splice(0, this.cartItems.length);
     this.computeTotals();
   }
 

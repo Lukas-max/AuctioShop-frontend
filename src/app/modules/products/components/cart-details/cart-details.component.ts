@@ -26,6 +26,10 @@ export class CartDetailsComponent implements OnInit {
     this.cartService.computeTotals();
   }
 
+  /**
+   * Second parameter isFromCartDetailsComp is true. So it will turn off Toastr messeges when on
+   * the cart page.
+   */
   public increment(cartItem: CartItem){
     this.cartService.addToCart(cartItem, true);
   }

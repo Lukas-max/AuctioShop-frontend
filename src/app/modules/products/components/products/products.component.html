@@ -12,7 +12,7 @@
 
 
   <div class="row" *ngIf="products else loading">
-    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let prod of products">
+    <div class="col-sm-6 col-md-4 col-xl-3" *ngFor="let prod of products">
       <div class="product-box">
         <div>
           <div class="pick-product" routerLink="/products/{{ prod.productId }}">
@@ -21,7 +21,8 @@
           </div>
           <p><span>{{ prod.unitPrice }}</span> PLN</p>
           <hr>
-          <button type="button" class="btn btn-dark" (click)="addToCart(prod)">Kup</button>
+          <button type="button" class="btn btn-dark"
+                  *ngIf="prod.active else soldOut" (click)="addToCart(prod)">Kup</button>
           <br>
           <button type="button" class="btn btn-danger" *ngIf="isAdminLoggedIn()"
                   (click)="deleteProductById(prod.productId)">Usuń
@@ -66,4 +67,7 @@
 
 <ng-template #loading>
   <p>Ładuje dane..</p>
+</ng-template>
+<ng-template #soldOut>
+  <span style="color: tomato">Brak w magazynie</span>
 </ng-template>

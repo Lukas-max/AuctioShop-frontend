@@ -32,38 +32,39 @@
     </div>
 
 
-      <div class="form-group">
-        <input type="password"
-               class="form-control"
-               formControlName="password"
-               placeholder="Hasło"
-               required/>
+    <div class="form-group">
+      <input type="password"
+             class="form-control"
+             formControlName="password"
+             placeholder="Hasło"
+             required/>
 
-        <div class="alert alert-danger" *ngIf="password.invalid && password.touched">
-          <div *ngIf="password.hasError('required')">
-            <span>Hasło jest wymagane.</span>
-          </div>
-          <div *ngIf="password.hasError('minlength')">
-            <span>Pole musi zawierać przynajmniej 3 znaki.</span>
-          </div>
+      <div class="alert alert-danger" *ngIf="password.invalid && password.touched">
+        <div *ngIf="password.hasError('required')">
+          <span>Hasło jest wymagane.</span>
+        </div>
+        <div *ngIf="password.hasError('minlength')">
+          <span>Pole musi zawierać przynajmniej 3 znaki.</span>
         </div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <input type="password"
-               class="form-control"
-               formControlName="confirmPassword"
-               placeholder="Powtórz hasło"/>
+    <div class="form-group">
+      <input type="password"
+             class="form-control"
+             formControlName="confirmPassword"
+             placeholder="Powtórz hasło"
+             required/>
 
-        <div class="alert alert-danger" *ngIf="confirmPassword.touched && confirmPassword.invalid">
-          <div *ngIf="confirmPassword.hasError('mustMatch')">
-            <span>Hasła muszą się zgadzać.</span>
-          </div>
-          <div *ngIf="confirmPassword.hasError('required')">
-            <span>Hasło jest wymagane.</span>
-          </div>
+      <div class="alert alert-danger" *ngIf="confirmPassword.touched && confirmPassword.invalid">
+        <div *ngIf="confirmPassword.hasError('mustMatch')">
+          <span>Hasła muszą się zgadzać.</span>
+        </div>
+        <div *ngIf="confirmPassword.hasError('required')">
+          <span>Hasło jest wymagane.</span>
         </div>
       </div>
+    </div>
 
     <button type="submit" class="btn btn-primary" [disabled]="registration.invalid">
       Zarejestruj

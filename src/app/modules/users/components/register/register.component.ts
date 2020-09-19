@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
   }
 
   public register() {
-    console.log(this.registration.controls);
     this.userService.createUser({
       username: this.registration.value.username,
       password: this.registration.value.password,

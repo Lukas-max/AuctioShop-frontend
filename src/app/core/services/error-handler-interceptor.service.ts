@@ -14,9 +14,10 @@ export class ErrorHandlerInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(error => {
-
-      // this one will catch messages from casual thrown exceptions:
-      if (error.error.message != null) {
+      console.log(error);
+      // this one will catch messages from casual thrown exceptions, except bad login attempt
+      // that's why 403 is thrown out
+      if (error.error.message != null && error.status !== 403) {
         this.messageToastrService.error(error.error.message);
       }
 

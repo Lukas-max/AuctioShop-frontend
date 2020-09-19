@@ -11,7 +11,7 @@ export class MatchValidationService {
   /**
    *
    * @param control1 - in this case it's password from register template
-   * @param control2 - in this casie it's confirmPassword from register template
+   * @param control2 - in this case it's confirmPassword from register template
    *   It will validate second password only if it has no other validation errors.
    */
   validate(control1: string, control2: string){

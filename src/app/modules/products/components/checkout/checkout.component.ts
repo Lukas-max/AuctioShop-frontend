@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CartService} from '../../services/cart.service';
-import {Customer} from '../../model/customer';
+import {CustomerDto} from '../../model/customerDto';
+import {CartItemDto} from '../../model/cartItemDto';
+import {ClientOrder} from '../../model/clientOrder';
+import {OrderService} from '../../services/order.service';
+import {Router} from '@angular/router';
+import {MessageToastrService} from '../../../../core/services/message-toastr.service';
 
 @Component({
   selector: 'app-checkout',
@@ -9,32 +14,36 @@ import {Customer} from '../../model/customer';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+  private cartItemDto: Array<CartItemDto> = [];
+  customer: CustomerDto;
   totalPrice: number;
   totalQuantity: number;
   checkoutFormGroup: FormGroup;
-  customer: Customer;
 
   constructor(
     private formBuilder: FormBuilder,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private orderService: OrderService,
+    private route: Router,
+    private messageToastrService: MessageToastrService) { }
 
   ngOnInit(): void {
 
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
-        firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        firstName: new FormControl('', [Validators.required]),
+        lastName: new FormControl('', [Validators.required]),
         telephone: new FormControl(''),
         email: new FormControl('',
           [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')])
       }),
       address: this.formBuilder.group({
         country: [''],
-        street: [''],
-        houseNumber: [''],
+        street: ['', [Validators.required]],
+        houseNumber: ['', [Validators.required]],
         apartmentNumber: [''],
-        postalCode: [''],
-        city: ['']
+        postalCode: ['', [Validators.required]],
+        city: ['', Validators.required]
       })
     });
 
@@ -43,10 +52,58 @@ export class CheckoutComponent implements OnInit {
     this.cartService.computeTotals();
   }
 
+  /**
+   * Submit form will take us to makeOrder() and it will take the cart products, customer data,
+   * total price and quantity and put it into the ClientOrder class.
+   */
   public submitForm(){
-    console.log(this.checkoutFormGroup);
+    this.makeOrder();
   }
 
+  private makeOrder(){
+    this.formatCart();
+    this.formatCustomer();
+    const order = this.getOrder();
+
+    this.orderService.postOrder(order).subscribe(() => {
+      this.checkoutFormGroup.reset();
+      this.cartService.clearCart();
+      this.route.navigate(['products']);
+      this.messageToastrService.success('Przyjęto zamówienie.');
+    });
+  }
+
+  private formatCart(){
+    this.cartService.getCartItems()
+      .forEach(i => this.cartItemDto.push(new CartItemDto(i)));
+  }
+
+  private formatCustomer(){
+    this.customer = new CustomerDto();
+    this.customer.setFirstName(this.firstName.value);
+    this.customer.setLastName(this.lastName.value);
+    this.customer.setTelephone(this.telephone.value);
+    this.customer.setEmail(this.email.value);
+    this.customer.setCountry(this.country.value);
+    this.customer.setStreet(this.street.value);
+    this.customer.setHouseNumber(this.houseNumber.value);
+    this.customer.setApartmentNumber(this.apartmentNumber.value);
+    this.customer.setPostalCode(this.postalCode.value);
+    this.customer.setCity(this.city.value);
+  }
+
+  private getOrder(): ClientOrder{
+    return new ClientOrder(
+      this.cartItemDto,
+      this.customer,
+      this.totalPrice,
+      this.totalQuantity
+    );
+  }
+
+  /**
+   * Getters for reactive form:
+   */
   get firstName(){
     return this.checkoutFormGroup.get('customer.firstName');
   }
@@ -55,7 +112,35 @@ export class CheckoutComponent implements OnInit {
     return this.checkoutFormGroup.get('customer.lastName');
   }
 
+  get telephone(){
+    return this.checkoutFormGroup.get('customer.telephone');
+  }
+
   get email(){
     return this.checkoutFormGroup.get('customer.email');
+  }
+
+  get country(){
+    return this.checkoutFormGroup.get('address.country');
+  }
+
+  get street(){
+    return this.checkoutFormGroup.get('address.street');
+  }
+
+  get houseNumber(){
+    return this.checkoutFormGroup.get('address.houseNumber');
+  }
+
+  get apartmentNumber(){
+    return this.checkoutFormGroup.get('address.apartmentNumber');
+  }
+
+  get postalCode(){
+    return this.checkoutFormGroup.get('address.postalCode');
+  }
+
+  get city(){
+    return this.checkoutFormGroup.get('address.city');
   }
 }

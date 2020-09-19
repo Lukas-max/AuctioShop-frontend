@@ -107,6 +107,11 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  /**
+   * Second parameter of addToCart(product: Product) -> It's ProductComponent not CartDetailsComponent.
+   * so -> isFromCartDetailsComp == false.
+   * Till it's false Toastr will show messages if added to cart.
+   */
   public addToCart(product: Product) {
     const cartItem = new CartItem(product);
     this.cartService.addToCart(cartItem, false);
