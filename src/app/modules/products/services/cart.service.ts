@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { CartItem } from '../model/cartItem';
-import { Subject } from 'rxjs';
-import { MessageToastrService } from '../../../core/services/message-toastr.service';
+import {Injectable} from '@angular/core';
+import {CartItem} from '../model/cartItem';
+import {Subject} from 'rxjs';
+import {MessageToastrService} from '../../../core/services/message-toastr.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,34 +20,34 @@ export class CartService {
     this.totalQuantityValue = 0;
   }
 
-  public addToCart(cartItem: CartItem, isFromCartDetailsComp: boolean){
+  public addToCart(cartItem: CartItem, isFromCartDetailsComp: boolean) {
     let existingItem: CartItem;
 
-    if (this.cartItems.length > 0){
+    if (this.cartItems.length > 0) {
       // jeśli nie znajdzie w tablicy zwraca undefined
-      existingItem = this.cartItems.find(item => item.id === cartItem.id);
+      existingItem = this.cartItems.find(item => item.productId === cartItem.productId);
     }
     this.alreadyExistsInCart = (existingItem !== undefined);
 
-    if (this.alreadyExistsInCart){
-      existingItem.quantity++;
-    }else {
+    if (this.alreadyExistsInCart) {
+      if (existingItem.unitsInStock > existingItem.quantity){
+        existingItem.quantity++;
+        this.message(isFromCartDetailsComp);
+      }
+    } else if (cartItem.unitsInStock > 0){
       this.cartItems.push(cartItem);
-    }
-
-    if (!isFromCartDetailsComp){
-      this.messageToastrService.success('Dodano do koszyka');
+      this.message(isFromCartDetailsComp);
     }
 
     this.computeTotals();
   }
 
   // HELPER METHODS:
-  public computeTotals(){
+  public computeTotals() {
     this.totalPriceValue = 0;
     this.totalQuantityValue = 0;
 
-    for (const item of this.cartItems){
+    for (const item of this.cartItems) {
       this.totalPriceValue += item.unitPrice * item.quantity;
       this.totalQuantityValue += item.quantity;
     }
@@ -56,36 +56,42 @@ export class CartService {
     this.totalPrice.next(this.totalPriceValue);
   }
 
-  public decrementItem(cartItem: CartItem){
+  public decrementItem(cartItem: CartItem) {
     cartItem.quantity--;
 
-    if (cartItem.quantity === 0){
-      if (confirm('Czy chcesz usunąć produkt: ' + cartItem.name + '?')){
+    if (cartItem.quantity === 0) {
+      if (confirm('Czy chcesz usunąć produkt: ' + cartItem.name + '?')) {
         this.removeItem(cartItem);
-      }else {
+      } else {
         cartItem.quantity++;
       }
-    }else {
+    } else {
       this.computeTotals();
     }
   }
 
-  public removeItem(cartItem: CartItem){
-    const index = this.cartItems.findIndex( item => item.id === cartItem.id);
+  public removeItem(cartItem: CartItem) {
+    const index = this.cartItems.findIndex(item => item.productId === cartItem.productId);
 
-    if (index > -1){
+    if (index > -1) {
       this.cartItems.splice(index, 1);
     }
     this.computeTotals();
   }
 
-  public clearCart(){
+  public clearCart() {
     this.cartItems.splice(0, this.cartItems.length);
     this.computeTotals();
   }
 
+  private message(isFromCartDetailsComp: boolean){
+    if (!isFromCartDetailsComp) {
+      this.messageToastrService.success('Dodano do koszyka');
+    }
+  }
+
   // GETTERS:
-  public getCartItems(){
+  public getCartItems() {
     return this.cartItems;
   }
 }

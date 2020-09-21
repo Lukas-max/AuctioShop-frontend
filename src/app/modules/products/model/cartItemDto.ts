@@ -1,12 +1,12 @@
 import {CartItem} from './cartItem';
 
 export class CartItemDto {
-  id: number;
+  productId: number;
   name: string;
   quantity: number;
 
   constructor(item: CartItem) {
-    this.id = item.id;
+    this.productId = item.productId;
     this.name = item.name;
     this.quantity = item.quantity;
   }
