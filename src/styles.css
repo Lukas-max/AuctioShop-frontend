@@ -16,7 +16,7 @@ body {
 /* NAVBAR */
 
 .navbar .form-control {
-  width: 18rem;
+  width: 13.5rem;
 }
 
 .navbar {
@@ -557,6 +557,30 @@ ngb-pagination .page-item .page-link {
 .checkout-submit span {
   font-weight: bolder;
 }
+
+/* INFO COMPONENT */
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  margin-top: 50px;
+}
+
+.info .name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.info i {
+  margin: 0 6px;
+}
+
+.info a {
+  margin: 0 20px;
+  font-size: 20px;
+}
+
 
 
 

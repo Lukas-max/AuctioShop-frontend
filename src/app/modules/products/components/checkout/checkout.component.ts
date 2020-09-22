@@ -15,7 +15,7 @@ import {MessageToastrService} from '../../../../core/services/message-toastr.ser
 })
 export class CheckoutComponent implements OnInit {
   private cartItemDto: Array<CartItemDto> = [];
-  customer: CustomerDto;
+  private customer: CustomerDto;
   totalPrice: number;
   totalQuantity: number;
   checkoutFormGroup: FormGroup;

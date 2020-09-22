@@ -25,6 +25,8 @@
       <a *ngIf="isLoggedIn()" class="nav-item nav-link"
          (click)="jwtAuthLogout()" routerLink="/products" data-toggle="collapse"
          data-target=".navbar-collapse.show">Wyloguj się</a>
+      <a class="nav-item nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+         routerLink="/info" >Info</a>
     </div>
   </div>
   <app-cart-status></app-cart-status>

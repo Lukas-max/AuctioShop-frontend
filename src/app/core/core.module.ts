@@ -30,11 +30,11 @@ const routes: Routes = [
     JwtLoginComponent
   ],
   providers: [
-    MessageToastrService,
     // BasicAuthenticationService,
+    // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptorService, multi: true }
+    MessageToastrService,
     JwtAuthenticationService,
     AuthenticationGuard,
-    // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptorService, multi: true }
     { provide: HTTP_INTERCEPTORS, useClass: JwtAuthInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptorService, multi: true }
   ],

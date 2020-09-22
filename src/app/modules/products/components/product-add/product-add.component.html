@@ -10,7 +10,7 @@
         <div class="col">
           <label>Sku:</label>
           <input type="text" class="form-control" name="sku" [(ngModel)]="sku"
-                 #skuModel="ngModel" required maxlength="200">
+                 #skuModel="ngModel" required maxlength="255">
           <div class="alert alert-danger" *ngIf="skuModel.invalid && skuModel.touched">
             <div *ngIf="skuModel.errors.required">
               Pole sku jest wymagane.
