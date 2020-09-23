@@ -14,7 +14,7 @@ import { ProductUpdateComponent } from './components/product-update/product-upda
 
 const routes: Routes = [
   { path: 'searchBar/:keyword', component: ProductsComponent },
-  { path: 'products/add', component: ProductAddComponent, canActivate: [ AuthenticationGuard] },
+  { path: 'products/add', component: ProductAddComponent, canActivate: [ AuthenticationGuard ] },
   { path: 'products/update', component: ProductUpdateComponent, canActivate: [ AuthenticationGuard ] },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'products/:id/:name', component: ProductsComponent },

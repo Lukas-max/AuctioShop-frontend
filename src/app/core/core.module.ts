@@ -15,10 +15,12 @@ import { JwtLoginComponent } from './jwtlogin/jwt-login.component';
 import { JwtAuthInterceptorService } from './services/jwt-auth-interceptor.service';
 import { ErrorHandlerInterceptorService } from './services/error-handler-interceptor.service';
 import { AuthenticationGuard } from './services/authentication.guard';
+import {InfoComponent} from './info/info.component';
 
 
 const routes: Routes = [
   { path: 'login', component: JwtLoginComponent },
+  { path: 'info', component: InfoComponent }
 ];
 
 @NgModule({
@@ -27,7 +29,8 @@ const routes: Routes = [
     HeaderComponent,
     SidebarComponent,
     LoginComponent,
-    JwtLoginComponent
+    JwtLoginComponent,
+    InfoComponent
   ],
   providers: [
     // BasicAuthenticationService,
