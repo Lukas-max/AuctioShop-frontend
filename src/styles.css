@@ -572,6 +572,11 @@ ngb-pagination .page-item .page-link {
   font-weight: bold;
 }
 
+.mail {
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .info i {
   margin: 0 6px;
 }
