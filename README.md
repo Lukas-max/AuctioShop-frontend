@@ -20,7 +20,8 @@ Project made by Łukasz Jankowski.
 The backend part of the application is right [here](https://github.com/Lukas-max/shop-backend). 
 
 # RUN 
-instruction
+Step 1: Install backend part.
+Step 2: Copy/clone this repo and open in your compiler. Run `npm install` and its ready to go.
 
 ## Features:
 - [x] Responsive Web Design
@@ -55,16 +56,19 @@ Components:
  - login
  - navbar
  - sidebar
+ 
  Services:
  `AuthenticationGuard (CanActivate)`, `AuthenticationLoginGuard (CanActivate)`, `BasicAuthInterceptor and JwtAuthInterceptor (HttpInterceptors)`, `ErrorHanlderInterceptor (HttpInterceptor for global error handling)`, `MessageToastrService`.
  
  ### Shared
- - [] No components here.
+ No components here.
+ 
  Services: `MatchValidationService`
  
  ### Users
  Components:
  - register
+ 
  Services : `UsersService`
  
  ### Products
