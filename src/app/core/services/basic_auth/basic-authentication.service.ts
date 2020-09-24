@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { API_URL } from '../../app.consts';
+import { API_URL } from '../../../app.consts';
 
 export const TOKEN = 'token';
 export const AUTH_USER = 'authenticatedUser';

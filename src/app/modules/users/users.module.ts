@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RegisterComponent } from './components/register/register.component';
 import {SharedModule} from '../../shared/shared.module';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthenticationLoginGuard} from '../../core/services/authentication-login.guard';
+import {AuthenticationLoginGuard} from '../../core/services/can_activate/authentication-login.guard';
 
 const routes: Routes = [
   { path: 'users/register', component: RegisterComponent, canActivate: [ AuthenticationLoginGuard ] }

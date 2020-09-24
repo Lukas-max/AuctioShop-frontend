@@ -6,7 +6,7 @@ import {CartItemDto} from '../../model/cartItemDto';
 import {ClientOrder} from '../../model/clientOrder';
 import {OrderService} from '../../services/order.service';
 import {Router} from '@angular/router';
-import {MessageToastrService} from '../../../../core/services/message-toastr.service';
+import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
 
 @Component({
   selector: 'app-checkout',

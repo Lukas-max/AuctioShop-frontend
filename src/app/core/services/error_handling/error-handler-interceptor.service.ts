@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {MessageToastrService} from './message-toastr.service';
+import {MessageToastrService} from '../toastr/message-toastr.service';
 
 @Injectable({
   providedIn: 'root'

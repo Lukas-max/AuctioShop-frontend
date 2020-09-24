@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { API_URL } from '../../app.consts';
+import { API_URL } from '../../../app.consts';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { JwtToken } from '../../modules/products/model/jwtToken';
-import { AUTH_USER, TOKEN } from './basic-authentication.service';
+import { JwtToken } from '../../../modules/products/model/jwtToken';
+import { AUTH_USER, TOKEN } from '../basic_auth/basic-authentication.service';
 
 export const JWT_AUTH_USER = 'jwtAuthUser';
 export const JWT_TOKEN = 'jwtToken';

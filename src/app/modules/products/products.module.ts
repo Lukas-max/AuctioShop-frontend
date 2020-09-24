@@ -9,7 +9,7 @@ import { CartService } from './services/cart.service';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
-import { AuthenticationGuard } from '../../core/services/authentication.guard';
+import { AuthenticationGuard } from '../../core/services/can_activate/authentication.guard';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
 
 const routes: Routes = [

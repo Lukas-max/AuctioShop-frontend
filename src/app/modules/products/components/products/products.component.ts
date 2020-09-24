@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../model/product';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
-import { MessageToastrService } from '../../../../core/services/message-toastr.service';
+import { MessageToastrService } from '../../../../core/services/toastr/message-toastr.service';
 import { CartItem } from '../../model/cartItem';
 import { CartService } from '../../services/cart.service';
-import { JwtAuthenticationService } from '../../../../core/services/jwt-authentication.service';
-import { BasicAuthenticationService } from '../../../../core/services/basic-authentication.service';
+import { JwtAuthenticationService } from '../../../../core/services/jwt_auth/jwt-authentication.service';
+import { BasicAuthenticationService } from '../../../../core/services/basic_auth/basic-authentication.service';
 
 @Component({
   selector: 'app-products',

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../model/product';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../model/cartItem';
-import { JwtAuthenticationService } from '../../../../core/services/jwt-authentication.service';
+import { JwtAuthenticationService } from '../../../../core/services/jwt_auth/jwt-authentication.service';
 
 @Component({
   selector: 'app-product-details',

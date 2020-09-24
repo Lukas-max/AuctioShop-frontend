@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UsersService} from '../../services/users.service';
-import {MessageToastrService} from '../../../../core/services/message-toastr.service';
+import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatchValidationService} from '../../../../shared/services/match-validation.service';

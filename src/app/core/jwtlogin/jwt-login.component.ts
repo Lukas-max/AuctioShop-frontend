@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {JwtAuthenticationService} from '../services/jwt-authentication.service';
+import {JwtAuthenticationService} from '../services/jwt_auth/jwt-authentication.service';
 import {Router} from '@angular/router';
-import {MessageToastrService} from '../services/message-toastr.service';
+import {MessageToastrService} from '../services/toastr/message-toastr.service';
 
 @Component({
   selector: 'app-jwtlogin',

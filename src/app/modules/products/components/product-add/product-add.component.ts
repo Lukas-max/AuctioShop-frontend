@@ -3,7 +3,7 @@ import {ProductCategoryService} from '../../services/product-category.service';
 import {ProductCategory} from '../../model/productCategory';
 import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
 import {ProductService} from '../../services/product.service';
-import {MessageToastrService} from '../../../../core/services/message-toastr.service';
+import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
 
 @Component({
   selector: 'app-product-add',

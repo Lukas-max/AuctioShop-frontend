@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CartItem} from '../model/cartItem';
 import {Subject} from 'rxjs';
-import {MessageToastrService} from '../../../core/services/message-toastr.service';
+import {MessageToastrService} from '../../../core/services/toastr/message-toastr.service';
 
 @Injectable({
   providedIn: 'root'
