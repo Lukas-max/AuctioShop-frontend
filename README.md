@@ -21,7 +21,9 @@ The backend part of the application is right [here](https://github.com/Lukas-max
 
 # RUN 
 Step 1: Install backend part.
-Step 2: Copy/clone this repo and open in your compiler. Run `npm install` and its ready to go.
+Step 2: Copy/clone this repo and open in your compiler. 
+Step 3: Go to app folder to app.consts.ts and change API_URL to `http://localhost:8080'`
+Step 4: Run `npm install` and its ready to go.
 
 ## Features:
 - [x] Responsive Web Design
