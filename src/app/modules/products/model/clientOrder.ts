@@ -8,6 +8,7 @@ export class ClientOrder {
     private customer: CustomerDto,
     private totalPrice: number,
     private totalQuantity: number,
-    private clientId?: number) {
+    private clientId?: number,
+    public orderId?: number) {
   }
 }

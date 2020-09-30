@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Product } from '../../model/product';
 import { map } from 'rxjs/operators';
 import { ProductCategoryService } from '../../services/product-category.service';
@@ -23,7 +23,8 @@ export class ProductUpdateComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private productCategoryService: ProductCategoryService,
               private productService: ProductService,
-              private messageToastrService: MessageToastrService) { }
+              private messageToastrService: MessageToastrService,
+              private route: Router) { }
 
   ngOnInit(): void {
     this.base64data = undefined;
@@ -56,6 +57,7 @@ export class ProductUpdateComponent implements OnInit {
       dateTimeUpdated: new Date(),
       productCategoryId: this.category
     }).subscribe(() => {
+      this.route.navigate(['products']);
       this.messageToastrService.success('Zmieniono');
     });
   }

@@ -11,6 +11,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { AuthenticationGuard } from '../../core/services/can_activate/authentication.guard';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
+import { PurchaseResponseComponent } from './components/purchase-response/purchase-response.component';
 
 const routes: Routes = [
   { path: 'searchBar/:keyword', component: ProductsComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'products/:id/:name', component: ProductsComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'cart', component: CartDetailsComponent }
+  { path: 'cart', component: CartDetailsComponent },
+  { path: 'purchase/:orderId', component: PurchaseResponseComponent }
 ];
 
 @NgModule({
@@ -31,7 +33,8 @@ const routes: Routes = [
     CartDetailsComponent,
     CheckoutComponent,
     ProductAddComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    PurchaseResponseComponent
   ],
   imports: [
     SharedModule,

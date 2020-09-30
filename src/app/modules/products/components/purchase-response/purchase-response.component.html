@@ -1,0 +1,18 @@
+<div class="container prod-table center-details">
+  <div class="product-header"> Autor</div>
+  <div class="underline"></div>
+  <hr>
+
+  <div class="info text-center">
+
+    <div *ngIf="orderId !== undefined">
+      <p>Numer twojego zamówienia: {{ orderId }}</p>
+      <p>Wpisz w przeglądarce <span>https://51.83.135.196:8080/api/order/</span>numer zamówienia.</p>
+    </div>
+    <div *ngIf="message !== undefined">
+      {{ message }}
+    </div>
+  </div>
+
+
+</div>

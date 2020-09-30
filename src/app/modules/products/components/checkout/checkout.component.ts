@@ -65,10 +65,10 @@ export class CheckoutComponent implements OnInit {
     this.formatCustomer();
     const order = this.getOrder();
 
-    this.orderService.postOrder(order).subscribe(() => {
+    this.orderService.postOrder(order).subscribe(data => {
       this.checkoutFormGroup.reset();
       this.cartService.clearCart();
-      this.route.navigate(['products']);
+      this.route.navigateByUrl(`purchase/${data.orderId}`);
       this.messageToastrService.success('Przyjęto zamówienie.');
     });
   }
