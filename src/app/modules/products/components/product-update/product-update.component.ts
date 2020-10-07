@@ -60,7 +60,7 @@ export class ProductUpdateComponent implements OnInit {
       dateTimeUpdated: new Date(),
       productCategoryId: this.category
     }).subscribe(() => {
-      this.route.navigate(['products']);
+      this.route.navigate(['/']);
       this.messageToastrService.success('Zmieniono');
     });
   }

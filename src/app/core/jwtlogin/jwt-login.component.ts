@@ -27,7 +27,7 @@ export class JwtLoginComponent implements OnInit {
 
   handleJwtLogin() {
     this.jwtAuthService.login(this.username, this.password).subscribe(data => {
-      this.router.navigate(['products']);
+      this.router.navigate(['/']);
       this.messageToastrService.success('Zalogowano pomyślnie');
     }, error => {
       this.loginError = true;

@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'products/update', component: ProductUpdateComponent, canActivate: [ AuthenticationGuard ] },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'products/:id/:name', component: ProductsComponent },
-  { path: 'products', component: ProductsComponent },
+  { path: '', component: ProductsComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'cart', component: CartDetailsComponent },
   { path: 'purchase/:orderId', component: PurchaseResponseComponent }

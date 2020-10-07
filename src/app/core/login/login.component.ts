@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   public handleBasicLogin(){
     this.basicAuthenticationService.login(this.username, this.password).subscribe(data => {
       this.loginValid = true;
-      this.router.navigate(['/products']);
+      this.router.navigate(['/']);
       this.messageToastrService.success('Zalogowano pomyślnie.');
     },
       error => {

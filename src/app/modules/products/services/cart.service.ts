@@ -88,12 +88,16 @@ export class CartService {
   }
 
   public getCartFromStorage(){
-    this.cartItems = JSON.parse(localStorage.getItem('cart'));
-    this.totalQuantityValue = +localStorage.getItem('totalQuantity');
-    this.totalPriceValue = +localStorage.getItem('totalPrice');
+    if (localStorage.getItem('cart') !== null &&
+        localStorage.getItem('totalQuantity') !== null &&
+        localStorage.getItem('totalPrice') !== null){
+      this.cartItems = JSON.parse(localStorage.getItem('cart'));
+      this.totalQuantityValue = +localStorage.getItem('totalQuantity');
+      this.totalPriceValue = +localStorage.getItem('totalPrice');
 
-    this.totalQuantity.next(this.totalQuantityValue);
-    this.totalPrice.next(this.totalPriceValue);
+      this.totalQuantity.next(this.totalQuantityValue);
+      this.totalPrice.next(this.totalPriceValue);
+    }
   }
 
   private message(isFromCartDetailsComp: boolean){

@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
       email: this.registration.value.email
     }).subscribe(() => {
       this.registration.reset();
-      this.route.navigate(['products']);
+      this.route.navigate(['/']);
       this.messageToastrService.success('Zarejestrowano użytkownika');
     }, error => {
       //   nothing

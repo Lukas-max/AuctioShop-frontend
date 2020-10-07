@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top">
-  <a class="navbar-brand" routerLink="/products" data-toggle="collapse"
+  <a class="navbar-brand" routerLink="/" data-toggle="collapse"
      data-target=".navbar-collapse.show">AuctioShop</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarNavAltMarkup"
@@ -17,13 +17,13 @@
       </button>
     </form>
     <div class="navbar-nav ">
-      <a class="nav-item nav-link active" routerLink="/products" data-toggle="collapse"
+      <a class="nav-item nav-link active" routerLink="/" data-toggle="collapse"
          data-target=".navbar-collapse.show">Home</a>
       <a *ngIf="!isLoggedIn()" class="nav-item nav-link"
          routerLink="/login"
          data-toggle="collapse" data-target=".navbar-collapse.show">Zaloguj się</a>
       <a *ngIf="isLoggedIn()" class="nav-item nav-link"
-         (click)="jwtAuthLogout()" routerLink="/products" data-toggle="collapse"
+         (click)="jwtAuthLogout()" routerLink="/" data-toggle="collapse"
          data-target=".navbar-collapse.show">Wyloguj się</a>
       <a class="nav-item nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
          routerLink="/info" >Info</a>
