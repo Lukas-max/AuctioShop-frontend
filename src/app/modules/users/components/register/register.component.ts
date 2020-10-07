@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {UsersService} from '../../services/users.service';
-import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
-import {Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MatchValidationService} from '../../../../shared/services/match-validation.service';
+import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../services/users.service';
+import { MessageToastrService } from '../../../../core/services/toastr/message-toastr.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatchValidationService } from '../../../../shared/services/match-validation.service';
+import { CartService } from '../../../products/services/cart.service';
 
 @Component({
   selector: 'app-register',
@@ -18,10 +19,12 @@ export class RegisterComponent implements OnInit {
               private route: Router,
               private messageToastrService: MessageToastrService,
               private formBuilder: FormBuilder,
-              private matchValidation: MatchValidationService) {
+              private matchValidation: MatchValidationService,
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
     this.registration = this.formBuilder.group({
       username: ['', [
         Validators.required,

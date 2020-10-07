@@ -6,6 +6,7 @@ import { ProductCategoryService } from '../../services/product-category.service'
 import { ProductCategory } from '../../model/productCategory';
 import { ProductService } from '../../services/product.service';
 import { MessageToastrService } from '../../../../core/services/toastr/message-toastr.service';
+import {CartService} from '../../services/cart.service';
 
 
 @Component({
@@ -24,9 +25,11 @@ export class ProductUpdateComponent implements OnInit {
               private productCategoryService: ProductCategoryService,
               private productService: ProductService,
               private messageToastrService: MessageToastrService,
+              private cartService: CartService,
               private route: Router) { }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
     this.base64data = undefined;
     this.getCategories();
     this.activatedRoute

@@ -28,6 +28,7 @@ export class CheckoutComponent implements OnInit {
     private messageToastrService: MessageToastrService) { }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
 
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({

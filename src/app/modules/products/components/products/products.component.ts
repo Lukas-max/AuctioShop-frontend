@@ -32,6 +32,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
     this.pageNumber = 1;
     this.pageSize = 8;
     this.categoryName = 'Wszystkie';

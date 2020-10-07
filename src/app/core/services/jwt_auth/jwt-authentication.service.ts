@@ -55,6 +55,8 @@ export class JwtAuthenticationService {
 
   public logout(){
     this.roles = [];
-    sessionStorage.clear();
+    sessionStorage.removeItem(JWT_AUTH_USER);
+    sessionStorage.removeItem(JWT_TOKEN);
+    // sessionStorage.clear();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-purchase-response',
@@ -12,9 +13,12 @@ export class PurchaseResponseComponent implements OnInit {
   orderId: number;
   message: string;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
     this.isOrderId = false;
     this.orderId = undefined;
     this.message = undefined;

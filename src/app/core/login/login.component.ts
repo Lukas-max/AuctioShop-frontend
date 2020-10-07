@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BasicAuthenticationService} from '../services/basic_auth/basic-authentication.service';
 import {Router} from '@angular/router';
 import {MessageToastrService} from '../services/toastr/message-toastr.service';
+import {CartService} from '../../modules/products/services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private basicAuthenticationService: BasicAuthenticationService,
     private router: Router,
-    private messageToastrService: MessageToastrService) { }
+    private messageToastrService: MessageToastrService,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
     this.loginValid = false;
     this.loginError = false;
   }

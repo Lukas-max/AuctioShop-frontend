@@ -4,6 +4,7 @@ import {ProductCategory} from '../../model/productCategory';
 import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
 import {ProductService} from '../../services/product.service';
 import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-add',
@@ -25,10 +26,12 @@ export class ProductAddComponent implements OnInit {
 
   constructor(private productCategoryService: ProductCategoryService,
               private productService: ProductService,
-              private messageToastrService: MessageToastrService) {
+              private messageToastrService: MessageToastrService,
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
     this.getCategories();
   }
 
@@ -45,7 +48,7 @@ export class ProductAddComponent implements OnInit {
       description: this.description,
       unitPrice: this.unitPrice,
       productImage: this.base64data,
-      active: true,
+      active: this.setActive(),
       unitsInStock: this.unitsInStock,
       dateTimeCreated: new Date(),
       dateTimeUpdated: null,
@@ -66,5 +69,9 @@ export class ProductAddComponent implements OnInit {
       };
       reader.readAsDataURL(event.target.files[0]);
     }
+  }
+
+  private setActive(): boolean{
+    return this.unitsInStock > 0;
   }
 }

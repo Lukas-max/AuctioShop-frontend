@@ -23,6 +23,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
     this.route.paramMap.subscribe(() => {
       this.getProduct();
     });

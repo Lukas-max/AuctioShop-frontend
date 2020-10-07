@@ -16,6 +16,7 @@ export class CartDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
     this.getCartStatus();
   }
 

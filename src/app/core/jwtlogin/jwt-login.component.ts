@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {JwtAuthenticationService} from '../services/jwt_auth/jwt-authentication.service';
 import {Router} from '@angular/router';
 import {MessageToastrService} from '../services/toastr/message-toastr.service';
+import {CartService} from '../../modules/products/services/cart.service';
 
 @Component({
   selector: 'app-jwtlogin',
@@ -16,9 +17,11 @@ export class JwtLoginComponent implements OnInit {
 
   constructor(private jwtAuthService: JwtAuthenticationService,
               private router: Router,
-              private messageToastrService: MessageToastrService) { }
+              private messageToastrService: MessageToastrService,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
     this.loginError = false;
   }
 

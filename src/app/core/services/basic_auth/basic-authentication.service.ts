@@ -43,7 +43,8 @@ export class BasicAuthenticationService {
   }
 
   public logout(){
-    sessionStorage.clear();
+    sessionStorage.removeItem(AUTH_USER);
+    sessionStorage.removeItem(TOKEN);
   }
 }
 

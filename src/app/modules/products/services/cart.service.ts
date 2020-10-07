@@ -38,7 +38,6 @@ export class CartService {
       this.cartItems.push(cartItem);
       this.message(isFromCartDetailsComp);
     }
-
     this.computeTotals();
   }
 
@@ -54,6 +53,10 @@ export class CartService {
 
     this.totalQuantity.next(this.totalQuantityValue);
     this.totalPrice.next(this.totalPriceValue);
+
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+    localStorage.setItem('totalQuantity', this.totalQuantityValue.toString());
+    localStorage.setItem('totalPrice', this.totalPriceValue.toString());
   }
 
   public decrementItem(cartItem: CartItem) {
@@ -82,6 +85,15 @@ export class CartService {
   public clearCart() {
     this.cartItems.splice(0, this.cartItems.length);
     this.computeTotals();
+  }
+
+  public getCartFromStorage(){
+    this.cartItems = JSON.parse(localStorage.getItem('cart'));
+    this.totalQuantityValue = +localStorage.getItem('totalQuantity');
+    this.totalPriceValue = +localStorage.getItem('totalPrice');
+
+    this.totalQuantity.next(this.totalQuantityValue);
+    this.totalPrice.next(this.totalPriceValue);
   }
 
   private message(isFromCartDetailsComp: boolean){
