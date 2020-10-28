@@ -1,0 +1,29 @@
+<div class="container prod-table center-details">
+  <div class="product-header">Użytkownicy</div>
+  <div class="underline"></div>
+  <hr>
+
+  <div *ngIf="users else loading">
+    <div *ngFor="let user of users">
+      <div>
+        <p>{{ user.username }}</p>
+        <p>{{ user.email }}</p>
+        <p>{{ user.roles[0].role }}</p>
+        <button class="btn btn-primary">Dane zamówienia</button>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+  <div>
+    <ngb-pagination [(page)]="page"
+                    [pageSize]="size"
+                    [collectionSize]="totalElements"
+                    (pageChange)="getUsers()">
+    </ngb-pagination>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Ładuje dane..</p>
+</ng-template>

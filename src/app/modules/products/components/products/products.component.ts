@@ -74,7 +74,6 @@ export class ProductsComponent implements OnInit {
   private processResponse() {
     return dataProducts => {
       this.products = dataProducts.content;
-      this.pageSize = dataProducts.pageable.pageSize;
       this.totalElements = dataProducts.totalElements;
     };
   }

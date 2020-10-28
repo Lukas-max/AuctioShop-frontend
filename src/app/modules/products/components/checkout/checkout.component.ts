@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {CartService} from '../../services/cart.service';
-import {CustomerDto} from '../../model/customerDto';
-import {CartItemDto} from '../../model/cartItemDto';
-import {ClientOrder} from '../../model/clientOrder';
-import {OrderService} from '../../services/order.service';
-import {Router} from '@angular/router';
-import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
+import { CustomerDto } from '../../model/customerDto';
+import { CartItemDto } from '../../model/cartItemDto';
+import { ClientOrder } from '../../model/clientOrder';
+import { OrderService } from '../../services/order.service';
+import { Router } from '@angular/router';
+import { MessageToastrService } from '../../../../core/services/toastr/message-toastr.service';
+import {JwtAuthenticationService} from '../../../../core/services/jwt_auth/jwt-authentication.service';
 
 @Component({
   selector: 'app-checkout',
@@ -16,6 +17,7 @@ import {MessageToastrService} from '../../../../core/services/toastr/message-toa
 export class CheckoutComponent implements OnInit {
   private cartItemDto: Array<CartItemDto> = [];
   private customer: CustomerDto;
+  private username: string;
   totalPrice: number;
   totalQuantity: number;
   checkoutFormGroup: FormGroup;
@@ -25,11 +27,15 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartService,
     private orderService: OrderService,
     private route: Router,
-    private messageToastrService: MessageToastrService) { }
+    private messageToastrService: MessageToastrService,
+    private jwtAuthenticationService: JwtAuthenticationService) { }
 
   ngOnInit(): void {
     this.cartService.getCartFromStorage();
+    this.setForm();
+  }
 
+  private setForm(){
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: new FormControl('', [Validators.required]),
@@ -62,6 +68,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   private makeOrder(){
+    this.getUsername();
     this.formatCart();
     this.formatCustomer();
     const order = this.getOrder();
@@ -93,12 +100,19 @@ export class CheckoutComponent implements OnInit {
     this.customer.setCity(this.city.value);
   }
 
+  private getUsername() {
+    if (this.jwtAuthenticationService.isLoggedIn() || this.jwtAuthenticationService.isAdminLoggedIn()){
+      this.username = this.jwtAuthenticationService.getAuthenticatedUser();
+    }
+  }
+
   private getOrder(): ClientOrder{
     return new ClientOrder(
       this.cartItemDto,
       this.customer,
       this.totalPrice,
-      this.totalQuantity
+      this.totalQuantity,
+      this.username
     );
   }
 

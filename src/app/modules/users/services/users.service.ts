@@ -1,10 +1,10 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
-import {User} from '../model/user';
-import {HttpClient} from '@angular/common/http';
-import {API_URL} from '../../../app.consts';
-import {catchError} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import { User } from '../model/user';
+import { HttpClient } from '@angular/common/http';
+import { API_URL } from '../../../app.consts';
+import { catchError } from 'rxjs/operators';
+import {  throwError } from 'rxjs';
 
 
 @Injectable({
@@ -16,6 +16,17 @@ export class UsersService {
   constructor(private http: HttpClient) {
   }
 
+  //get page of users:
+  public getUsers(page: number, size: number) {
+    const httpOptions = {
+      params: {
+        'page': page.toString(),
+        'size': size.toString()
+      }
+    }
+    return this.http.get(`${API_URL}/${this.usersUrl}`, httpOptions);
+  }
+
   // register user:
   public createUser(user: User) {
     return this.http.post(`${API_URL}/${this.usersUrl}/register`, user)
@@ -23,7 +34,6 @@ export class UsersService {
   }
 
   private handleError(error){
-    // console.log(error);
     return throwError(error);
   }
 }

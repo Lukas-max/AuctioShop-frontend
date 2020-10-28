@@ -18,7 +18,9 @@ export class ProductService {
   //get all products, with pagination:
   public getProducts(pageNo: number, size: number): Observable<ResponseProduct[]> {
     const httpOptions = {
-      params: {'page': pageNo.toString(), 'size': size.toString()}
+      params: {
+        'page': pageNo.toString(),
+        'size': size.toString()}
     };
 
     return this.http.get<ResponseProduct[]>(`${API_URL}/${this.productsUrl}`,
@@ -27,13 +29,16 @@ export class ProductService {
 
   //get one product by its ID:
   public getProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(`${API_URL}/${this.productsUrl}/product/${id}`);
+    return this.http.get<Product>(`${API_URL}/${this.productsUrl}/${id}`);
   }
 
-  // this is for searching for products using the sidebar categories
+  // this is used tp fetch products by their category using the categories in the sidebar
   public getProductByCategoryId(categoryId: number, pageNo: number, size: number): Observable<Product[]> {
     const httpOptions = {
-      params: {'categoryId': categoryId.toString() , 'page': pageNo.toString(), 'size': size.toString() }
+      params: {
+        'categoryId': categoryId.toString() ,
+        'page': pageNo.toString(),
+        'size': size.toString() }
     };
 
     return this.http
@@ -44,7 +49,10 @@ export class ProductService {
   //search products by name, with pagination:
   public searchProductsByName(keyWord: string, pageNo: number, size: number): Observable<Product[]> {
     const httpOptions = {
-      params: {'keyWord': keyWord.toString() , 'page': pageNo.toString(), 'size': size.toString() }
+      params: {
+        'keyWord': keyWord.toString() ,
+        'page': pageNo.toString(),
+        'size': size.toString() }
     };
 
     return this.http

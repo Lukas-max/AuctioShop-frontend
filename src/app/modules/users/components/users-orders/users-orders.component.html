@@ -1,0 +1,39 @@
+<div class="container prod-table center-details">
+  <div class="product-header">Zamówienia</div>
+  <div class="underline"></div>
+  <hr>
+
+  <div *ngIf="orders else loading">
+    <div *ngFor="let order of orders">
+      <div>
+        <p>Zamówienie numer: {{ order.orderId }}</p>
+        <p *ngIf="order.user else unregistered">Użytkownik: {{ order.user.username }}</p>
+        <div *ngFor="let item of order.cartItems">
+          <p>Produkt: {{ item.name }}</p>
+          <p>Cena: {{ item.unitPrice }}</p>
+          <p>Ilość: {{ item.quantity }}</p>
+        </div>
+        <p>Cena całkowita: {{ order.totalPrice }}</p>
+        <p>Całkowita ilość: {{ order.totalQuantity }}</p>
+        <button class="btn btn-primary">Dane adresowe</button>
+        <button class="btn btn-dark">Usuń dane zamówienia</button>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+  <div>
+    <ngb-pagination [(page)]="page"
+                    [pageSize]="size"
+                    [collectionSize]="totalElements"
+                    (pageChange)="getOrders()">
+    </ngb-pagination>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Ładuje dane..</p>
+</ng-template>
+<ng-template #unregistered>
+  <p>Niezalogowany użytkownik</p>
+</ng-template>

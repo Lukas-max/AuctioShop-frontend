@@ -5,7 +5,7 @@
 
   <div *ngIf="isAdminLoggedIn()">
     <button type="button" class="btn btn-success btn-add-product"
-            routerLink="/products/add">Dodaj produkt
+            [routerLink]="['/products', 'add']">Dodaj produkt
     </button>
     <hr>
   </div>
@@ -15,6 +15,7 @@
     <div class="col-sm-6 col-md-4 col-xl-3" *ngFor="let prod of products">
       <div class="product-box">
         <div>
+<!--          lub [routerLink]="['/products', prod.productId]"  -->
           <div class="pick-product" routerLink="/products/{{ prod.productId }}">
             <img src="data:image/jpeg;base64,{{prod.productImage}}" alt="obrazek produktu">
             <p class="product-name"> {{ prod.name }}</p>
@@ -30,8 +31,7 @@
           <br>
           <button type="button" class="btn btn-warning" style="color: white"
                   *ngIf="isAdminLoggedIn()"
-                  routerLink="/products/update/"  [state]="{ product: prod }">
-            Update
+                  routerLink="/products/update/" [state]="{ product: prod }">Update
           </button>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top">
-  <a class="navbar-brand" routerLink="/" data-toggle="collapse"
+  <a class="navbar-brand" [routerLink]="['/']" data-toggle="collapse"
      data-target=".navbar-collapse.show">AuctioShop</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarNavAltMarkup"
@@ -17,16 +17,28 @@
       </button>
     </form>
     <div class="navbar-nav ">
-      <a class="nav-item nav-link active" routerLink="/" data-toggle="collapse"
+      <a class="nav-item nav-link" [routerLink]="['/']" data-toggle="collapse"
          data-target=".navbar-collapse.show">Home</a>
       <a *ngIf="!isLoggedIn()" class="nav-item nav-link"
-         routerLink="/login"
+         [routerLink]="['/login']"
          data-toggle="collapse" data-target=".navbar-collapse.show">Zaloguj się</a>
       <a *ngIf="isLoggedIn()" class="nav-item nav-link"
-         (click)="jwtAuthLogout()" routerLink="/" data-toggle="collapse"
+         (click)="jwtAuthLogout()" [routerLink]="['/']" data-toggle="collapse"
          data-target=".navbar-collapse.show">Wyloguj się</a>
-      <a class="nav-item nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
-         routerLink="/info" >Info</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Opcje
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" data-toggle="collapse"
+             data-target=".navbar-collapse.show" [routerLink]="['/info']">Info</a>
+          <a class="dropdown-item" data-toggle="collapse"
+             data-target=".navbar-collapse.show" [routerLink]="['/users', 'details']">Użytkownicy</a>
+          <a class="dropdown-item" data-toggle="collapse"
+             data-target=".navbar-collapse.show" [routerLink]="['/users', 'orders']">Zamówienia</a>
+        </div>
+      </li>
     </div>
   </div>
   <app-cart-status></app-cart-status>
