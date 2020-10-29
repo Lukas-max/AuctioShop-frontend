@@ -71,7 +71,7 @@ Components:
  Components:
  - register
  - users
- - users-details
+ - user-details
  - order-details
  
  Services : `UsersService`
