@@ -70,9 +70,9 @@ Components:
  ### Users
  Components:
  - register
+ - users
  - users-details
  - order-details
- - users-orders
  
  Services : `UsersService`
  
