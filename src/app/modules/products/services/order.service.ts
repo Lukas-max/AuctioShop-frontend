@@ -23,6 +23,10 @@ export class OrderService {
     return this.http.get(`${API_URL}/${this.orderUrl}`, httpOptions)
   }
 
+  public getOrderById(id: number){
+    return this.http.get(`${API_URL}/${this.orderUrl}/${id}`)
+  }
+
   public postOrder(order: ClientOrder): Observable<ClientOrder>{
     return this.http.post<ClientOrder>(`${API_URL}/${this.orderUrl}`, order);
   }

@@ -1,0 +1,26 @@
+<div class="container prod-table center-details">
+  <div class="product-header">Zamówienie</div>
+  <div class="underline"></div>
+  <hr>
+
+  <div *ngIf="order else loading">
+    <p>Zamówienie numer: {{ order.orderId }}</p>
+    <p>Ilość całkowita: {{ order.totalQuantity }}</p>
+    <p>Cena całkowita: {{ order.totalPrice }}</p>
+    <p>Przedmioty: </p>
+    <div *ngFor="let item of order.cartItems">
+      <hr>
+      <p>Nazwa: {{ item.name }}</p>
+      <p>Ilość: {{ item.quantity }}</p>
+      <p>Cena: {{ item.unitPrice }} </p>
+    </div>
+    <div>
+      <p>Dane adresowe:</p>
+      <p>Imię: {{ order.customer.firstName }}</p>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Ładuje dane..</p>
+</ng-template>
