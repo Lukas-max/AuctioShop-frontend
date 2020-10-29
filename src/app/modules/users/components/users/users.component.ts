@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {OrderService} from '../../../products/services/order.service';
-import {ClientOrder} from '../../../products/model/clientOrder';
+import { ClientOrder } from '../../../products/model/clientOrder';
+import { OrderService } from '../../../products/services/order.service';
 
 @Component({
-  selector: 'app-users-orders',
-  templateUrl: './users-orders.component.html',
-  styleUrls: ['./users-orders.component.css']
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css']
 })
-export class UsersOrdersComponent implements OnInit {
+export class UsersComponent implements OnInit {
   orders: ClientOrder[];
   page: number;
   size: number;
@@ -22,7 +22,7 @@ export class UsersOrdersComponent implements OnInit {
   }
 
   public getOrders(){
-    this.orderService.getOrders(this.page - 1, this.size)
+    this.orderService.fetchOrders(this.page - 1, this.size)
       .subscribe(this.processResponse());
   }
 

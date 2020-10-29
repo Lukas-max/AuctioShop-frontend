@@ -15,8 +15,8 @@
         </div>
         <p>Cena całkowita: {{ order.totalPrice }}</p>
         <p>Całkowita ilość: {{ order.totalQuantity }}</p>
-        <button class="btn btn-primary">Dane adresowe</button>
-        <button class="btn btn-dark">Usuń dane zamówienia</button>
+        <button class="btn btn-primary" [routerLink]="['/users','orders', order.orderId]">Dane zamówienia</button>
+        <button class="btn btn-dark">Usuń zamówienie</button>
       </div>
       <hr>
     </div>
