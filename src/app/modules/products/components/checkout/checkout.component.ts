@@ -81,6 +81,12 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
+  private getUsername() {
+    if (this.jwtAuthenticationService.isLoggedIn() || this.jwtAuthenticationService.isAdminLoggedIn()){
+      this.username = this.jwtAuthenticationService.getAuthenticatedUser();
+    }
+  }
+
   private formatCart(){
     this.cartService.getCartItems()
       .forEach(i => this.cartItemDto.push(new CartItemDto(i)));
@@ -98,12 +104,6 @@ export class CheckoutComponent implements OnInit {
     this.customer.setApartmentNumber(this.apartmentNumber.value);
     this.customer.setPostalCode(this.postalCode.value);
     this.customer.setCity(this.city.value);
-  }
-
-  private getUsername() {
-    if (this.jwtAuthenticationService.isLoggedIn() || this.jwtAuthenticationService.isAdminLoggedIn()){
-      this.username = this.jwtAuthenticationService.getAuthenticatedUser();
-    }
   }
 
   private getOrder(): ClientOrder{

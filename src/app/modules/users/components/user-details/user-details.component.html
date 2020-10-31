@@ -9,7 +9,7 @@
         <p>{{ user.username }}</p>
         <p>{{ user.email }}</p>
         <p>{{ user.roles[0].role }}</p>
-        <button class="btn btn-primary">Dane zamówienia</button>
+        <button class="btn btn-primary" [routerLink]="['/user', 'orders', user.id]">Zamówienia</button>
       </div>
       <hr>
     </div>

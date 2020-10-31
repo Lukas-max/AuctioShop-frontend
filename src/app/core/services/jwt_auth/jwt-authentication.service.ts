@@ -8,6 +8,7 @@ import { AUTH_USER, TOKEN } from '../basic_auth/basic-authentication.service';
 
 export const JWT_AUTH_USER = 'jwtAuthUser';
 export const JWT_TOKEN = 'jwtToken';
+export const JWT_USER_ID = 'jwtUserId';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,7 @@ export class JwtAuthenticationService {
       }, { headers: header}).pipe(map(data => {
         sessionStorage.setItem(JWT_AUTH_USER, data.username);
         sessionStorage.setItem(JWT_TOKEN, data.jwt);
+        sessionStorage.setItem(JWT_USER_ID, data.userId.toString());
         this.roles = data.roles;
 
         return data;
@@ -36,6 +38,14 @@ export class JwtAuthenticationService {
 
   public getAuthenticatedUser(){
     return sessionStorage.getItem(JWT_AUTH_USER);
+  }
+
+  public getAuthenticatedUserId(){
+    let userId: number;
+    if (this.isLoggedIn()){
+      userId = +sessionStorage.getItem(JWT_USER_ID);
+    }
+    return userId;
   }
 
   public getAuthenticationToken(){
@@ -57,6 +67,7 @@ export class JwtAuthenticationService {
     this.roles = [];
     sessionStorage.removeItem(JWT_AUTH_USER);
     sessionStorage.removeItem(JWT_TOKEN);
+    sessionStorage.removeItem(JWT_USER_ID);
     // sessionStorage.clear();
   }
 }

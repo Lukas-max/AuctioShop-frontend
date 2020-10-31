@@ -13,7 +13,7 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
-  public getOrders(page: number, size: number){
+  public fetchOrders(page: number, size: number){
     const httpOptions = {
       params: {
         'page': page.toString(),
@@ -23,8 +23,12 @@ export class OrderService {
     return this.http.get(`${API_URL}/${this.orderUrl}`, httpOptions)
   }
 
-  public getOrderById(id: number){
+  public fetchOrderByOrderId(id: number){
     return this.http.get(`${API_URL}/${this.orderUrl}/${id}`)
+  }
+
+  public deleteOrderByOrderId(orderId: number){
+    return this.http.delete(`${API_URL}/${this.orderUrl}/${orderId}`);
   }
 
   public postOrder(order: ClientOrder): Observable<ClientOrder>{

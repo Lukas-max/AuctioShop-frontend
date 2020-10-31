@@ -8,7 +8,7 @@
     <p>Ilość całkowita: {{ order.totalQuantity }}</p>
     <p>Cena całkowita: {{ order.totalPrice }}</p>
     <p>Przedmioty: </p>
-    <div *ngFor="let item of order.cartItems">
+    <div *ngFor="let item of order.items">
       <hr>
       <p>Nazwa: {{ item.name }}</p>
       <p>Ilość: {{ item.quantity }}</p>
@@ -17,6 +17,14 @@
     <div>
       <p>Dane adresowe:</p>
       <p>Imię: {{ order.customer.firstName }}</p>
+      <p>Nazwisko: {{ order.customer.lastName }}</p>
+      <p>Email: {{ order.customer.email }}</p>
+      <p>Kraj: {{ order.customer.country }}</p>
+      <p>Ulica: {{ order.customer.street }}</p>
+      <p>Numer domu: {{ order.customer.houseNumber }}</p>
+      <p>Numer mieszkania: {{ order.customer.apartmentNumber }}</p>
+      <p>Kod pocztowy: {{ order.customer.postalCode }}</p>
+      <p>Miasto: {{ order.customer.city }}</p>
     </div>
   </div>
 </div>

@@ -5,13 +5,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationLoginGuard } from '../../core/services/can_activate/authentication-login.guard';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
-import { UsersComponent } from './components/users/users.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { SingleUserOrdersComponent } from './components/single-user-orders/single-user-orders.component';
 
 const routes: Routes = [
   { path: 'users/register', component: RegisterComponent, canActivate: [ AuthenticationLoginGuard ] },
-  { path: 'users/details', component: UserDetailsComponent },
-  { path: 'users/orders', component: UsersComponent },
-  { path: 'users/orders/:id', component: OrderDetailsComponent }
+  { path: 'user/details', component: UserDetailsComponent },
+  { path: 'user/orders/:user_id', component: SingleUserOrdersComponent },
+  { path: 'users/orders', component: OrdersComponent },
+  { path: 'users/orders/:order_id', component: OrderDetailsComponent }
 ];
 
 @NgModule({
@@ -19,7 +21,8 @@ const routes: Routes = [
     RegisterComponent,
     UserDetailsComponent,
     OrderDetailsComponent,
-    UsersComponent
+    OrdersComponent,
+    SingleUserOrdersComponent
   ],
   imports: [
     SharedModule,

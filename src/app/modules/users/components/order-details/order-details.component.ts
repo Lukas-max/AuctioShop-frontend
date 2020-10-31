@@ -16,14 +16,16 @@ export class OrderDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(() => this.getOrderById());
+    this.activatedRoute.paramMap.subscribe(() => {
+      this.getOrderByOrderId();
+    });
   }
 
-  public getOrderById(){
-    const check: boolean = this.activatedRoute.snapshot.paramMap.has('id');
+  public getOrderByOrderId(){
+    const check: boolean = this.activatedRoute.snapshot.paramMap.has('order_id');
     if (check){
-      const orderId = +this.activatedRoute.snapshot.paramMap.get('id');
-      this.orderService.getOrderById(orderId).subscribe(this.processResponse());
+      const orderId = +this.activatedRoute.snapshot.paramMap.get('order_id');
+      this.orderService.fetchOrderByOrderId(orderId).subscribe(this.processResponse());
     }
   }
 

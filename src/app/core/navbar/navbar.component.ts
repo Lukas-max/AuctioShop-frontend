@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {BasicAuthenticationService} from '../services/basic_auth/basic-authentication.service';
-import {JwtAuthenticationService} from '../services/jwt_auth/jwt-authentication.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BasicAuthenticationService } from '../services/basic_auth/basic-authentication.service';
+import { JwtAuthenticationService } from '../services/jwt_auth/jwt-authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,6 +21,10 @@ export class NavbarComponent implements OnInit {
   public search(input: string) {
     // this.route.navigateByUrl(`searchBar/${input}`);
     this.route.navigate(['searchBar', input]);
+  }
+
+  public getLoggedUserId(): number{
+    return this.jwtAuthenticationService.getAuthenticatedUserId();
   }
 
   public logout() {

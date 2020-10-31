@@ -1,15 +1,15 @@
 export class CustomerDto {
 
-  private firstName: string;
-  private lastName: string;
-  private telephone: number;
-  private email: string;
-  private country: string;
-  private street: string;
-  private houseNumber: number;
-  private apartmentNumber: number;
-  private postalCode: string;
-  private city: string;
+  public firstName: string;
+  public lastName: string;
+  public telephone: number;
+  public email: string;
+  public country: string;
+  public street: string;
+  public houseNumber: number;
+  public apartmentNumber: number;
+  public postalCode: string;
+  public city: string;
 
   constructor() {
   }
@@ -52,5 +52,9 @@ export class CustomerDto {
 
   public setCity(city: string){
     this.city = city;
+  }
+
+  public getFirstName(){
+    return this.firstName;
   }
 }

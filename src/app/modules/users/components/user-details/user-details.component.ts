@@ -20,9 +20,9 @@ export class UserDetailsComponent implements OnInit {
     this.size = 20;
     this.getUsers();
   }
-
+// api/users
   public getUsers(){
-    this.userService.getUsers(this.page - 1, this.size).subscribe(this.processResponse());
+    this.userService.fetchUsers(this.page - 1, this.size).subscribe(this.processResponse());
   }
 
   private processResponse(){

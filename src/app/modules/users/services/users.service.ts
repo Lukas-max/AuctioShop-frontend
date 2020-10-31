@@ -17,7 +17,7 @@ export class UsersService {
   }
 
   //get page of users:
-  public getUsers(page: number, size: number) {
+  public fetchUsers(page: number, size: number) {
     const httpOptions = {
       params: {
         'page': page.toString(),
@@ -25,6 +25,16 @@ export class UsersService {
       }
     }
     return this.http.get(`${API_URL}/${this.usersUrl}`, httpOptions);
+  }
+
+  public fetchUserOrders(page: number, size: number, id: number){
+    const httpOptions = {
+      params: {
+        'page': page.toString(),
+        'size': size.toString()
+      }
+    }
+    return this.http.get(`${API_URL}/${this.usersUrl}/${id}`, httpOptions)
   }
 
   // register user:

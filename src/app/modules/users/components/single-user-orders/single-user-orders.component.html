@@ -7,8 +7,8 @@
     <div *ngFor="let order of orders">
       <div>
         <p>Zamówienie numer: {{ order.orderId }}</p>
-        <p *ngIf="order.user else unregistered">Użytkownik: {{ order.user.username }}</p>
-        <div *ngFor="let item of order.cartItems">
+        <p *ngIf="order.user">Użytkownik: {{ order.user.username }}</p>
+        <div *ngFor="let item of order.items">
           <p>Produkt: {{ item.name }}</p>
           <p>Cena: {{ item.unitPrice }}</p>
           <p>Ilość: {{ item.quantity }}</p>
@@ -26,14 +26,11 @@
     <ngb-pagination [(page)]="page"
                     [pageSize]="size"
                     [collectionSize]="totalElements"
-                    (pageChange)="getOrders()">
+                    (pageChange)="getUserOrders()">
     </ngb-pagination>
   </div>
 </div>
 
 <ng-template #loading>
   <p>Ładuje dane..</p>
-</ng-template>
-<ng-template #unregistered>
-  <p>Niezalogowany użytkownik</p>
 </ng-template>
