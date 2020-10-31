@@ -56,11 +56,11 @@ export class ProductsComponent implements OnInit {
     if (hasProductCategoryId && hasProductCategoryName) {
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
       this.categoryName = this.route.snapshot.paramMap.get('name');
-      this.productService.getProductByCategoryId(
+      this.productService.fetchProductByCategoryId(
         this.currentCategoryId, this.pageNumber - 1, this.pageSize)
         .subscribe(this.processResponse());
     } else {
-      this.productService.getProducts(this.pageNumber - 1, this.pageSize)
+      this.productService.fetchProducts(this.pageNumber - 1, this.pageSize)
         .subscribe(this.processResponse());
     }
   }

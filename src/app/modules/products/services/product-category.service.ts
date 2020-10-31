@@ -12,7 +12,7 @@ export class ProductCategoryService {
   constructor(private http: HttpClient) { }
 
   // this is for searching for products using the sidebar categories
-  getCategories(): Observable<ProductCategory[]>{
+  fetchCategories(): Observable<ProductCategory[]>{
     return this.http.get<ProductCategory[]>(`${API_URL}/api/product_category`);
   }
 }

@@ -16,7 +16,7 @@ export class ProductService {
   }
 
   //get all products, with pagination:
-  public getProducts(pageNo: number, size: number): Observable<ResponseProduct[]> {
+  public fetchProducts(pageNo: number, size: number): Observable<ResponseProduct[]> {
     const httpOptions = {
       params: {
         'page': pageNo.toString(),
@@ -28,12 +28,12 @@ export class ProductService {
   }
 
   //get one product by its ID:
-  public getProductById(id: number): Observable<Product> {
+  public fetchProductById(id: number): Observable<Product> {
     return this.http.get<Product>(`${API_URL}/${this.productsUrl}/${id}`);
   }
 
   // this is used tp fetch products by their category using the categories in the sidebar
-  public getProductByCategoryId(categoryId: number, pageNo: number, size: number): Observable<Product[]> {
+  public fetchProductByCategoryId(categoryId: number, pageNo: number, size: number): Observable<Product[]> {
     const httpOptions = {
       params: {
         'categoryId': categoryId.toString() ,

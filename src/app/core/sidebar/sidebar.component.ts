@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
   }
 
   private getCategories(){
-    this.productCategoryService.getCategories().subscribe(categoryData => {
+    this.productCategoryService.fetchCategories().subscribe(categoryData => {
       this.categories = categoryData;
     });
   }
