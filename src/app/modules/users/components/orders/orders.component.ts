@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ClientOrder} from '../../../products/model/clientOrder';
 import {OrderService} from '../../../products/services/order.service';
 import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
+import {CartService} from '../../../products/services/cart.service';
 
 @Component({
   selector: 'app-orders',
@@ -16,12 +17,14 @@ export class OrdersComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private messageToastrService: MessageToastrService) { }
+    private messageToastrService: MessageToastrService,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     this.page = 1;
     this.size = 20;
     this.getOrders();
+    this.cartService.getCartFromStorage();
   }
 // api/order
   public getOrders(){

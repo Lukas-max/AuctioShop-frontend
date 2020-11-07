@@ -4,14 +4,42 @@
   <hr>
 
   <div *ngIf="users else loading">
-    <div *ngFor="let user of users">
-      <div>
-        <p>{{ user.username }}</p>
-        <p>{{ user.email }}</p>
-        <p>{{ user.roles[0].role }}</p>
+
+    <div *ngIf="screenWidth < 1050">
+      <div *ngFor="let user of users">
+        <p><span>Nazwa użytkownika: </span> {{ user.username }}</p>
+        <p><span>Email: </span> {{ user.email }}</p>
+        <p><span>Uprawnienia: </span>{{ user.roles[0].role }}</p>
         <button class="btn btn-primary" [routerLink]="['/user', 'orders', user.id]">Zamówienia</button>
+        <button class="btn btn-danger" (click)="deleteUser(user)">Usuń użytkownika</button>
+        <hr>
       </div>
-      <hr>
+    </div>
+
+    <div *ngIf="screenWidth >= 1050">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nazwa użytkownika</th>
+          <th>Email</th>
+          <th>Uprawnienia</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+          <td><span>{{ user.id }}</span></td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.roles[0].role }}</td>
+          <td><button class="btn btn-primary" [routerLink]="['/user', 'orders', user.id]">Zamówienia</button></td>
+          <td><button class="btn btn-danger" (click)="deleteUser(user)">Usuń</button></td>
+        </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 

@@ -37,6 +37,13 @@ export class UsersService {
     return this.http.get(`${API_URL}/${this.usersUrl}/${id}`, httpOptions)
   }
 
+  /**
+   * It will delete all user data. Customer orders and addresses.
+   */
+  public deleteUserByUserId(id: number){
+    return this.http.delete(`${API_URL}/${this.usersUrl}/${id}`)
+  }
+
   // register user:
   public createUser(user: User) {
     return this.http.post(`${API_URL}/${this.usersUrl}/register`, user)

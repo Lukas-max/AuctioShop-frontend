@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientOrder } from '../../../products/model/clientOrder';
 import { UsersService } from '../../services/users.service';
 import { ActivatedRoute } from '@angular/router';
+import {CartService} from '../../../products/services/cart.service';
 
 @Component({
   selector: 'app-single-user-orders',
@@ -16,11 +17,13 @@ export class SingleUserOrdersComponent implements OnInit {
 
   constructor(
     private userService: UsersService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     this.page = 1;
     this.size = 20;
+    this.cartService.getCartFromStorage();
     this.activatedRoute.paramMap.subscribe(() => {
       this.getUserOrders();
     });

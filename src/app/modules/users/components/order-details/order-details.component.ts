@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../../products/services/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { ClientOrder } from '../../../products/model/clientOrder';
+import {CartService} from '../../../products/services/cart.service';
 
 @Component({
   selector: 'app-order-details',
@@ -13,9 +14,11 @@ export class OrderDetailsComponent implements OnInit {
   order: ClientOrder;
   constructor(
     private orderService: OrderService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.cartService.getCartFromStorage();
     this.activatedRoute.paramMap.subscribe(() => {
       this.getOrderByOrderId();
     });
