@@ -4,28 +4,15 @@
   <hr>
 
   <div *ngIf="order else loading">
-    <p>Order number: {{ order.orderId }}</p>
-    <p>Total quantity: {{ order.totalQuantity }}</p>
-    <p>Total price: {{ order.totalPrice }}</p>
-    <p>Items: </p>
-    <div *ngFor="let item of order.cartItems">
-      <hr>
-      <p>Nazwa: {{ item.name }}</p>
-      <p>Ilość: {{ item.quantity }}</p>
-      <p>Cena: {{ item.unitPrice }} </p>
-    </div>
-    <div>
-      <p>Address:</p>
-      <p>Firstname: {{ order.customer.firstName }}</p>
-      <p>LastName: {{ order.customer.lastName }}</p>
-      <p>Email: {{ order.customer.email }}</p>
-      <p>Country: {{ order.customer.country }}</p>
-      <p>Street: {{ order.customer.street }}</p>
-      <p>Home number: {{ order.customer.houseNumber }}</p>
-      <p>Apartment number: {{ order.customer.apartmentNumber }}</p>
-      <p>Postal Code: {{ order.customer.postalCode }}</p>
-      <p>City: {{ order.customer.city }}</p>
-    </div>
+      <p>Firstname: <span>{{ order.customer.firstName }}</span></p>
+      <p>LastName: <span>{{ order.customer.lastName }}</span></p>
+      <p>Email: <span>{{ order.customer.email }}</span></p>
+      <p>Country: <span>{{ order.customer.country }}</span></p>
+      <p>Street: <span>{{ order.customer.street }}</span></p>
+      <p>Home number: <span>{{ order.customer.houseNumber }}</span></p>
+      <p>Apartment number: <span>{{ order.customer.apartmentNumber }}</span></p>
+      <p>Postal Code: <span>{{ order.customer.postalCode }}</span></p>
+      <p>City: <span>{{ order.customer.city }}</span></p>
   </div>
 
   <div>

@@ -54,6 +54,10 @@ export class CheckoutComponent implements OnInit {
       })
     });
 
+    this.uploadCartInfo();
+  }
+
+  private uploadCartInfo(){
     this.cartService.totalPrice.subscribe(data => this.totalPrice = data);
     this.cartService.totalQuantity.subscribe(data => this.totalQuantity = data);
     this.cartService.computeTotals();
@@ -73,10 +77,10 @@ export class CheckoutComponent implements OnInit {
     this.formatCustomer();
     const order = this.getOrder();
 
-    this.orderService.postOrder(order).subscribe(data => {
+    this.orderService.postOrder(order).subscribe(() => {
       this.checkoutFormGroup.reset();
       this.cartService.clearCart();
-      this.route.navigateByUrl(`purchase/${data.orderId}`);
+      this.route.navigate(['/']);
       this.messageToastrService.success('Przyjęto zamówienie.');
     });
   }
