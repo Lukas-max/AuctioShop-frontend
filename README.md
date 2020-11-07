@@ -35,11 +35,8 @@ Step 4: Run `npm install` and its ready to go.
 - [x] User registration with double password validation and username and email validation against the database
 - [x] Reactive and Template driven forms with validation
 
-## Endopoints
+## Endopoints and Angular
 AuctioShop uses endpoints that are documented in the backend part of the app. For more info go [there](https://github.com/Lukas-max/shop-backend).
-The only difference are endpoints:
-`GET` `/api/order/{id}` and `GET` `/api/order` 
-which there is no component to serve this requests and you'll need to manualy write them in the browser. :shit:
 
 ## Structure
 ```
