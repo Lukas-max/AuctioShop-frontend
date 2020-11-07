@@ -70,9 +70,11 @@ Components:
  ### Users
  Components:
  - register
- - users
- - user-details
- - order-details
+ - items-purchased
+ - orders (show all orders, [only admin])
+ - order-details (show customer address)
+ - user-details (show all users, [only admin])
+ - single-user-order (show orders of a user [for registered users])
  
  Services : `UsersService`
  
