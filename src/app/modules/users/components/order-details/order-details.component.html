@@ -1,34 +1,38 @@
 <div class="container prod-table center-details">
-  <div class="product-header">Zamówienie</div>
+  <div class="product-header">Address</div>
   <div class="underline"></div>
   <hr>
 
   <div *ngIf="order else loading">
-    <p>Zamówienie numer: {{ order.orderId }}</p>
-    <p>Ilość całkowita: {{ order.totalQuantity }}</p>
-    <p>Cena całkowita: {{ order.totalPrice }}</p>
-    <p>Przedmioty: </p>
-    <div *ngFor="let item of order.items">
+    <p>Order number: {{ order.orderId }}</p>
+    <p>Total quantity: {{ order.totalQuantity }}</p>
+    <p>Total price: {{ order.totalPrice }}</p>
+    <p>Items: </p>
+    <div *ngFor="let item of order.cartItems">
       <hr>
       <p>Nazwa: {{ item.name }}</p>
       <p>Ilość: {{ item.quantity }}</p>
       <p>Cena: {{ item.unitPrice }} </p>
     </div>
     <div>
-      <p>Dane adresowe:</p>
-      <p>Imię: {{ order.customer.firstName }}</p>
-      <p>Nazwisko: {{ order.customer.lastName }}</p>
+      <p>Address:</p>
+      <p>Firstname: {{ order.customer.firstName }}</p>
+      <p>LastName: {{ order.customer.lastName }}</p>
       <p>Email: {{ order.customer.email }}</p>
-      <p>Kraj: {{ order.customer.country }}</p>
-      <p>Ulica: {{ order.customer.street }}</p>
-      <p>Numer domu: {{ order.customer.houseNumber }}</p>
-      <p>Numer mieszkania: {{ order.customer.apartmentNumber }}</p>
-      <p>Kod pocztowy: {{ order.customer.postalCode }}</p>
-      <p>Miasto: {{ order.customer.city }}</p>
+      <p>Country: {{ order.customer.country }}</p>
+      <p>Street: {{ order.customer.street }}</p>
+      <p>Home number: {{ order.customer.houseNumber }}</p>
+      <p>Apartment number: {{ order.customer.apartmentNumber }}</p>
+      <p>Postal Code: {{ order.customer.postalCode }}</p>
+      <p>City: {{ order.customer.city }}</p>
     </div>
+  </div>
+
+  <div>
+    <button class="btn btn-primary back-button" (click)="goBack()">Go back</button>
   </div>
 </div>
 
 <ng-template #loading>
-  <p>Ładuje dane..</p>
+  <p>Loading data..</p>
 </ng-template>

@@ -8,7 +8,7 @@
       <div>
         <p>Zamówienie numer: {{ order.orderId }}</p>
         <p *ngIf="order.user else unregistered">Użytkownik: {{ order.user.username }}</p>
-        <div *ngFor="let item of order.items">
+        <div *ngFor="let item of order.cartItems">
           <p>Produkt: {{ item.name }}</p>
           <p>Cena: {{ item.unitPrice }}</p>
           <p>Ilość: {{ item.quantity }}</p>

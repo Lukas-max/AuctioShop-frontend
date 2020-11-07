@@ -3,6 +3,7 @@ import { OrderService } from '../../../products/services/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { ClientOrder } from '../../../products/model/clientOrder';
 import {CartService} from '../../../products/services/cart.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-order-details',
@@ -15,7 +16,8 @@ export class OrderDetailsComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private activatedRoute: ActivatedRoute,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.cartService.getCartFromStorage();
@@ -36,5 +38,9 @@ export class OrderDetailsComponent implements OnInit {
     return order => {
       this.order = order;
     };
+  }
+
+  public goBack(){
+    this.location.back();
   }
 }

@@ -3,6 +3,7 @@ import { ClientOrder } from '../../../products/model/clientOrder';
 import { UsersService } from '../../services/users.service';
 import { ActivatedRoute } from '@angular/router';
 import {CartService} from '../../../products/services/cart.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-single-user-orders',
@@ -18,7 +19,8 @@ export class SingleUserOrdersComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private activatedRoute: ActivatedRoute,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.page = 1;
@@ -44,5 +46,9 @@ export class SingleUserOrdersComponent implements OnInit {
       this.totalElements = userOrders.totalElements;
       this.orders = userOrders.content;
     };
+  }
+
+  public goBack(){
+    this.location.back();
   }
 }

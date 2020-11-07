@@ -3,6 +3,7 @@ import { UsersService } from '../../services/users.service';
 import { User } from '../../model/user';
 import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
 import {CartService} from '../../../products/services/cart.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-details',
@@ -19,7 +20,8 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private messageToastrService: MessageToastrService,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.page = 1;
@@ -50,5 +52,9 @@ export class UserDetailsComponent implements OnInit {
       this.getUsers();
       this.messageToastrService.success('Pomyślnie usunięto użytkownika u mumerze: ' + id);
     });
+  }
+
+  public goBack(){
+    this.location.back();
   }
 }

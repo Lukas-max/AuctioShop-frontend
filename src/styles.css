@@ -222,6 +222,10 @@ header {
   box-shadow: 5px 0 10px black;
 }
 
+.back-button {
+  margin-bottom: 20px;
+}
+
 @media (min-width: 576px) {
   .prod-table {
     top: 150%;

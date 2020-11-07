@@ -5,7 +5,7 @@ import {User} from '../../users/model/user';
 export class ClientOrder {
 
   constructor(
-    public items: CartItemDto[],
+    public cartItems: CartItemDto[],
     public customer: CustomerDto,
     public totalPrice: number,
     public totalQuantity: number,

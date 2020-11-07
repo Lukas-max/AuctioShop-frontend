@@ -44,6 +44,10 @@
   </div>
 
   <div>
+    <button class="btn btn-primary back-button" (click)="goBack()">Go back</button>
+  </div>
+
+  <div>
     <ngb-pagination [(page)]="page"
                     [pageSize]="size"
                     [collectionSize]="totalElements"

@@ -7,13 +7,15 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { SingleUserOrdersComponent } from './components/single-user-orders/single-user-orders.component';
+import { ItemsPurchasedComponent } from './components/items-purchased/items-purchased.component';
 
 const routes: Routes = [
   { path: 'users/register', component: RegisterComponent, canActivate: [ AuthenticationLoginGuard ] },
   { path: 'user/details', component: UserDetailsComponent },
   { path: 'user/orders/:user_id', component: SingleUserOrdersComponent },
   { path: 'users/orders', component: OrdersComponent },
-  { path: 'users/orders/:order_id', component: OrderDetailsComponent }
+  { path: 'users/orders/:order_id', component: OrderDetailsComponent },
+  { path: 'order_purchase', component: ItemsPurchasedComponent }
 ];
 
 @NgModule({
@@ -22,7 +24,8 @@ const routes: Routes = [
     UserDetailsComponent,
     OrderDetailsComponent,
     OrdersComponent,
-    SingleUserOrdersComponent
+    SingleUserOrdersComponent,
+    ItemsPurchasedComponent
   ],
   imports: [
     SharedModule,

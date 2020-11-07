@@ -1,24 +1,24 @@
 <div class="container prod-table center-details">
-  <div class="product-header">Zamówienia</div>
+  <div class="product-header">Orders</div>
   <div class="underline"></div>
   <hr>
 
   <div *ngIf="orders else loading">
     <div *ngFor="let order of orders">
       <div>
-        <p>Zamówienie numer: {{ order.orderId }}</p>
-        <p *ngIf="order.user">Użytkownik: {{ order.user.username }}</p>
-        <div *ngFor="let item of order.items">
-          <p>Produkt: {{ item.name }}</p>
-          <p>Cena: {{ item.unitPrice }}</p>
-          <p>Ilość: {{ item.quantity }}</p>
-        </div>
-        <p>Cena całkowita: {{ order.totalPrice }}</p>
-        <p>Całkowita ilość: {{ order.totalQuantity }}</p>
-        <button class="btn btn-primary" [routerLink]="['/users','orders', order.orderId]">Dane zamówienia</button>
+        <p>Order number: {{ order.orderId }}</p>
+        <p *ngIf="order.user">User: {{ order.user.username }}</p>
+        <p>Total Price: <span>{{ order.totalPrice }}</span> PLN</p>
+        <p>Total Quantity: <span>{{ order.totalQuantity }}</span></p>
+        <button class="btn btn-primary page-button" [routerLink]="['/users','orders', order.orderId]">Address</button>
+        <button class="btn btn-primary" [routerLink]="['/order_purchase']" [state]="{ order: order }">Items</button>
       </div>
       <hr>
     </div>
+  </div>
+
+  <div>
+    <button class="btn btn-primary back-button" (click)="goBack()">Go back</button>
   </div>
 
   <div>
@@ -31,5 +31,5 @@
 </div>
 
 <ng-template #loading>
-  <p>Ładuje dane..</p>
+  <p>Loading data..</p>
 </ng-template>
