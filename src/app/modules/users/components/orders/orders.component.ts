@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientOrder} from '../../../products/model/clientOrder';
-import {OrderService} from '../../../products/services/order.service';
-import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
-import {CartService} from '../../../products/services/cart.service';
+import { ClientOrder } from '../../../products/model/clientOrder';
+import { OrderService } from '../../../products/services/order.service';
+import { MessageToastrService } from '../../../../core/services/toastr/message-toastr.service';
+import { CartService } from '../../../products/services/cart.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-orders',
@@ -14,11 +15,13 @@ export class OrdersComponent implements OnInit {
   page: number;
   size: number;
   totalElements: number;
+  public screenWidth = window.innerWidth;
 
   constructor(
     private orderService: OrderService,
     private messageToastrService: MessageToastrService,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.page = 1;
@@ -40,11 +43,15 @@ export class OrdersComponent implements OnInit {
   }
 
   public deleteOrderById(orderId: number){
-    if (confirm('Czy chcesz usunąć zamówienie numer: ' + orderId + '?')){
+    if (confirm('Do you want to delete order number: ' + orderId + '?')){
     this.orderService.deleteOrderByOrderId(orderId).subscribe(() => {
       this.getOrders();
-      this.messageToastrService.success('Pomyślnie usunięto zamówienie numer: ' + orderId);
+      this.messageToastrService.success('Erased order number: ' + orderId);
     });
     }
+  }
+
+  public goBack(){
+    this.location.back();
   }
 }

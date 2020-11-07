@@ -16,35 +16,41 @@
       </div>
     </div>
 
-    <div *ngIf="screenWidth >= 1050">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Id</th>
-          <th>Nazwa użytkownika</th>
-          <th>Email</th>
-          <th>Uprawnienia</th>
-          <th></th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let user of users">
-          <td><span>{{ user.id }}</span></td>
-          <td>{{ user.username }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.roles[0].role }}</td>
-          <td><button class="btn btn-primary" [routerLink]="['/user', 'orders', user.id]">Zamówienia</button></td>
-          <td><button class="btn btn-danger" (click)="deleteUser(user)">Usuń</button></td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="table-responsive">
+      <div *ngIf="screenWidth >= 1050">
+        <table class="table">
+          <thead class="table-info">
+          <tr>
+            <th>Id</th>
+            <th>Nazwa użytkownika</th>
+            <th>Email</th>
+            <th>Uprawnienia</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users">
+            <td class="table-info"><span>{{ user.id }}</span></td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.roles[0].role }}</td>
+            <td>
+              <button class="btn btn-primary" [routerLink]="['/user', 'orders', user.id]">Zamówienia</button>
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteUser(user)">Usuń</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
     </div>
   </div>
 
   <div>
-    <button class="btn btn-primary back-button" (click)="goBack()">Go back</button>
+    <button class="btn btn-primary button-spacing" (click)="goBack()">Go back</button>
   </div>
 
   <div>

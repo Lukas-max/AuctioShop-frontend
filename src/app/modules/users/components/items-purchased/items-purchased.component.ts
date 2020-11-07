@@ -17,12 +17,16 @@ export class ItemsPurchasedComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit(): void {
+    this.getClientOrder();
+  }
+
+  private getClientOrder(){
     this.activatedRoute
       .paramMap
       .pipe(map(() => window.history.state.order))
       .subscribe(data => {
-      this.order = data;
-    });
+        this.order = data;
+      });
   }
 
   public goBack(){

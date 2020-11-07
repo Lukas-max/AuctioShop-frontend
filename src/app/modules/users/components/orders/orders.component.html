@@ -1,25 +1,56 @@
 <div class="container prod-table center-details">
-  <div class="product-header">Zamówienia</div>
+  <div class="product-header">Orders</div>
   <div class="underline"></div>
   <hr>
 
   <div *ngIf="orders else loading">
+
     <div *ngFor="let order of orders">
-      <div>
-        <p>Zamówienie numer: {{ order.orderId }}</p>
-        <p *ngIf="order.user else unregistered">Użytkownik: {{ order.user.username }}</p>
+      <div *ngIf="screenWidth < 420">
+        <p>Order number: {{ order.orderId }}</p>
+        <p *ngIf="order.user else unregistered">User: <span>{{ order.user.username }}</span></p>
         <div *ngFor="let item of order.cartItems">
-          <p>Produkt: {{ item.name }}</p>
-          <p>Cena: {{ item.unitPrice }}</p>
-          <p>Ilość: {{ item.quantity }}</p>
+          <p>Product: <span>{{ item.name }}</span></p>
+          <p>Price: {{ item.unitPrice }}</p>
+          <p>Quantity: {{ item.quantity }}</p>
         </div>
-        <p>Cena całkowita: {{ order.totalPrice }}</p>
-        <p>Całkowita ilość: {{ order.totalQuantity }}</p>
-        <button class="btn btn-primary" [routerLink]="['/users','orders', order.orderId]">Dane zamówienia</button>
-        <button class="btn btn-dark" (click)="deleteOrderById(order.orderId)">Usuń zamówienie</button>
+        <p>Total price: <span>{{ order.totalPrice }}</span></p>
+        <p>Total quantity: <span>{{ order.totalQuantity }}</span></p>
+        <button class="btn btn-primary button-spacing" [routerLink]="['/users','orders', order.orderId]">Address</button>
+        <button class="btn btn-dark button-spacing" (click)="deleteOrderById(order.orderId)">Delete</button>
+        <button class="btn btn-secondary button-spacing" (click)="goBack()">Page back</button>
       </div>
-      <hr>
     </div>
+
+
+    <div *ngIf="screenWidth >= 420">
+      <div *ngFor="let order of orders">
+        <p>Order number: {{ order.orderId }}</p>
+        <p *ngIf="order.user else unregistered">User: <span>{{ order.user.username }}</span></p>
+        <table class="table table-info table-bordered">
+          <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of order.cartItems">
+            <td>{{ item.name }}</td>
+            <td>{{ item.unitPrice }}</td>
+            <td>{{ item.quantity }}</td>
+          </tr>
+          </tbody>
+        </table>
+        <p>Total price: <span>{{ order.totalPrice }}</span></p>
+        <p>Total quantity: <span>{{ order.totalQuantity }}</span></p>
+        <button class="btn btn-primary button-spacing" [routerLink]="['/users','orders', order.orderId]">Address</button>
+        <button class="btn btn-dark button-spacing" (click)="deleteOrderById(order.orderId)">Delete</button>
+        <button class="btn btn-secondary button-spacing" (click)="goBack()">Page back</button>
+      </div>
+    </div>
+
   </div>
 
   <div>
@@ -32,8 +63,8 @@
 </div>
 
 <ng-template #loading>
-  <p>Ładuje dane..</p>
+  <p>Loading data..</p>
 </ng-template>
 <ng-template #unregistered>
-  <p>Niezalogowany użytkownik</p>
+  <p><span>Not registered user</span></p>
 </ng-template>
