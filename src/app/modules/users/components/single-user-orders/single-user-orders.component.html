@@ -4,17 +4,46 @@
   <hr>
 
   <div *ngIf="orders else loading">
-    <div *ngFor="let order of orders">
-      <div>
+
+    <div *ngIf="screenWidth < 420">
+      <div *ngFor="let order of orders">
         <p>Order number: {{ order.orderId }}</p>
-        <p *ngIf="order.user">User: {{ order.user.username }}</p>
+        <p *ngIf="order.user">User: <span>{{ order.user.username }}</span></p>
         <p>Total Price: <span>{{ order.totalPrice }}</span> PLN</p>
         <p>Total Quantity: <span>{{ order.totalQuantity }}</span></p>
         <button class="btn btn-primary page-button" [routerLink]="['/users','orders', order.orderId]">Address</button>
         <button class="btn btn-primary" [routerLink]="['/order_purchase']" [state]="{ order: order }">Items</button>
+        <hr>
       </div>
-      <hr>
     </div>
+
+    <div *ngIf="screenWidth >= 420">
+      <div *ngFor="let order of orders">
+        <p>Order number: {{ order.orderId }}</p>
+        <p *ngIf="order.user">User: <span>{{ order.user.username }}</span></p>
+        <table class="table table-info table-bordered">
+          <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of order.cartItems">
+            <td>{{ item.name }}</td>
+            <td>{{ item.unitPrice }}</td>
+            <td>{{ item.quantity }}</td>
+          </tr>
+          </tbody>
+        </table>
+        <p>Total Price: <span>{{ order.totalPrice }}</span> PLN</p>
+        <p>Total Quantity: <span>{{ order.totalQuantity }}</span></p>
+        <button class="btn btn-primary page-button" [routerLink]="['/users','orders', order.orderId]">Address</button>
+        <hr>
+      </div>
+    </div>
+
   </div>
 
   <div>

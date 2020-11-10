@@ -15,6 +15,7 @@ export class SingleUserOrdersComponent implements OnInit {
   page: number;
   size: number;
   totalElements: number;
+  public screenWidth: number = window.innerWidth;
 
   constructor(
     private userService: UsersService,

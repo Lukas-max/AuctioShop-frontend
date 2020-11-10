@@ -5,8 +5,8 @@
 
   <div *ngIf="orders else loading">
 
-    <div *ngFor="let order of orders">
-      <div *ngIf="screenWidth < 420">
+    <div *ngIf="screenWidth < 420">
+      <div  *ngFor="let order of orders">
         <p>Order number: {{ order.orderId }}</p>
         <p *ngIf="order.user else unregistered">User: <span>{{ order.user.username }}</span></p>
         <div *ngFor="let item of order.cartItems">
@@ -48,6 +48,7 @@
         <button class="btn btn-primary button-spacing" [routerLink]="['/users','orders', order.orderId]">Address</button>
         <button class="btn btn-dark button-spacing" (click)="deleteOrderById(order.orderId)">Delete</button>
         <button class="btn btn-secondary button-spacing" (click)="goBack()">Page back</button>
+        <hr>
       </div>
     </div>
 
