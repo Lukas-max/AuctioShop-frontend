@@ -15,7 +15,7 @@ export class UserDetailsComponent implements OnInit {
   page: number;
   size: number;
   totalElements: number;
-  public screenWidth = window.innerWidth;
+  screenWidth = window.innerWidth;
 
   constructor(
     private userService: UsersService,

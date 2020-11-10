@@ -34,11 +34,13 @@
           <a class="dropdown-item" data-toggle="collapse"
              data-target=".navbar-collapse.show" [routerLink]="['/info']">Info</a>
           <a class="dropdown-item" data-toggle="collapse"
-             data-target=".navbar-collapse.show" [routerLink]="['/user', 'details']">Użytkownicy</a>
+             data-target=".navbar-collapse.show" *ngIf="isAdminLogged()"
+             [routerLink]="['/user', 'details']">Użytkownicy</a>
+          <a class="dropdown-item" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="isLoggedIn()"
+             [routerLink]="['/user', 'orders', getLoggedUserId()]">Twoje zamówienia</a>
           <a class="dropdown-item" data-toggle="collapse"
-             data-target=".navbar-collapse.show" [routerLink]="['/user', 'orders', getLoggedUserId()]">Twoje zamówienia</a>
-          <a class="dropdown-item" data-toggle="collapse"
-             data-target=".navbar-collapse.show" [routerLink]="['/users', 'orders']">Zamówienia</a>
+             data-target=".navbar-collapse.show" *ngIf="isAdminLogged()"
+             [routerLink]="['/users', 'orders']">Zamówienia</a>
         </div>
       </li>
     </div>

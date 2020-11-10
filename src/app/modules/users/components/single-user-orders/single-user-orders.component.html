@@ -11,8 +11,19 @@
         <p *ngIf="order.user">User: <span>{{ order.user.username }}</span></p>
         <p>Total Price: <span>{{ order.totalPrice }}</span> PLN</p>
         <p>Total Quantity: <span>{{ order.totalQuantity }}</span></p>
-        <button class="btn btn-primary page-button" [routerLink]="['/users','orders', order.orderId]">Address</button>
+        <button class="btn btn-primary page-button" (click)="showAddress()">Address</button>
         <button class="btn btn-primary" [routerLink]="['/order_purchase']" [state]="{ order: order }">Items</button>
+        <div *ngIf="isShown">
+          <p>Firstname: <span>{{ order.customer.firstName }}</span></p>
+          <p>LastName: <span>{{ order.customer.lastName }}</span></p>
+          <p>Email: <span>{{ order.customer.email }}</span></p>
+          <p>Country: <span>{{ order.customer.country }}</span></p>
+          <p>Street: <span>{{ order.customer.street }}</span></p>
+          <p>Home number: <span>{{ order.customer.houseNumber }}</span></p>
+          <p>Apartment number: <span>{{ order.customer.apartmentNumber }}</span></p>
+          <p>Postal Code: <span>{{ order.customer.postalCode }}</span></p>
+          <p>City: <span>{{ order.customer.city }}</span></p>
+        </div>
         <hr>
       </div>
     </div>
@@ -39,7 +50,18 @@
         </table>
         <p>Total Price: <span>{{ order.totalPrice }}</span> PLN</p>
         <p>Total Quantity: <span>{{ order.totalQuantity }}</span></p>
-        <button class="btn btn-primary page-button" [routerLink]="['/users','orders', order.orderId]">Address</button>
+        <button class="btn btn-primary page-button" (click)="showAddress()">Address</button>
+        <div *ngIf="isShown">
+          <p>Firstname: <span>{{ order.customer.firstName }}</span></p>
+          <p>LastName: <span>{{ order.customer.lastName }}</span></p>
+          <p>Email: <span>{{ order.customer.email }}</span></p>
+          <p>Country: <span>{{ order.customer.country }}</span></p>
+          <p>Street: <span>{{ order.customer.street }}</span></p>
+          <p>Home number: <span>{{ order.customer.houseNumber }}</span></p>
+          <p>Apartment number: <span>{{ order.customer.apartmentNumber }}</span></p>
+          <p>Postal Code: <span>{{ order.customer.postalCode }}</span></p>
+          <p>City: <span>{{ order.customer.city }}</span></p>
+        </div>
         <hr>
       </div>
     </div>

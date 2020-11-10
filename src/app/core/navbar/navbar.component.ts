@@ -38,4 +38,8 @@ export class NavbarComponent implements OnInit {
   public isLoggedIn(): boolean {
     return this.jwtAuthenticationService.isLoggedIn();
   }
+
+  public isAdminLogged(): boolean {
+    return this.jwtAuthenticationService.isAdminLoggedIn();
+  }
 }

@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit {
   page: number;
   size: number;
   totalElements: number;
-  public screenWidth: number = window.innerWidth;
+  screenWidth: number = window.innerWidth;
 
   constructor(
     private orderService: OrderService,

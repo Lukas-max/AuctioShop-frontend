@@ -15,7 +15,8 @@ export class SingleUserOrdersComponent implements OnInit {
   page: number;
   size: number;
   totalElements: number;
-  public screenWidth: number = window.innerWidth;
+  isShown = false;
+  screenWidth: number = window.innerWidth;
 
   constructor(
     private userService: UsersService,
@@ -51,5 +52,9 @@ export class SingleUserOrdersComponent implements OnInit {
 
   public goBack(){
     this.location.back();
+  }
+
+  public showAddress(){
+    this.isShown = !this.isShown;
   }
 }
