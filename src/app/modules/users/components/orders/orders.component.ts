@@ -43,10 +43,10 @@ export class OrdersComponent implements OnInit {
   }
 
   public deleteOrderById(orderId: number){
-    if (confirm('Do you want to delete order number: ' + orderId + '?')){
+    if (confirm('Chcesz usunąć zamówienie numer: ' + orderId + '?')){
     this.orderService.deleteOrderByOrderId(orderId).subscribe(() => {
       this.getOrders();
-      this.messageToastrService.success('Erased order number: ' + orderId);
+      this.messageToastrService.success('Usunięto zamówienie numer: ' + orderId);
     });
     }
   }

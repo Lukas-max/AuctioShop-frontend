@@ -4,7 +4,7 @@ import { User } from '../model/user';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from '../../../app.consts';
 import { catchError } from 'rxjs/operators';
-import {  throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 
 
 @Injectable({
@@ -12,7 +12,7 @@ import {  throwError } from 'rxjs';
 })
 export class UsersService {
 
-  private usersUrl = 'api/users';
+  private usersUrl: string = 'api/users';
   constructor(private http: HttpClient) {
   }
 

@@ -9,13 +9,13 @@ import { AUTH_USER, TOKEN } from '../basic_auth/basic-authentication.service';
 export const JWT_AUTH_USER = 'jwtAuthUser';
 export const JWT_TOKEN = 'jwtToken';
 export const JWT_USER_ID = 'jwtUserId';
+export const JWT_USER_ROLES = 'jwtUserRoles';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtAuthenticationService {
 
-  private roles: string[] = [];
   constructor(private http: HttpClient) {
   }
 
@@ -30,7 +30,7 @@ export class JwtAuthenticationService {
         sessionStorage.setItem(JWT_AUTH_USER, data.username);
         sessionStorage.setItem(JWT_TOKEN, data.jwt);
         sessionStorage.setItem(JWT_USER_ID, data.userId.toString());
-        this.roles = data.roles;
+        sessionStorage.setItem(JWT_USER_ROLES, data.roles.toString());
 
         return data;
     }));
@@ -60,14 +60,15 @@ export class JwtAuthenticationService {
   }
 
   public isAdminLoggedIn(){
-    return !!this.roles.find(role => role === 'ROLE_ADMIN');
+    const role = sessionStorage.getItem(JWT_USER_ROLES);
+    return role === 'ROLE_ADMIN';
   }
 
   public logout(){
-    this.roles = [];
     sessionStorage.removeItem(JWT_AUTH_USER);
     sessionStorage.removeItem(JWT_TOKEN);
     sessionStorage.removeItem(JWT_USER_ID);
+    sessionStorage.removeItem(JWT_USER_ROLES);
     // sessionStorage.clear();
   }
 }

@@ -1,25 +1,25 @@
 <div class="container prod-table center-details">
-  <div class="product-header">Address</div>
+  <div class="product-header">Adres</div>
   <div class="underline"></div>
   <hr>
 
   <div *ngIf="order else loading">
-      <p>Firstname: <span>{{ order.customer.firstName }}</span></p>
-      <p>LastName: <span>{{ order.customer.lastName }}</span></p>
+      <p>Imię: <span>{{ order.customer.firstName }}</span></p>
+      <p>Nazwisko: <span>{{ order.customer.lastName }}</span></p>
       <p>Email: <span>{{ order.customer.email }}</span></p>
-      <p>Country: <span>{{ order.customer.country }}</span></p>
-      <p>Street: <span>{{ order.customer.street }}</span></p>
-      <p>Home number: <span>{{ order.customer.houseNumber }}</span></p>
-      <p>Apartment number: <span>{{ order.customer.apartmentNumber }}</span></p>
-      <p>Postal Code: <span>{{ order.customer.postalCode }}</span></p>
-      <p>City: <span>{{ order.customer.city }}</span></p>
+      <p>Kraj: <span>{{ order.customer.country }}</span></p>
+      <p>Ulica: <span>{{ order.customer.street }}</span></p>
+      <p>Numer domu: <span>{{ order.customer.houseNumber }}</span></p>
+      <p>Numer mieszkania: <span>{{ order.customer.apartmentNumber }}</span></p>
+      <p>Kod pocztowy: <span>{{ order.customer.postalCode }}</span></p>
+      <p>Miasto: <span>{{ order.customer.city }}</span></p>
   </div>
 
   <div>
-    <button class="btn btn-primary button-spacing" (click)="goBack()">Go back</button>
+    <button class="btn btn-primary button-spacing" (click)="goBack()">Wróć</button>
   </div>
 </div>
 
 <ng-template #loading>
-  <p>Loading data..</p>
+  <p>Wczytuję dane..</p>
 </ng-template>

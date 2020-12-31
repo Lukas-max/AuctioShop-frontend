@@ -1,5 +1,10 @@
 @import '~ngx-toastr/toastr';
 
+:root {
+  --main-color: blueviolet;
+  --text: lime;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -16,25 +21,25 @@ body {
 /* NAVBAR */
 
 .navbar .form-control {
-  width: 13.5rem;
+  width: 10.5rem;
 }
 
 .navbar {
-  background-color: blueviolet;
+  background-color: var(--main-color);
 }
 
 nav a, .btn {
-  color: lime;
+  color: var(--text);
 }
 
 nav .btn {
-  border: 2px solid lime;
+  border: 2px solid var(--text);
 }
 
 nav i {
   padding: 10px 15px;
   font-size: 30px;
-  color: lime;
+  color: var(--text);
   border-radius: 5px;
 }
 
@@ -74,7 +79,7 @@ nav a:hover {
 
 }
 
-@media (min-width: 1175px) {
+@media (min-width: 1185px) {
 .navbar-nav {
   margin-left: 5%;
 }
@@ -112,13 +117,13 @@ nav a:hover {
   margin-left: 5px;
   margin-right: 5px;
   height: 37px;
-  background-color: blueviolet;
+  background-color: var(--main-color);
   border-radius: 5px;
 }
 
 .menu-text {
   text-align: center;
-  color: lime;
+  color: var(--text);
   line-height: 37px;
   font-weight: bold;
   text-transform: uppercase;
@@ -174,7 +179,7 @@ header {
 
 .sidebar-navbar a:hover {
   text-decoration: none;
-  color: blueviolet;
+  color: var(--main-color);
 }
 
 @media (min-width: 576px){
@@ -454,7 +459,7 @@ header {
 }
 
 ngb-pagination .page-item.active .page-link {
-  background-color: blueviolet;
+  background-color: var(--main-color);
 }
 
 ngb-pagination .page-item .page-link {
@@ -545,7 +550,7 @@ ngb-pagination .page-item .page-link {
   margin: 20px 0;
   padding: 15px;
   border-radius: 25px;
-  border: 2px solid blueviolet;
+  border: 2px solid var(--main-color);
 }
 
 .checkout .head {

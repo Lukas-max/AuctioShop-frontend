@@ -1,23 +1,23 @@
 <div class="container prod-table center-details">
-  <div class="product-header">Purchase</div>
+  <div class="product-header">Zakup</div>
   <div class="underline"></div>
   <hr>
 
   <div *ngIf="order else loading">
     <div *ngFor="let item of order.cartItems">
-      <p>Product name: <span>{{ item.name }}</span></p>
-      <p>Price: <span>{{ item.unitPrice }}</span></p>
-      <p>Quantity: <span>{{ item.quantity }}</span></p>
+      <p>Nazwa: <span>{{ item.name }}</span></p>
+      <p>Cena: <span>{{ item.unitPrice }}</span></p>
+      <p>Ilość: <span>{{ item.quantity }}</span></p>
       <hr>
     </div>
   </div>
 
   <div>
-    <button class="btn btn-primary button-spacing" (click)="goBack()">Go back</button>
+    <button class="btn btn-primary button-spacing" (click)="goBack()">Wróć</button>
   </div>
 
 </div>
 
 <ng-template #loading>
-  <p>Loading data..</p>
+  <p>Wczytuję dane..</p>
 </ng-template>

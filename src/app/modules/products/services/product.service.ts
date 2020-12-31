@@ -42,7 +42,7 @@ export class ProductService {
     };
 
     return this.http
-      .get<Product[]>(`${API_URL}/${this.productsUrl}/getByCategoryId`,
+      .get<Product[]>(`${API_URL}/${this.productsUrl}/categoryId`,
         httpOptions);
   }
 
@@ -73,6 +73,6 @@ export class ProductService {
 
 //  delete product by its ID:
   public deleteProductById(productId: number) {
-    return this.http.delete(`${API_URL}/${this.productsUrl}/product/${productId}`);
+    return this.http.delete(`${API_URL}/${this.productsUrl}/${productId}`);
   }
 }

@@ -24,6 +24,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initForm();
+  }
+
+  private initForm() {
     this.cartService.getCartFromStorage();
     this.registration = this.formBuilder.group({
       username: ['', [
@@ -52,8 +56,6 @@ export class RegisterComponent implements OnInit {
       this.registration.reset();
       this.route.navigate(['/']);
       this.messageToastrService.success('Zarejestrowano użytkownika');
-    }, error => {
-      //   nothing
     });
   }
 
