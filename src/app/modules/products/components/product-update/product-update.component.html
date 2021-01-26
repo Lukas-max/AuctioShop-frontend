@@ -62,8 +62,8 @@
         <label>Kategoria produktu:</label>
         <select class="form-control" [(ngModel)]="category"
                 name="productCategory" #categoryModel="ngModel" required>
-          <option *ngFor="let cat of categories" [ngValue]="cat[0]">
-            {{ cat[1] }}</option>
+          <option *ngFor="let cat of categories" [ngValue]="cat.productCategoryId">
+            {{ cat.categoryName }}</option>
         </select>
         <div *ngIf="categoryModel.invalid && categoryModel.touched">
           <div class="alert alert-danger" *ngIf="categoryModel.errors.required">

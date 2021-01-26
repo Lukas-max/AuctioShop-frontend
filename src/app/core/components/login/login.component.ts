@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {BasicAuthenticationService} from '../services/basic_auth/basic-authentication.service';
+import {BasicAuthenticationService} from '../../services/basic_auth/basic-authentication.service';
 import {Router} from '@angular/router';
-import {MessageToastrService} from '../services/toastr/message-toastr.service';
-import {CartService} from '../../modules/products/services/cart.service';
+import {MessageToastrService} from '../../services/toastr/message-toastr.service';
+import {CartService} from '../../../modules/products/services/cart.service';
 
 @Component({
   selector: 'app-login',

@@ -1,16 +1,15 @@
 /* tslint:disable */
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {Product} from '../model/product';
-import {Observable} from 'rxjs';
-import {ResponseProduct} from '../model/responseProduct';
-import {API_URL} from '../../../app.consts';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Product } from '../model/product';
+import { Observable } from 'rxjs';
+import { ResponseProduct } from '../model/responseProduct';
+import { API_URL, PRODUCTS_URL } from '../../../app.consts';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private productsUrl = 'api/products';
 
   constructor(private http: HttpClient) {
   }
@@ -23,13 +22,13 @@ export class ProductService {
         'size': size.toString()}
     };
 
-    return this.http.get<ResponseProduct[]>(`${API_URL}/${this.productsUrl}`,
+    return this.http.get<ResponseProduct[]>(`${API_URL}/${PRODUCTS_URL}`,
       httpOptions);
   }
 
   //get one product by its ID:
   public fetchProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(`${API_URL}/${this.productsUrl}/${id}`);
+    return this.http.get<Product>(`${API_URL}/${PRODUCTS_URL}/${id}`);
   }
 
   // this is used tp fetch products by their category using the categories in the sidebar
@@ -42,7 +41,7 @@ export class ProductService {
     };
 
     return this.http
-      .get<Product[]>(`${API_URL}/${this.productsUrl}/categoryId`,
+      .get<Product[]>(`${API_URL}/${PRODUCTS_URL}/categoryId`,
         httpOptions);
   }
 
@@ -56,23 +55,23 @@ export class ProductService {
     };
 
     return this.http
-      .get<Product[]>(`${API_URL}/${this.productsUrl}/name`,
+      .get<Product[]>(`${API_URL}/${PRODUCTS_URL}/name`,
         httpOptions);
   }
 
 
   //add product from productAddComponent
   public addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(`${API_URL}/${this.productsUrl}`, product);
+    return this.http.post<Product>(`${API_URL}/${PRODUCTS_URL}`, product);
   }
 
   // update product from productUpdateComponent
   public updateProduct(product: Product) {
-    return this.http.put<Product>(`${API_URL}/${this.productsUrl}`, product);
+    return this.http.put<Product>(`${API_URL}/${PRODUCTS_URL}`, product);
   }
 
 //  delete product by its ID:
   public deleteProductById(productId: number) {
-    return this.http.delete(`${API_URL}/${this.productsUrl}/${productId}`);
+    return this.http.delete(`${API_URL}/${PRODUCTS_URL}/${productId}`);
   }
 }

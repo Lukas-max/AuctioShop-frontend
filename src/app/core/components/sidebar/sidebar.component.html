@@ -6,7 +6,7 @@
     <nav class="sidebar-navbar">
       <ul>
         <li><a routerLink="/">Wszystkie</a></li>
-        <li *ngFor="let c of categories"><a routerLink="/products/{{c[0]}}/{{c[1]}}">{{ c[1] }}</a></li>
+        <li *ngFor="let c of categories"><a routerLink="/products/{{c.productCategoryId}}/{{c.categoryName}}">{{ c.categoryName }}</a></li>
       </ul>
     </nav>
 </div>

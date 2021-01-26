@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { API_URL } from '../../../app.consts';
+import { API_URL, USER_LOGIN_URL } from '../../../app.consts';
 
 export const TOKEN = 'token';
 export const AUTH_USER = 'authenticatedUser';
@@ -19,7 +19,7 @@ export class BasicAuthenticationService {
       Authorization: basicAuthHeader
     });
 
-    return this.http.get(`${API_URL}/user`,
+    return this.http.get(`${API_URL}/${USER_LOGIN_URL}`,
       { headers: header}).pipe(map(data => {
         sessionStorage.setItem(AUTH_USER, username);
         sessionStorage.setItem(TOKEN, basicAuthHeader);

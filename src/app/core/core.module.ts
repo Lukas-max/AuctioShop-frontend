@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsModule } from '../modules/products/products.module';
@@ -9,13 +9,13 @@ import { MessageToastrService } from './services/toastr/message-toastr.service';
 import { BasicAuthInterceptorService } from './services/basic_auth/basic-auth-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicAuthenticationService } from './services/basic_auth/basic-authentication.service';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { JwtAuthenticationService } from './services/jwt_auth/jwt-authentication.service';
-import { JwtLoginComponent } from './jwtlogin/jwt-login.component';
+import { JwtLoginComponent } from './components/jwtlogin/jwt-login.component';
 import { JwtAuthInterceptorService } from './services/jwt_auth/jwt-auth-interceptor.service';
 import { ErrorHandlerInterceptorService } from './services/error_handling/error-handler-interceptor.service';
 import { AuthenticationGuard } from './services/can_activate/authentication.guard';
-import {InfoComponent} from './info/info.component';
+import {InfoComponent} from './components/info/info.component';
 
 
 const routes: Routes = [

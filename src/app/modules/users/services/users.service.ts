@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
 import { HttpClient } from '@angular/common/http';
-import { API_URL } from '../../../app.consts';
+import { API_URL, USERS_URL } from '../../../app.consts';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
@@ -12,7 +12,6 @@ import { throwError } from 'rxjs';
 })
 export class UsersService {
 
-  private usersUrl: string = 'api/users';
   constructor(private http: HttpClient) {
   }
 
@@ -24,7 +23,7 @@ export class UsersService {
         'size': size.toString()
       }
     }
-    return this.http.get(`${API_URL}/${this.usersUrl}`, httpOptions);
+    return this.http.get(`${API_URL}/${USERS_URL}`, httpOptions);
   }
 
   public fetchUserOrders(page: number, size: number, id: number){
@@ -34,19 +33,19 @@ export class UsersService {
         'size': size.toString()
       }
     }
-    return this.http.get(`${API_URL}/${this.usersUrl}/${id}`, httpOptions)
+    return this.http.get(`${API_URL}/${USERS_URL}/${id}`, httpOptions)
   }
 
   /**
    * It will delete all user data. Customer orders and addresses.
    */
   public deleteUserByUserId(id: number){
-    return this.http.delete(`${API_URL}/${this.usersUrl}/${id}`)
+    return this.http.delete(`${API_URL}/${USERS_URL}/${id}`)
   }
 
   // register user:
   public createUser(user: User) {
-    return this.http.post(`${API_URL}/${this.usersUrl}/register`, user)
+    return this.http.post(`${API_URL}/${USERS_URL}/register`, user)
       .pipe(catchError(this.handleError));
   }
 
