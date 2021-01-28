@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {MessageToastrService} from '../toastr/message-toastr.service';
@@ -15,8 +15,9 @@ export class ErrorHandlerInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(error => {
       console.log(error);
-      // this one will catch messages from casual thrown exceptions, except bad login attempt
-      // that's why 403 is thrown out
+      // This one will catch messages from casual thrown exceptions, except bad login attempt
+      // that's why 403 is thrown out.
+      // Generally it will catch also global exceptions that contain field message. Like ExceptionMessage class on the server side.
       if (error.error.message != null && error.status !== 403) {
         this.messageToastrService.error(error.error.message);
       }

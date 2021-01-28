@@ -37,8 +37,8 @@ export class JwtAuthenticationService {
     sessionStorage.setItem(JWT_TOKEN, data.jwt);
     sessionStorage.setItem(JWT_USER_ID, data.userId.toString());
 
-    const isAdmin: boolean = data.authorities.some(auth => auth.authority === `ROLE_ADMIN`);
-    isAdmin && sessionStorage.setItem(JWT_ADMIN_ROLE, `ROLE_ADMIN`);
+    const isAdmin: boolean = data.authorities.some(auth => auth.authority === `ADMIN`);
+    isAdmin && sessionStorage.setItem(JWT_ADMIN_ROLE, `ADMIN`);
   }
 
   public getAuthenticatedUser() {
@@ -66,7 +66,7 @@ export class JwtAuthenticationService {
 
   public isAdminLoggedIn() {
     const sessionRole = sessionStorage.getItem(JWT_ADMIN_ROLE);
-    return sessionRole === `ROLE_ADMIN`;
+    return sessionRole === `ADMIN`;
   }
 
   public logout() {
