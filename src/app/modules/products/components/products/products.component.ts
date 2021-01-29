@@ -27,8 +27,7 @@ export class ProductsComponent implements OnInit {
               private route: ActivatedRoute,
               private messageToastrService: MessageToastrService,
               private cartService: CartService,
-              public jwtAuthenticationService: JwtAuthenticationService,
-              private basicAuthenticationService: BasicAuthenticationService) {
+              public jwtAuthenticationService: JwtAuthenticationService) {
   }
 
   ngOnInit(): void {

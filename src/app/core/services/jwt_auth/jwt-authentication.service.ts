@@ -4,7 +4,7 @@ import {API_URL, USER_LOGIN_URL} from '../../../app.consts';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AuthenticationResponse} from '../../model/authenticationResponse';
-import {Authority} from '../../model/authority';
+import {Router} from '@angular/router';
 
 export const JWT_AUTH_USER = 'jwtAuthUser';
 export const JWT_TOKEN = 'jwtToken';
@@ -16,7 +16,7 @@ export const JWT_ADMIN_ROLE = 'jwtAdminRole';
 })
 export class JwtAuthenticationService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   public login(user: string, pass: string): Observable<any> {
@@ -75,5 +75,6 @@ export class JwtAuthenticationService {
     sessionStorage.removeItem(JWT_USER_ID);
     sessionStorage.removeItem(JWT_ADMIN_ROLE);
     // sessionStorage.clear();
+    this.router.navigate(['/']);
   }
 }
