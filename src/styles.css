@@ -97,7 +97,7 @@ nav a:hover {
 /* HEADER */
 .header-img {
   position: relative;
-  height: 50vh;
+  height: 40vh;
   background-image: url('../src/assets/images/header/header1280.jpg');
   background-size: cover;
   /*background-attachment: fixed;*/
@@ -108,6 +108,12 @@ nav a:hover {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, .5);
+}
+
+@media (min-width: 2000px) {
+  .header-img {
+    height: 30vh;
+  }
 }
 
 /* MENU HEADERS*/
@@ -140,23 +146,34 @@ header {
 
 .login-form {
   margin: 70px auto;
-  width: 80%;
+  width: 200px;
 }
 
 .login-form button {
   margin-bottom: 20px;
 }
 
+/* APP */
+.app-wrapper {
+  position: relative;
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  bottom: 90px;
+}
+
+@media (min-width: 992px) {
+  .app-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 /* SIDEBAR */
 .menu-sidebar {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  top: 80%;
-  left: 5vh;
-  right: 5vh;
-  width: 80%;
-  height: 100%;
+  margin: 0 10px 15px;
+  padding: 1px;
+  height: 15rem;
   background-color: white;
   border-radius: 5px;
   box-shadow: 5px 0 10px black;
@@ -182,45 +199,22 @@ header {
   color: var(--main-color);
 }
 
-@media (min-width: 576px){
+@media (min-width: 768px) {
   .menu-sidebar {
-    width: 40%;
-    height: 60%;
-  }
-
-  .login-form {
-    width: 50%;
+    max-width: 40rem;
+    margin: 0 auto 20px;
   }
 }
 
 @media (min-width: 992px) {
   .menu-sidebar {
-    margin-left: 0;
-    top: 90%;
-    left: 10px;
-    width: 18%;
-    height: 100%;
-  }
-
-  .sidebar-navbar li {
-    margin-left: 30px;
-    text-align: left;
-  }
-
-  .login-form {
-    width: 30%;
+    margin: 0 20px 15px;
+    width: 15rem;
   }
 }
 
 /* MAIN */
-
 .prod-table {
-  position: absolute;
-  top: 190%;
-  left: 5vh;
-  right: 5vh;
-  width: 80%;
-  margin-bottom: 50px;
   background-color: white;
   border-radius: 5px;
   border: 2px solid black;
@@ -231,26 +225,23 @@ header {
   margin-bottom: 20px;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 992px) {
   .prod-table {
-    top: 150%;
+    min-width: 650px;
   }
 }
 
-@media (min-width: 992px) {
-  .prod-table{
-    top: 80%;
-    left: 200px;
-    right: 0;
-    width: 75%;
+@media (min-width: 1200px) {
+  .prod-table {
+    min-width: 900px;
   }
 }
 
 /* PRODUCTS MAIN*/
-
 .product-box {
   display: flex;
   padding: 20px;
+  justify-content: center;
 }
 
 .pick-product {
@@ -411,6 +402,7 @@ header {
   .inner-wrapper {
     display: flex;
     flex-direction: row;
+    margin-bottom: 20px;
   }
 
   .inner-wrapper img {
