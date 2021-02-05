@@ -14,16 +14,21 @@
   <div class="row" *ngIf="products else loading">
     <div class="col-sm-12 col-md-6 col-xl-3" *ngFor="let prod of products">
       <div class="product-box">
-        <div>
-<!--          lub [routerLink]="['/products', prod.productId]"  -->
+
+        <div class="product-upper-box">
+          <!--          lub [routerLink]="['/products', prod.productId]"  -->
           <div class="pick-product" routerLink="/products/{{ prod.productId }}">
             <img src="data:image/jpeg;base64,{{prod.productImage}}" alt="obrazek produktu">
             <p class="product-name"> {{ prod.name }}</p>
           </div>
           <p><span>{{ prod.unitPrice }}</span> PLN</p>
+        </div>
+
+        <div>
           <hr>
           <button type="button" class="btn btn-dark"
-                  *ngIf="prod.active else soldOut" (click)="addToCart(prod)">Kup</button>
+                  *ngIf="prod.active else soldOut" (click)="addToCart(prod)">Kup
+          </button>
           <br>
           <button type="button" class="btn btn-danger" *ngIf="isAdminLoggedIn()"
                   (click)="deleteProductById(prod.productId)">Usuń
@@ -34,6 +39,7 @@
                   routerLink="/products/update/" [state]="{ product: prod }">Update
           </button>
         </div>
+
       </div>
     </div>
   </div>

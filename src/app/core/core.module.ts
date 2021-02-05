@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeaderComponent } from './components/header/header.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsModule } from '../modules/products/products.module';
@@ -15,7 +14,8 @@ import { JwtLoginComponent } from './components/jwtlogin/jwt-login.component';
 import { JwtAuthInterceptorService } from './services/jwt_auth/jwt-auth-interceptor.service';
 import { ErrorHandlerInterceptorService } from './services/error_handling/error-handler-interceptor.service';
 import { AuthenticationGuard } from './services/can_activate/authentication.guard';
-import {InfoComponent} from './components/info/info.component';
+import { InfoComponent } from './components/info/info.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 const routes: Routes = [
@@ -27,10 +27,10 @@ const routes: Routes = [
   declarations: [
     NavbarComponent,
     HeaderComponent,
-    SidebarComponent,
     LoginComponent,
     JwtLoginComponent,
-    InfoComponent
+    InfoComponent,
+    FooterComponent
   ],
   providers: [
     // BasicAuthenticationService,
@@ -50,9 +50,9 @@ const routes: Routes = [
   exports: [
     NavbarComponent,
     HeaderComponent,
-    SidebarComponent,
     LoginComponent,
-    JwtLoginComponent
+    JwtLoginComponent,
+    FooterComponent
   ]
 })
 export class CoreModule { }

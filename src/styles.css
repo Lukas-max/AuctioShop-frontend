@@ -3,6 +3,7 @@
 :root {
   --main-color: blueviolet;
   --text: lime;
+  --footer-color: rgba(10, 10, 100, 0.05);
 }
 
 * {
@@ -153,6 +154,12 @@ header {
   margin-bottom: 20px;
 }
 
+@media (min-width: 768px) {
+  .login-form {
+    width: 350px;
+  }
+}
+
 /* APP */
 .app-wrapper {
   position: relative;
@@ -240,8 +247,12 @@ header {
 /* PRODUCTS MAIN*/
 .product-box {
   display: flex;
+  flex-direction: column;
   padding: 20px;
-  justify-content: center;
+}
+
+.product-upper-box {
+  min-height: 280px;
 }
 
 .pick-product {
@@ -587,10 +598,56 @@ ngb-pagination .page-item .page-link {
   font-size: 20px;
 }
 
+/* FOOTER */
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  background-color: var(--footer-color);
+  border-top: 1px solid rgba(100, 100, 100, 0.2);
+}
 
+.footer-name {
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgba(0,0,0, 0.6);
+}
 
+.footer a {
+  margin: 0 30px;
+  font-size: 28px;
+}
 
+.footer a span {
+  display: none;
+}
 
+@media (min-width: 576px) {
+  .footer {
+    flex-direction: row;
+    height: 55px;
+  }
+
+  .footer-name {
+    margin-right: 20px;
+    font-size: 18px;
+  }
+
+  .footer a {
+    margin: 0 30px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer a span {
+    display: inline;
+    margin: 0 7px;
+  }
+}
 
 
 
