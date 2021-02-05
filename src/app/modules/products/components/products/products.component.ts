@@ -7,6 +7,8 @@ import { CartItem } from '../../model/cartItem';
 import { CartService } from '../../services/cart.service';
 import { JwtAuthenticationService } from '../../../../core/services/jwt_auth/jwt-authentication.service';
 import { BasicAuthenticationService } from '../../../../core/services/basic_auth/basic-authentication.service';
+import {PAGE_SIZE} from '../../../../app.consts';
+
 
 @Component({
   selector: 'app-products',
@@ -33,7 +35,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getCartFromStorage();
     this.pageNumber = 1;
-    this.pageSize = 8;
+    this.pageSize = this.getPageOptions();
     this.categoryName = 'Wszystkie';
     this.route.paramMap.subscribe(() => {
       this.getProducts();
@@ -94,7 +96,13 @@ export class ProductsComponent implements OnInit {
   public changePageSize(pageSize: number) {
     this.pageSize = pageSize;
     this.pageNumber = 1;
+    localStorage.setItem(PAGE_SIZE, String(pageSize));
     this.getProducts();
+  }
+
+  private getPageOptions(){
+    const pageSizeFromStorage = +localStorage.getItem(PAGE_SIZE);
+    return  pageSizeFromStorage || 8;
   }
 
   public deleteProductById(productId: number) {

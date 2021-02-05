@@ -62,8 +62,9 @@
     <div class="pager">
       <span>Ilość elementów: </span>
       <select (change)="changePageSize($event.target.value)" class="form-control">
+        <option></option>
         <option>4</option>
-        <option selected="true">8</option>
+        <option>8</option>
         <option>16</option>
       </select>
     </div>

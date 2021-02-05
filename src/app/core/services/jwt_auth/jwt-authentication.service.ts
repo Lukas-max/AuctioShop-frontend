@@ -1,15 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {API_URL, USER_LOGIN_URL} from '../../../app.consts';
+import {API_URL, JWT_ADMIN_ROLE, JWT_AUTH_USER, JWT_TOKEN, JWT_USER_ID, USER_LOGIN_URL} from '../../../app.consts';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AuthenticationResponse} from '../../model/authenticationResponse';
 import {Router} from '@angular/router';
-
-export const JWT_AUTH_USER = 'jwtAuthUser';
-export const JWT_TOKEN = 'jwtToken';
-export const JWT_USER_ID = 'jwtUserId';
-export const JWT_ADMIN_ROLE = 'jwtAdminRole';
 
 @Injectable({
   providedIn: 'root'
