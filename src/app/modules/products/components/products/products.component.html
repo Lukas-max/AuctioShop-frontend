@@ -24,7 +24,7 @@
           <p><span>{{ prod.unitPrice }}</span> PLN</p>
         </div>
 
-        <div>
+        <div class="product-downward-box">
           <hr>
           <button type="button" class="btn btn-dark"
                   *ngIf="prod.active else soldOut" (click)="addToCart(prod)">Kup

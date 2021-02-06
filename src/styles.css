@@ -252,14 +252,23 @@ header {
 }
 
 /* PRODUCTS MAIN*/
+.row {
+  padding: 20px;
+}
+
 .product-box {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  align-items: center;
+  padding: 30px 0;
 }
 
 .product-upper-box {
   min-height: 280px;
+}
+
+.product-downward-box {
+  min-width: 70%;
 }
 
 .pick-product {
