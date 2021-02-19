@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from '../../model/product';
-import { ProductService } from '../../services/product.service';
-import { ActivatedRoute } from '@angular/router';
-import { MessageToastrService } from '../../../../core/services/toastr/message-toastr.service';
-import { CartItem } from '../../model/cartItem';
-import { CartService } from '../../services/cart.service';
-import { JwtAuthenticationService } from '../../../../core/services/jwt_auth/jwt-authentication.service';
-import { BasicAuthenticationService } from '../../../../core/services/basic_auth/basic-authentication.service';
+import {Component, OnInit} from '@angular/core';
+import {Product} from '../../model/product';
+import {ProductService} from '../../services/product.service';
+import {ActivatedRoute} from '@angular/router';
+import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
+import {CartItem} from '../../model/cartItem';
+import {CartService} from '../../services/cart.service';
+import {JwtAuthenticationService} from '../../../../core/services/jwt_auth/jwt-authentication.service';
 import {PAGE_SIZE} from '../../../../app.consts';
 
 
@@ -93,10 +92,10 @@ export class ProductsComponent implements OnInit {
     };
   }
 
-  public changePageSize(pageSize: number) {
-    this.pageSize = pageSize;
+  public changePageSize(event: Event) {
+    this.pageSize = +(event.target as HTMLInputElement).value;
     this.pageNumber = 1;
-    localStorage.setItem(PAGE_SIZE, String(pageSize));
+    localStorage.setItem(PAGE_SIZE, String(this.pageSize));
     this.getProducts();
   }
 

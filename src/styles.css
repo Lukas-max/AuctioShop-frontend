@@ -98,8 +98,8 @@ nav a:hover {
 /* HEADER */
 .header-img {
   position: relative;
-  height: 40vh;
-  background-image: url('../src/assets/images/header/header1280.jpg');
+  height: 47vh;
+  background-image: url('../src/assets/images/header/header-min.jpg');
   background-size: cover;
   /*background-attachment: fixed;*/
 }
@@ -111,9 +111,21 @@ nav a:hover {
   background-color: rgba(0, 0, 0, .5);
 }
 
+@media (min-width: 768px) {
+  .header-img {
+    background-image: url('../src/assets/images/header/header-med.jpg');
+  }
+}
+
+@media (min-width: 1400px) {
+  .header-img {
+    background-image: url('../src/assets/images/header/header1280.jpg');
+  }
+}
+
 @media (min-width: 2000px) {
   .header-img {
-    height: 30vh;
+    height: 35vh;
   }
 }
 
