@@ -1,0 +1,30 @@
+<div class="product-box">
+  <div class="product-upper-box">
+    <!--          lub [routerLink]="['/products', prod.productId]"  -->
+    <div class="pick-product" routerLink="/products/{{ product.productId }}" [title]="title + product.name">
+      <img src="data:image/jpeg;base64,{{product.productImage}}" alt="obrazek produktu">
+      <p class="product-name"> {{ product.name }}</p>
+    </div>
+    <p><span>{{ product.unitPrice }}</span> PLN</p>
+  </div>
+
+  <div class="product-downward-box">
+    <hr>
+    <button type="button" class="btn btn-dark"
+            *ngIf="product.active else soldOut" (click)="addToCart(product)">Kup
+    </button>
+    <br>
+    <button type="button" class="btn btn-danger" *ngIf="jwtAuthenticationService.isAdminLoggedIn()"
+            (click)="deleteProductById(product.productId)">Usuń
+    </button>
+    <br>
+    <button type="button" class="btn btn-warning" style="color: white"
+            *ngIf="jwtAuthenticationService.isAdminLoggedIn()"
+            routerLink="/products/update/" [state]="{ product: product }">Update
+    </button>
+  </div>
+</div>
+
+<ng-template #soldOut>
+  <span style="color: red">Brak w magazynie</span>
+</ng-template>

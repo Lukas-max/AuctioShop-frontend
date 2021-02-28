@@ -12,6 +12,7 @@ import { ProductAddComponent } from './components/product-add/product-add.compon
 import { AuthenticationGuard } from '../../core/services/can_activate/authentication.guard';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ProductItemComponent } from './components/products/product-item/product-item.component';
 
 const routes: Routes = [
   { path: 'searchBar/:keyword', component: ProductsComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
     CheckoutComponent,
     ProductAddComponent,
     ProductUpdateComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProductItemComponent
   ],
   imports: [
     SharedModule,

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,8 @@ export class MatchValidationService {
    */
   validate(control1: string, control2: string){
     return (form: FormGroup) => {
-      const first = form.controls[control1];
-      const second = form.controls[control2];
+      const first: AbstractControl = form.controls[control1];
+      const second: AbstractControl = form.controls[control2];
 
       if (second.errors){
         return null;

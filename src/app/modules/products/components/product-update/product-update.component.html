@@ -7,6 +7,7 @@
           enctype="multipart/form-data">
 
       <div class="form-row">
+
         <div class="col">
           <label>Sku:</label>
           <input type="text" class="form-control" name="sku" [(ngModel)]="product.sku"
@@ -17,6 +18,7 @@
             </div>
           </div>
         </div>
+
         <div class="col">
           <label>Nazwa produktu:</label>
           <input type="text" class="form-control" name="name" [(ngModel)]="product.name"
@@ -29,28 +31,31 @@
         </div>
       </div>
       <br>
+
       <div class="form-group">
         <label>Opis produktu:</label>
         <textarea class="form-control" rows="4" name="description"
                   [(ngModel)]="product.description"></textarea>
       </div>
+
       <div class="form-row">
         <div class="col">
           <label>Cena:</label>
           <input type="number" class="form-control" name="unitPrice"
                  [(ngModel)]="product.unitPrice"
                  #priceModel="ngModel" required min="0">
-          <div class="aler alert-danger" *ngIf="priceModel.touched && priceModel.invalid">
+          <div class="alert alert-danger" *ngIf="priceModel.touched && priceModel.invalid">
             <div *ngIf="priceModel.errors.required">
               Cena jest wymagana.
             </div>
           </div>
         </div>
+
         <div class="col">
           <label>Ilość sztuk:</label>
           <input type="number" class="form-control" name="unitsInStock"
                  [(ngModel)]="product.unitsInStock" #unitsModel="ngModel" required min="0">
-          <div class="aler alert-danger" *ngIf="unitsModel.touched && unitsModel.invalid">
+          <div class="alert alert-danger" *ngIf="unitsModel.touched && unitsModel.invalid">
             <div *ngIf="unitsModel.errors.required">
               Wpisz ilość sztuk. Minimum zero.
             </div>
@@ -58,6 +63,7 @@
         </div>
       </div>
       <br>
+
       <div class="form-group" *ngIf="categories">
         <label>Kategoria produktu:</label>
         <select class="form-control" [(ngModel)]="category"
@@ -72,6 +78,7 @@
         </div>
       </div>
       <br>
+
       <div class="custom-file">
         <input type="file" accept="image/*"
                (change)="onFileChange($event)">

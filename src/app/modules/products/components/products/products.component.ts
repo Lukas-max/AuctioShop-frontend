@@ -3,7 +3,6 @@ import {Product} from '../../model/product';
 import {ProductService} from '../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
-import {CartItem} from '../../model/cartItem';
 import {CartService} from '../../services/cart.service';
 import {JwtAuthenticationService} from '../../../../core/services/jwt_auth/jwt-authentication.service';
 import {PAGE_SIZE} from '../../../../app.consts';
@@ -102,28 +101,5 @@ export class ProductsComponent implements OnInit {
   private getPageOptions(){
     const pageSizeFromStorage = +localStorage.getItem(PAGE_SIZE);
     return  pageSizeFromStorage || 8;
-  }
-
-  public deleteProductById(productId: number) {
-    if (confirm('Czy na pewno chcesz usunąc ten produkt?')) {
-      this.productService.deleteProductById(productId).subscribe(() => {
-        this.getProducts();
-        this.messageToastrService.success('Pomyślnie usunięto produkt.');
-      });
-    }
-  }
-
-  /**
-   * Second parameter of addToCart(product: Product) -> It's ProductComponent not CartDetailsComponent.
-   * so -> isFromCartDetailsComp == false.
-   * Till it's false Toastr will show messages if added to cart.
-   */
-  public addToCart(product: Product) {
-    const cartItem = new CartItem(product);
-    this.cartService.addToCart(cartItem, false);
-  }
-
-  public isAdminLoggedIn(): boolean{
-    return  this.jwtAuthenticationService.isAdminLoggedIn();
   }
 }

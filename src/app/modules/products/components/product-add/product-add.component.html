@@ -17,6 +17,7 @@
             </div>
           </div>
         </div>
+
         <div class="col">
           <label>Nazwa produktu:</label>
           <input type="text" class="form-control" name="name" [(ngModel)]="name"
@@ -29,10 +30,12 @@
         </div>
       </div>
       <br>
+
       <div class="form-group">
         <label>Opis produktu:</label>
         <textarea class="form-control" rows="4" name="description" [(ngModel)]="description"></textarea>
       </div>
+
       <div class="form-row">
         <div class="col">
           <label>Cena:</label>
@@ -44,6 +47,7 @@
             </div>
           </div>
         </div>
+
         <div class="col">
           <label>Ilość sztuk:</label>
           <input type="number" class="form-control" name="unitsInStock"
@@ -56,6 +60,7 @@
         </div>
       </div>
       <br>
+
       <div class="form-group" *ngIf="categories">
         <label>Kategoria produktu:</label>
         <select class="form-control" [(ngModel)]="category" name="productCategory"
@@ -70,6 +75,7 @@
         </div>
       </div>
       <br>
+
       <div class="custom-file">
         <input type="file" accept="image/png, image/jpeg"
                (change)="onFileChange($event)">

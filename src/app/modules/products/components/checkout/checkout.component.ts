@@ -33,6 +33,7 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getCartFromStorage();
     this.setForm();
+    this.uploadCartInfo();
   }
 
   private setForm(){
@@ -53,8 +54,6 @@ export class CheckoutComponent implements OnInit {
         city: ['', Validators.required]
       })
     });
-
-    this.uploadCartInfo();
   }
 
   private uploadCartInfo(){

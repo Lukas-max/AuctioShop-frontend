@@ -3,7 +3,7 @@
     {{ categoryName }}
   </div>
 
-  <div *ngIf="isAdminLoggedIn()">
+  <div *ngIf="jwtAuthenticationService.isAdminLoggedIn()">
     <button type="button" class="btn btn-success btn-add-product"
             [routerLink]="['/products', 'add']">Dodaj produkt
     </button>
@@ -12,35 +12,8 @@
 
 
   <div class="row" *ngIf="products else loading">
-    <div class="col-sm-12 col-md-6 col-xl-3" *ngFor="let prod of products">
-      <div class="product-box">
-
-        <div class="product-upper-box">
-          <!--          lub [routerLink]="['/products', prod.productId]"  -->
-          <div class="pick-product" routerLink="/products/{{ prod.productId }}">
-            <img src="data:image/jpeg;base64,{{prod.productImage}}" alt="obrazek produktu">
-            <p class="product-name"> {{ prod.name }}</p>
-          </div>
-          <p><span>{{ prod.unitPrice }}</span> PLN</p>
-        </div>
-
-        <div class="product-downward-box">
-          <hr>
-          <button type="button" class="btn btn-dark"
-                  *ngIf="prod.active else soldOut" (click)="addToCart(prod)">Kup
-          </button>
-          <br>
-          <button type="button" class="btn btn-danger" *ngIf="isAdminLoggedIn()"
-                  (click)="deleteProductById(prod.productId)">Usuń
-          </button>
-          <br>
-          <button type="button" class="btn btn-warning" style="color: white"
-                  *ngIf="isAdminLoggedIn()"
-                  routerLink="/products/update/" [state]="{ product: prod }">Update
-          </button>
-        </div>
-
-      </div>
+    <div class="col-sm-12 col-md-6 col-xl-3" *ngFor="let product of products">
+        <app-product-item [product]="product"></app-product-item>
     </div>
   </div>
 
@@ -74,7 +47,4 @@
 
 <ng-template #loading>
   <p>Ładuje dane..</p>
-</ng-template>
-<ng-template #soldOut>
-  <span style="color: red">Brak w magazynie</span>
 </ng-template>

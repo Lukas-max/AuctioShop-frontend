@@ -12,7 +12,7 @@
       <div class="second-bar">
         <div class="inner-bar-one">
           <p><span>{{ product.unitPrice }}</span> PLN</p>
-          <button type="button" class="btn btn-dark" (click)="addToCart(product)"
+          <button type="button" class="btn btn-dark" (click)="addToCart(product)" title="Do koszyka"
                   *ngIf="product.active">Kup</button>
 
           <button type="button" class="btn btn-danger" *ngIf="isAdminLoggedIn()"
