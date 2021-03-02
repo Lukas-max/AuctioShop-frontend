@@ -2,7 +2,8 @@
   <div class="menu-header menu-text">
     Zarejestruj się
   </div>
-  <form class="login-form text-center"
+
+  <form class="login-form text-center" *ngIf="!registerAttempt"
         [formGroup]="registration" (ngSubmit)="register()">
 
     <div class="form-group">
@@ -70,4 +71,9 @@
       Zarejestruj
     </button>
   </form>
+
+  <div *ngIf="registerAttempt" class="spinner">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
 </div>

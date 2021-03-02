@@ -3,7 +3,7 @@
     Zaloguj się
   </div>
 
-  <form (ngSubmit)="handleJwtLogin()" class="login-form text-center">
+  <form (ngSubmit)="handleJwtLogin()" class="login-form text-center" *ngIf="!loginAttempt">
     <div class="form-group">
       <input type="text" class="form-control" [(ngModel)]="username"
              name="username" placeholder="Nazwa użytkownika"/>
@@ -18,6 +18,9 @@
       Niepoprawny login, lub hasło.
     </div>
   </form>
+  <div *ngIf="loginAttempt" class="spinner">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
 
 </div>
 

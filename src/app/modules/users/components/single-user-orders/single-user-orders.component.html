@@ -3,7 +3,7 @@
   <div class="underline"></div>
   <hr>
 
-  <div *ngIf="orders else loading">
+  <div *ngIf="orders">
 
     <div *ngIf="screenWidth < 420">
       <div *ngFor="let order of orders">
@@ -65,7 +65,9 @@
         <hr>
       </div>
     </div>
-
+  </div>
+  <div *ngIf="!orders" class="spinner">
+    <app-loading-spinner></app-loading-spinner>
   </div>
 
   <div>
@@ -80,7 +82,3 @@
     </ngb-pagination>
   </div>
 </div>
-
-<ng-template #loading>
-  <p>Wczytuje dane..</p>
-</ng-template>

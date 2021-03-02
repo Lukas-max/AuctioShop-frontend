@@ -3,7 +3,7 @@
   <div class="underline"></div>
   <hr>
 
-  <div *ngIf="users else loading">
+  <div *ngIf="users">
 
     <div *ngIf="screenWidth < 1050">
       <div *ngFor="let user of users">
@@ -45,8 +45,10 @@
           </tbody>
         </table>
       </div>
-
     </div>
+  </div>
+  <div *ngIf="!users" class="spinner">
+    <app-loading-spinner></app-loading-spinner>
   </div>
 
   <div>
@@ -61,7 +63,3 @@
     </ngb-pagination>
   </div>
 </div>
-
-<ng-template #loading>
-  <p>Ładuje dane..</p>
-</ng-template>

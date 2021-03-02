@@ -3,7 +3,7 @@
   <div class="underline"></div>
   <hr>
 
-  <div *ngIf="order else loading">
+  <div *ngIf="order">
     <div *ngFor="let item of order.cartItems">
       <p>Nazwa: <span>{{ item.name }}</span></p>
       <p>Cena: <span>{{ item.unitPrice }}</span></p>
@@ -11,13 +11,12 @@
       <hr>
     </div>
   </div>
+  <div *ngIf="!order" class="spinner">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
 
   <div>
     <button class="btn btn-primary button-spacing" (click)="goBack()">Wróć</button>
   </div>
 
 </div>
-
-<ng-template #loading>
-  <p>Wczytuję dane..</p>
-</ng-template>

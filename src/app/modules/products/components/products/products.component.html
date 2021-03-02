@@ -11,10 +11,13 @@
   </div>
 
 
-  <div class="row" *ngIf="products else loading">
+  <div class="row" *ngIf="products">
     <div class="col-sm-12 col-md-6 col-xl-3" *ngFor="let product of products">
         <app-product-item [product]="product"></app-product-item>
     </div>
+  </div>
+  <div *ngIf="!products" class="spinner">
+    <app-loading-spinner></app-loading-spinner>
   </div>
 
   <div *ngIf="products?.length == 0" class="alert alert-dark" role="alert">
@@ -44,7 +47,3 @@
   </div>
 
 </div>
-
-<ng-template #loading>
-  <p>Ładuje dane..</p>
-</ng-template>

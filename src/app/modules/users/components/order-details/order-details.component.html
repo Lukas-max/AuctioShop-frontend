@@ -3,7 +3,7 @@
   <div class="underline"></div>
   <hr>
 
-  <div *ngIf="order else loading">
+  <div *ngIf="order">
       <p>Imię: <span>{{ order.customer.firstName }}</span></p>
       <p>Nazwisko: <span>{{ order.customer.lastName }}</span></p>
       <p>Email: <span>{{ order.customer.email }}</span></p>
@@ -14,12 +14,11 @@
       <p>Kod pocztowy: <span>{{ order.customer.postalCode }}</span></p>
       <p>Miasto: <span>{{ order.customer.city }}</span></p>
   </div>
+  <div *ngIf="!order" class="spinner">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
 
   <div>
     <button class="btn btn-primary button-spacing" (click)="goBack()">Wróć</button>
   </div>
 </div>
-
-<ng-template #loading>
-  <p>Wczytuję dane..</p>
-</ng-template>

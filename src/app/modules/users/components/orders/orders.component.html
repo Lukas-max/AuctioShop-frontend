@@ -3,10 +3,10 @@
   <div class="underline"></div>
   <hr>
 
-  <div *ngIf="orders else loading">
+  <div *ngIf="orders">
 
     <div *ngIf="screenWidth < 420">
-      <div  *ngFor="let order of orders">
+      <div *ngFor="let order of orders">
         <p>Numer zamówienia: {{ order.orderId }}</p>
         <p *ngIf="order.user else unregistered">Użytkownik: <span>{{ order.user.username }}</span></p>
         <div *ngFor="let item of order.cartItems">
@@ -53,6 +53,9 @@
     </div>
 
   </div>
+  <div *ngIf="!orders" class="spinner">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
 
   <div>
     <ngb-pagination [(page)]="page"
@@ -63,9 +66,6 @@
   </div>
 </div>
 
-<ng-template #loading>
-  <p>Wczytuje dane..</p>
-</ng-template>
 <ng-template #unregistered>
   <p><span>Niezalogowany użytkownik</span></p>
 </ng-template>

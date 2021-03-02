@@ -13,7 +13,8 @@ export class JwtLoginComponent implements OnInit {
 
   username: string;
   password: string;
-  loginError: boolean;
+  loginError: boolean = false;
+  loginAttempt: boolean = false;
 
   constructor(private jwtAuthService: JwtAuthenticationService,
               private router: Router,
@@ -22,10 +23,10 @@ export class JwtLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartService.getCartFromStorage();
-    this.loginError = false;
   }
 
   handleJwtLogin() {
+    this.loginAttempt = true;
     this.jwtAuthService.login(this.username, this.password).subscribe(data => {
       this.router.navigate(['/']);
       this.messageToastrService.success('Zalogowano pomyślnie');
