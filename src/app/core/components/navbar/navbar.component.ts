@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BasicAuthenticationService } from '../../services/basic_auth/basic-authentication.service';
-import { JwtAuthenticationService } from '../../services/jwt_auth/jwt-authentication.service';
+import { BasicAuthenticationService } from '../../../modules/auth/services/basic_auth/basic-authentication.service';
+import { JwtAuthenticationService } from '../../../modules/auth/services/jwt_auth/jwt-authentication.service';
 
 @Component({
   selector: 'app-navbar',

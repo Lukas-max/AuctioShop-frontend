@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../../../products/services/order.service';
+import { OrderService } from '../../products/services/order.service';
 import { ActivatedRoute } from '@angular/router';
-import { ClientOrder } from '../../../products/model/clientOrder';
-import {CartService} from '../../../products/services/cart.service';
+import { ClientOrder } from '../../products/model/clientOrder';
+import {CartService} from '../../products/services/cart.service';
 import { Location } from '@angular/common';
 
 @Component({

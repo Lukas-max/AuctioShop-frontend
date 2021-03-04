@@ -4,7 +4,7 @@ import {CartService} from '../../../services/cart.service';
 import {CartItem} from '../../../model/cartItem';
 import {ProductService} from '../../../services/product.service';
 import {MessageToastrService} from '../../../../../core/services/toastr/message-toastr.service';
-import {JwtAuthenticationService} from '../../../../../core/services/jwt_auth/jwt-authentication.service';
+import {JwtAuthenticationService} from '../../../../auth/services/jwt_auth/jwt-authentication.service';
 import {Router} from '@angular/router';
 
 @Component({

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {API_URL, JWT_ADMIN_ROLE, JWT_AUTH_USER, JWT_TOKEN, JWT_USER_ID, USER_LOGIN_URL} from '../../../app.consts';
+import {API_URL, JWT_ADMIN_ROLE, JWT_AUTH_USER, JWT_TOKEN, JWT_USER_ID, USER_LOGIN_URL} from '../../../../app.consts';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AuthenticationResponse} from '../../model/authenticationResponse';

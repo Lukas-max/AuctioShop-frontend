@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {JwtAuthenticationService} from '../../services/jwt_auth/jwt-authentication.service';
 import {Router} from '@angular/router';
-import {MessageToastrService} from '../../services/toastr/message-toastr.service';
-import {CartService} from '../../../modules/products/services/cart.service';
+import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
+import {CartService} from '../../../products/services/cart.service';
 
 @Component({
   selector: 'app-jwtlogin',
@@ -31,6 +31,7 @@ export class JwtLoginComponent implements OnInit {
       this.router.navigate(['/']);
       this.messageToastrService.success('Zalogowano pomyślnie');
     }, error => {
+      this.loginAttempt = false;
       this.loginError = true;
     });
   }

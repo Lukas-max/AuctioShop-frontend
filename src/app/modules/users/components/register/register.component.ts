@@ -14,7 +14,6 @@ import { CartService } from '../../../products/services/cart.service';
 export class RegisterComponent implements OnInit {
 
   registration: FormGroup;
-  registerAttempt: boolean = false;
 
   constructor(private userService: UsersService,
               private route: Router,
@@ -49,7 +48,6 @@ export class RegisterComponent implements OnInit {
   }
 
   public register() {
-    this.registerAttempt = true;
     this.userService.createUser({
       username: this.registration.value.username,
       password: this.registration.value.password,

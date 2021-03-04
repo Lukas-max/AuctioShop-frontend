@@ -7,7 +7,6 @@
 
     <div *ngIf="screenWidth < 420">
       <div *ngFor="let order of orders">
-        <p>Numer zamówienia: {{ order.orderId }}</p>
         <p *ngIf="order.user">Użytkownik: <span>{{ order.user.username }}</span></p>
         <p>Cena całkowita: <span>{{ order.totalPrice }}</span> PLN</p>
         <p>Ilość całkowita: <span>{{ order.totalQuantity }}</span></p>
@@ -30,7 +29,6 @@
 
     <div *ngIf="screenWidth >= 420">
       <div *ngFor="let order of orders">
-        <p>Numer zamówienia: {{ order.orderId }}</p>
         <p *ngIf="order.user">Użytkownik: <span>{{ order.user.username }}</span></p>
         <table class="table table-info table-bordered">
           <thead>

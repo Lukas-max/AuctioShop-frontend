@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
+import {AdminModule} from './modules/admin/admin.module';
 
 
 const routes: Routes = [
@@ -28,6 +30,8 @@ const routes: Routes = [
     UsersModule,
     HttpClientModule,
     ToastrModule.forRoot({ positionClass: 'toast-custom' }),
+    AuthModule,
+    AdminModule
   ],
   exports: [
   ],

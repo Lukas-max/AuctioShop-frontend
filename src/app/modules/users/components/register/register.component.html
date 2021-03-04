@@ -3,7 +3,7 @@
     Zarejestruj się
   </div>
 
-  <form class="login-form text-center" *ngIf="!registerAttempt"
+  <form class="login-form text-center"
         [formGroup]="registration" (ngSubmit)="register()">
 
     <div class="form-group">
@@ -72,8 +72,8 @@
     </button>
   </form>
 
-  <div *ngIf="registerAttempt" class="spinner">
-    <app-loading-spinner></app-loading-spinner>
-  </div>
+<!--  <div *ngIf="registerAttempt" class="spinner">-->
+<!--    <app-loading-spinner></app-loading-spinner>-->
+<!--  </div>-->
 
 </div>

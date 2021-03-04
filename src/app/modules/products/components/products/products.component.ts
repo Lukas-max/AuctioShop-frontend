@@ -4,7 +4,7 @@ import {ProductService} from '../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
 import {CartService} from '../../services/cart.service';
-import {JwtAuthenticationService} from '../../../../core/services/jwt_auth/jwt-authentication.service';
+import {JwtAuthenticationService} from '../../../auth/services/jwt_auth/jwt-authentication.service';
 import {PAGE_SIZE} from '../../../../app.consts';
 
 

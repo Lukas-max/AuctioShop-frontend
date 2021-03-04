@@ -7,7 +7,7 @@ import { ClientOrder } from '../../model/clientOrder';
 import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
 import { MessageToastrService } from '../../../../core/services/toastr/message-toastr.service';
-import {JwtAuthenticationService} from '../../../../core/services/jwt_auth/jwt-authentication.service';
+import {JwtAuthenticationService} from '../../../auth/services/jwt_auth/jwt-authentication.service';
 
 @Component({
   selector: 'app-checkout',

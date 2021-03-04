@@ -3,7 +3,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {MessageToastrService} from '../toastr/message-toastr.service';
-import {JwtAuthenticationService} from '../jwt_auth/jwt-authentication.service';
+import {JwtAuthenticationService} from '../../../modules/auth/services/jwt_auth/jwt-authentication.service';
 
 @Injectable({
   providedIn: 'root'

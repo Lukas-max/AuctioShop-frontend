@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../model/product';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../model/cartItem';
-import { JwtAuthenticationService } from '../../../../core/services/jwt_auth/jwt-authentication.service';
+import { JwtAuthenticationService } from '../../../auth/services/jwt_auth/jwt-authentication.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,6 +14,7 @@ import { JwtAuthenticationService } from '../../../../core/services/jwt_auth/jwt
 export class ProductDetailsComponent implements OnInit {
   product: Product;
   activeMessage: string;
+  isProductLoaded: boolean = false;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
@@ -33,6 +34,7 @@ export class ProductDetailsComponent implements OnInit {
     const productId: number = +this.route.snapshot.paramMap.get('id');
     this.productService.fetchProductById(productId).subscribe(data => {
       this.product = data;
+      this.isProductLoaded = true;
       if (this.product.active) {
         this.activeMessage = 'Produkt dostępny';
       } else {
@@ -53,7 +55,7 @@ export class ProductDetailsComponent implements OnInit {
   public deleteProductById(productId: any) {
     if (confirm('Czy na pewno chcesz usunąc ten produkt?')) {
       this.productService.deleteProductById(productId).subscribe(() => {
-        this.linkRoute.navigate(['products']);
+        this.linkRoute.navigate(['/']);
       });
     }
   }

@@ -9,7 +9,7 @@ import { CartService } from './services/cart.service';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
-import { AuthenticationGuard } from '../../core/services/can_activate/authentication.guard';
+import { AuthenticationGuard } from '../auth/services/can_activate/authentication.guard';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
