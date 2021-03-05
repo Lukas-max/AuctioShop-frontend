@@ -16,6 +16,7 @@ export class SingleUserOrdersComponent implements OnInit {
   size: number;
   totalElements: number;
   isShown = false;
+  shownIndexNumber: number;
   screenWidth: number = window.innerWidth;
 
   constructor(
@@ -54,7 +55,8 @@ export class SingleUserOrdersComponent implements OnInit {
     this.location.back();
   }
 
-  public showAddress(){
+  public showAddress(index: number){
+    this.shownIndexNumber = index;
     this.isShown = !this.isShown;
   }
 }

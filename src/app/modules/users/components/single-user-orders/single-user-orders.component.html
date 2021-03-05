@@ -6,13 +6,14 @@
   <div *ngIf="orders">
 
     <div *ngIf="screenWidth < 420">
-      <div *ngFor="let order of orders">
+      <div *ngFor="let order of orders; let idx = index">
         <p *ngIf="order.user">Użytkownik: <span>{{ order.user.username }}</span></p>
+        <p>Zamówienie numer: {{ idx + 1 }}</p>
         <p>Cena całkowita: <span>{{ order.totalPrice }}</span> PLN</p>
         <p>Ilość całkowita: <span>{{ order.totalQuantity }}</span></p>
-        <button class="btn btn-primary page-button" (click)="showAddress()">Adres</button>
-        <button class="btn btn-primary" [routerLink]="['/order_purchase']" [state]="{ order: order }">Przedmioty</button>
-        <div *ngIf="isShown">
+        <button class="btn btn-primary page-button" (click)="showAddress(idx)">Adres</button>
+        <button class="btn btn-primary" [routerLink]="['/user' ,'order_purchase']" [state]="{ order: order }">Przedmioty</button>
+        <div *ngIf="isShown && shownIndexNumber == idx">
           <p>Imię: <span>{{ order.customer.firstName }}</span></p>
           <p>Nazwisko: <span>{{ order.customer.lastName }}</span></p>
           <p>Email: <span>{{ order.customer.email }}</span></p>
@@ -28,8 +29,9 @@
     </div>
 
     <div *ngIf="screenWidth >= 420">
-      <div *ngFor="let order of orders">
+      <div *ngFor="let order of orders; let idx = index">
         <p *ngIf="order.user">Użytkownik: <span>{{ order.user.username }}</span></p>
+        <p>Zamówienie numer: {{ idx + 1 }}</p>
         <table class="table table-info table-bordered">
           <thead>
           <tr>
@@ -48,8 +50,8 @@
         </table>
         <p>Cena całkowita: <span>{{ order.totalPrice }}</span> PLN</p>
         <p>Ilość całkowita: <span>{{ order.totalQuantity }}</span></p>
-        <button class="btn btn-primary page-button" (click)="showAddress()">Adres</button>
-        <div *ngIf="isShown">
+        <button class="btn btn-primary page-button" (click)="showAddress(idx)">Adres</button>
+        <div *ngIf="isShown && shownIndexNumber == idx">
           <p>Imię: <span>{{ order.customer.firstName }}</span></p>
           <p>Nazwisko: <span>{{ order.customer.lastName }}</span></p>
           <p>Email: <span>{{ order.customer.email }}</span></p>

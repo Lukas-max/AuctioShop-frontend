@@ -16,7 +16,7 @@
         </div>
         <p>Cena całkowita: <span>{{ order.totalPrice }}</span></p>
         <p>Ilość całkowita: <span>{{ order.totalQuantity }}</span></p>
-        <button class="btn btn-primary button-spacing" [routerLink]="['/users','orders', order.orderId]">Adres</button>
+        <button class="btn btn-primary button-spacing" [routerLink]="['/admin','orders', order.orderId]">Adres</button>
         <button class="btn btn-dark button-spacing" (click)="deleteOrderById(order.orderId)">Usuń</button>
         <button class="btn btn-secondary button-spacing" (click)="goBack()">Wróć</button>
       </div>
@@ -45,7 +45,7 @@
         </table>
         <p>Cena całkowita: <span>{{ order.totalPrice }}</span></p>
         <p>Ilość całkowita: <span>{{ order.totalQuantity }}</span></p>
-        <button class="btn btn-primary button-spacing" [routerLink]="['/users','orders', order.orderId]">Adres</button>
+        <button class="btn btn-primary button-spacing" [routerLink]="['/admin','orders', order.orderId]">Adres</button>
         <button class="btn btn-dark button-spacing" (click)="deleteOrderById(order.orderId)">Usuń</button>
         <button class="btn btn-secondary button-spacing" (click)="goBack()">Wróć</button>
         <hr>

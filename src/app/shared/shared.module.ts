@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.component';
 
 
@@ -12,7 +11,6 @@ import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.compone
     CommonModule,
     FormsModule,
     NgbModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule
   ],
   exports: [
