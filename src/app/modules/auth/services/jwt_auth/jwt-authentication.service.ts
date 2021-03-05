@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {API_URL, JWT_ADMIN_ROLE, JWT_AUTH_USER, JWT_TOKEN, JWT_USER_ID, USER_LOGIN_URL} from '../../../../app.consts';
+import {API_URL, JWT_ADMIN_ROLE, JWT_AUTH_USER, JWT_EXPIRATION, JWT_TOKEN, JWT_USER_ID, USER_LOGIN_URL} from '../../../../app.consts';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AuthenticationResponse} from '../../model/authenticationResponse';
@@ -31,6 +31,7 @@ export class JwtAuthenticationService {
     sessionStorage.setItem(JWT_AUTH_USER, data.username);
     sessionStorage.setItem(JWT_TOKEN, data.jwt);
     sessionStorage.setItem(JWT_USER_ID, data.userId.toString());
+    sessionStorage.setItem(JWT_EXPIRATION, data.tokenExpiration.toString());
 
     const isAdmin: boolean = data.authorities.some(auth => auth.authority === `ADMIN`);
     isAdmin && sessionStorage.setItem(JWT_ADMIN_ROLE, `ADMIN`);
@@ -52,6 +53,11 @@ export class JwtAuthenticationService {
     if (this.getAuthenticatedUser()) {
       return sessionStorage.getItem(JWT_TOKEN);
     }
+  }
+
+  public getTokenExpirationTime(): Date {
+    const date = sessionStorage.getItem(JWT_EXPIRATION);
+    return new Date(date);
   }
 
   public isLoggedIn() {

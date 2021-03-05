@@ -24,6 +24,7 @@ export const JWT_AUTH_USER = 'jwtAuthUser';
 export const JWT_TOKEN = 'jwtToken';
 export const JWT_USER_ID = 'jwtUserId';
 export const JWT_ADMIN_ROLE = 'jwtAdminRole';
+export const JWT_EXPIRATION = `jwtTokenExpirationTime`;
 
 // rendering products:
 export const PAGE_SIZE = 'page-options';
