@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {SharedModule} from '../../shared/shared.module';
-import {UserDetailsComponent} from './user-details/user-details.component';
+import {UserDetailsComponent} from './components/user-details/user-details.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthenticationGuard} from '../auth/services/can_activate/authentication.guard';
-import {OrderDetailsComponent} from './order-details/order-details.component';
-import {OrdersComponent} from './orders/orders.component';
+import {OrderDetailsComponent} from './components/order-details/order-details.component';
+import {OrdersComponent} from './components/orders/orders.component';
 
 // lazy-loading path: admin
 const routes: Routes = [

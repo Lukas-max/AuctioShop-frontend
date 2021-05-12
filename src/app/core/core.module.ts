@@ -23,7 +23,6 @@ const routes: Routes = [
     FooterComponent
   ],
   providers: [
-    MessageToastrService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptorService, multi: true }
   ],
   imports: [

@@ -15,14 +15,14 @@ export class ProductService {
   }
 
   //get all products, with pagination:
-  public fetchProducts(pageNo: number, size: number): Observable<ResponseProduct[]> {
+  public fetchProducts(pageNo: number, size: number): Observable<ResponseProduct> {
     const httpOptions = {
       params: {
         'page': pageNo.toString(),
         'size': size.toString()}
     };
 
-    return this.http.get<ResponseProduct[]>(`${API_URL}/${PRODUCTS_URL}`,
+    return this.http.get<ResponseProduct>(`${API_URL}/${PRODUCTS_URL}`,
       httpOptions);
   }
 

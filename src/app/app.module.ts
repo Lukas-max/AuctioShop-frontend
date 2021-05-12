@@ -6,7 +6,7 @@ import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
 import {ProductsModule} from './modules/products/products.module';
 import {HttpClientModule} from '@angular/common/http';
-import {RouterModule, Routes} from '@angular/router';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {ToastrModule} from 'ngx-toastr';
 import {AuthModule} from './modules/auth/auth.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -27,7 +27,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules}),
     ProductsModule,
     HttpClientModule,
     ToastrModule.forRoot({ positionClass: 'toast-custom' }),

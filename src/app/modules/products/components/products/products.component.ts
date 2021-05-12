@@ -6,6 +6,7 @@ import {MessageToastrService} from '../../../../core/services/toastr/message-toa
 import {CartService} from '../../services/cart.service';
 import {JwtAuthenticationService} from '../../../auth/services/jwt_auth/jwt-authentication.service';
 import {PAGE_SIZE} from '../../../../app.consts';
+import {ResponseProduct} from '../../model/responseProduct';
 
 
 @Component({
@@ -72,6 +73,7 @@ export class ProductsComponent implements OnInit {
 
   private processResponse() {
     return dataProducts => {
+      console.log(dataProducts);
       this.products = dataProducts.content;
       this.totalElements = dataProducts.totalElements;
     };

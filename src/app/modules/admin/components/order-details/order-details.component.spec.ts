@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrderDetailsComponent } from './order-details.component';
+import {AppModule} from '../../../../app.module';
+import {LoadingSpinnerComponent} from '../../../../shared/loading-spinner/loading-spinner.component';
 
 describe('OrderDetailsComponent', () => {
   let component: OrderDetailsComponent;
@@ -8,7 +10,8 @@ describe('OrderDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrderDetailsComponent ]
+      declarations: [ OrderDetailsComponent, LoadingSpinnerComponent ],
+      imports: [AppModule]
     })
     .compileComponents();
   }));

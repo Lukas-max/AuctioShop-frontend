@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientOrder } from '../../products/model/clientOrder';
-import { OrderService } from '../../products/services/order.service';
-import { MessageToastrService } from '../../../core/services/toastr/message-toastr.service';
-import { CartService } from '../../products/services/cart.service';
+import { ClientOrder } from '../../../products/model/clientOrder';
+import { OrderService } from '../../../products/services/order.service';
+import { MessageToastrService } from '../../../../core/services/toastr/message-toastr.service';
+import { CartService } from '../../../products/services/cart.service';
 import { Location } from '@angular/common';
 
 @Component({

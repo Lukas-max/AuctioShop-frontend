@@ -16,11 +16,6 @@ export class AppComponent implements OnInit{
    * On app startup code checks if the logged user token is still valid. If it' expiration day has passed, the user is logged out.
    */
   ngOnInit(): void {
-    if (!this.jwtAuthenticationService.isLoggedIn()) return;
-
-    const time = this.jwtAuthenticationService.getTokenExpirationTime();
-    if (+time - +new Date() < 0){
-      this.jwtAuthenticationService.logout();
-    }
+    this.jwtAuthenticationService.logoutWhenTokenExpired();
   }
 }

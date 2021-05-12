@@ -10,15 +10,16 @@
 
   <div class="product-downward-box">
     <hr>
-    <button type="button" class="btn btn-dark"
+    <button type="button" class="btn btn-dark button-buy"
             *ngIf="product.active else soldOut" (click)="addToCart(product)">Kup
     </button>
     <br>
-    <button type="button" class="btn btn-danger" *ngIf="jwtAuthenticationService.isAdminLoggedIn()"
+    <button type="button" class="btn btn-danger button-delete"
+            *ngIf="jwtAuthenticationService.isAdminLoggedIn()"
             (click)="deleteProductById(product.productId)">Usuń
     </button>
     <br>
-    <button type="button" class="btn btn-warning" style="color: white"
+    <button type="button" class="btn btn-warning button-update" style="color: white"
             *ngIf="jwtAuthenticationService.isAdminLoggedIn()"
             routerLink="/products/update/" [state]="{ product: product }">Update
     </button>

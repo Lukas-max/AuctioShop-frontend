@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../users/services/users.service';
-import { User } from '../../users/model/user';
-import {MessageToastrService} from '../../../core/services/toastr/message-toastr.service';
-import {CartService} from '../../products/services/cart.service';
+import { UsersService } from '../../../users/services/users.service';
+import { User } from '../../../users/model/user';
+import {MessageToastrService} from '../../../../core/services/toastr/message-toastr.service';
+import {CartService} from '../../../products/services/cart.service';
 import { Location } from '@angular/common';
 
 @Component({

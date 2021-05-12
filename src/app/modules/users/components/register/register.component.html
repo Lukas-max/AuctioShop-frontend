@@ -13,7 +13,7 @@
              placeholder="Nazwa użytkownika"
              required/>
 
-      <div class="alert alert-danger" *ngIf="username.invalid && username.touched">
+      <div class="alert alert-danger" data-form="alert-username" *ngIf="username.invalid && username.touched">
         <div *ngIf="username.hasError('required')">
           <span>Nazwa użytkownika jest wymagana.</span>
         </div>
@@ -40,7 +40,7 @@
              placeholder="Hasło"
              required/>
 
-      <div class="alert alert-danger" *ngIf="password.invalid && password.touched">
+      <div class="alert alert-danger" data-form="alert-password" *ngIf="password.invalid && password.touched">
         <div *ngIf="password.hasError('required')">
           <span>Hasło jest wymagane.</span>
         </div>
@@ -57,7 +57,7 @@
              placeholder="Powtórz hasło"
              required/>
 
-      <div class="alert alert-danger" *ngIf="confirmPassword.touched && confirmPassword.invalid">
+      <div class="alert alert-danger" data-form="alert-confirm-password" *ngIf="confirmPassword.touched && confirmPassword.invalid">
         <div *ngIf="confirmPassword.hasError('mustMatch')">
           <span>Hasła muszą się zgadzać.</span>
         </div>
