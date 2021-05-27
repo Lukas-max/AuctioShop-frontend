@@ -1,6 +1,7 @@
 # AuctioShop
 ## Frontend part
 Project made by Łukasz Jankowski.
+Page: http://auctioshop.xyz/
 
 ## Prerequisites
 - Nodejs
@@ -34,6 +35,7 @@ Step 4: Run `npm install` and its ready to go.
 - [x] Basic and JSON Web Token authentication. (Active is JWT)
 - [x] User registration with double password validation and username and email validation against the database
 - [x] Reactive and Template driven forms with validation
+- [x] Modular build, lazy loading of modules
 
 ## Endopoints and Angular
 AuctioShop uses endpoints that are documented in the backend part of the app. For more info go [there](https://github.com/Lukas-max/shop-backend).
@@ -42,48 +44,75 @@ AuctioShop uses endpoints that are documented in the backend part of the app. Fo
 ```
  app -> - core
         - shared
-        - modules -> - products
-                     - users
+        - other modules -> - products
+                           - users
+                           - admin
+                           - auth
 ```
 
 ## Modules
 ### Core
 Components:
- - header
- - info
- - jwtlogin
- - login
- - navbar
- - sidebar
+ - HeaderComponent  
+ - InfoComponent  
+ - NavbarComponent  
+ - FooterComponent  
  
- Services:
- `AuthenticationGuard (CanActivate)`, `AuthenticationLoginGuard (CanActivate)`, `BasicAuthInterceptor and JwtAuthInterceptor (HttpInterceptors)`, `ErrorHanlderInterceptor (HttpInterceptor for global error handling)`, `MessageToastrService`.
+ Services:  
+ `ErrorHanlderInterceptor (HttpInterceptor for global error handling)`,  
+ `MessageToastrService`.  
  
  ### Shared
- No components here.
+ LoadingSpinnerComponent  
  
- Services: `MatchValidationService`
+ Services:  
+ `MatchValidationService`
  
- ### Users
+ ### Users (Lazy loaded)
  Components:
- - register
- - items-purchased
- - orders (show all orders, [only admin])
- - order-details (show customer address)
- - user-details (show all users, [only admin])
- - single-user-order (show orders of a user [for registered users])
+  - ItemsPurchasedComponent  
+  - RegisterComponent  
+  - SingleUserOrdersComponent  
+
+Services:
+`UsersService`
  
  Services : `UsersService`
  
  ### Products
- Components: 
- - cart-details           (products in the cart, quantity and price)
- - cart-status            (viewing how many products in the cart icon top right side of the screen)
- - checkout               (purchase form)
- - product-add            (add a new produc - admin only)
- - product-details        (viewing a single product)
- - product-update         (update single product - admin only)
- - products               (get and view all products, search by name, or by category)
+ Components:  
+ - CartDetailsComponent           (products in the cart, quantity and price)  
+ - CartStatusComponent            (viewing how many products in the cart icon top right side of the screen)  
+ - CheckoutComponent              (purchase form)  
+ - ProductAddComponent            (add a new produc - admin only)  
+ - ProductDetailsComponent        (viewing a single product)  
+ - ProductUpdateComponent         (update single product - admin only)  
+ - ProductsComponent              (get and view all products, search by name, or by category)  
+        - ProductItemComponent    (view of a single product)  
+ - SidebarComponent  
   
-Services:
-`CartService`, `OrderService`, `ProductService`, `ProductCategoryService`.
+Services:  
+`CartService`,  
+`OrderService`,  
+`ProductService`,  
+`ProductCategoryService`.  
+
+### Admin (lazy loaded)
+Components:  
+- OrderDetailsComponent
+- OrdersComponent  
+- UserDetailsComponent  
+
+### Auth
+Component:  
+ - JwtLoginComponent
+ - LoginComponent
+
+Services: 
+ `BasicAuthenticationService`  
+ `JwtAuthenticationService`  
+ 
+ Guards:
+ `AuthenticationGuard`  
+ `AuthenticationLoginGuard`  
+ `OrderAuthenticationGuard`  
