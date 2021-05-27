@@ -1,3 +1,4 @@
+// tslint:disable
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
@@ -16,9 +17,9 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
-  private cartItemDto: Array<CartItemDto> = [];
-  private customer: CustomerDto;
-  private username: string;
+  cartItemDto: Array<CartItemDto> = [];
+  customer: CustomerDto;
+  username: string;
   totalPrice: number;
   totalQuantity: number;
   subscribePrice: Subscription;
@@ -56,6 +57,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   private uploadCartInfo(){
+    // this.subscribePrice = this.cartService.totalPriceSubject.subscribe(data => this.totalPrice = data);
+    // this.subscribeQuantity = this.cartService.totalQuantitySubject.subscribe(data => this.totalQuantity = data);
     this.subscribePrice = this.cartService.totalPrice.subscribe(data => this.totalPrice = data);
     this.subscribeQuantity = this.cartService.totalQuantity.subscribe(data => this.totalQuantity = data);
     this.cartService.computeTotals();
@@ -143,7 +146,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscribePrice.unsubscribe();
-    this.subscribeQuantity.unsubscribe();
+    if (this.subscribePrice) this.subscribePrice.unsubscribe();
+    if (this.subscribeQuantity) this.subscribeQuantity.unsubscribe();
   }
 }

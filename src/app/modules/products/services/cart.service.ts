@@ -108,6 +108,6 @@ export class CartService {
 
   // GETTERS:
   public getCartItems() {
-    return this.cartItems;
+    return this.cartItems.slice(0, this.cartItems.length);
   }
 }

@@ -35,13 +35,12 @@ export class ProductService {
   public fetchProductByCategoryId(categoryId: number, pageNo: number, size: number): Observable<Product[]> {
     const httpOptions = {
       params: {
-        'categoryId': categoryId.toString() ,
         'page': pageNo.toString(),
         'size': size.toString() }
     };
 
     return this.http
-      .get<Product[]>(`${API_URL}/${PRODUCTS_URL}/categoryId`,
+      .get<Product[]>(`${API_URL}/${PRODUCTS_URL}/category/${categoryId}`,
         httpOptions);
   }
 
@@ -49,13 +48,12 @@ export class ProductService {
   public searchProductsByName(keyWord: string, pageNo: number, size: number): Observable<Product[]> {
     const httpOptions = {
       params: {
-        'keyWord': keyWord.toString() ,
         'page': pageNo.toString(),
         'size': size.toString() }
     };
 
     return this.http
-      .get<Product[]>(`${API_URL}/${PRODUCTS_URL}/name`,
+      .get<Product[]>(`${API_URL}/${PRODUCTS_URL}/name/${keyWord}`,
         httpOptions);
   }
 
