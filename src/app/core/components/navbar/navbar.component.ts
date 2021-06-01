@@ -19,7 +19,6 @@ export class NavbarComponent implements OnInit {
   }
 
   public search(input: string) {
-    // this.route.navigateByUrl(`searchBar/${input}`);
     this.route.navigate(['searchBar', input]);
   }
 

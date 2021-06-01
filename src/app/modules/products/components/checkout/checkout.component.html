@@ -16,10 +16,9 @@
                    [ngClass]="{'is-invalid':firstName.errors && firstName.touched}">
 
             <div class="alert alert-danger"
+                 data-form="alert-firstName"
                  *ngIf="firstName.invalid && firstName.touched">
-              <div *ngIf="firstName.hasError('required')">
-                Pole nie może być puste.
-              </div>
+              <span *ngIf="firstName.hasError('required')">Pole nie może być puste.</span>
             </div>
           </div>
 
@@ -29,10 +28,9 @@
                    [ngClass]="{'is-invalid':lastName.errors && lastName.touched}">
 
             <div class="alert alert-danger"
+                 data-form="alert-lastName"
                  *ngIf="lastName.invalid && lastName.touched">
-              <div *ngIf="lastName.hasError('required')">
-                Pole nie może być puste.
-              </div>
+              <span *ngIf="lastName.hasError('required')">Pole nie może być puste.</span>
             </div>
           </div>
         </div>
@@ -48,13 +46,10 @@
                  [ngClass]="{'is-invalid':email.errors && email.touched}">
 
           <div class="alert alert-danger"
+               data-form="alert-email"
                *ngIf="email.invalid && email.touched">
-            <div *ngIf="email.hasError('required')">
-              Pole wymagane.
-            </div>
-            <div *ngIf="email.hasError('pattern')">
-              Niepoprawny email
-            </div>
+            <span *ngIf="email.hasError('required')">Pole wymagane.</span>
+            <span *ngIf="email.hasError('pattern')">Niepoprawny email</span>
           </div>
         </div>
       </div>
@@ -73,10 +68,9 @@
                  [ngClass]="{'is-invalid':street.errors && street.touched}">
 
           <div class="alert alert-danger"
+               data-form="alert-street"
                *ngIf="street.invalid && street.touched">
-            <div *ngIf="street.hasError('required')">
-              Pole nie może być puste.
-            </div>
+            <span *ngIf="street.hasError('required')">Pole nie może być puste.</span>
           </div>
         </div>
 
@@ -87,10 +81,9 @@
                    [ngClass]="{'is-invalid':houseNumber.errors && houseNumber.touched}">
 
             <div class="alert alert-danger"
+                 data-form="alert-houseNumber"
                  *ngIf="houseNumber.invalid && houseNumber.touched">
-              <div *ngIf="houseNumber.hasError('required')">
-                Pole nie może być puste.
-              </div>
+              <span *ngIf="houseNumber.hasError('required')">Pole nie może być puste.</span>
             </div>
           </div>
 
@@ -106,10 +99,9 @@
                  [ngClass]="{'is-invalid':postalCode.errors && postalCode.touched}">
 
           <div class="alert alert-danger"
+               data-form="alert-postalCode"
                *ngIf="postalCode.invalid && postalCode.touched">
-            <div *ngIf="postalCode.hasError('required')">
-              Pole nie może być puste.
-            </div>
+            <span *ngIf="postalCode.hasError('required')">Pole nie może być puste.</span>
           </div>
         </div>
 
@@ -119,10 +111,9 @@
                  [ngClass]="{'is-invalid':city.errors && city.touched}">
 
           <div class="alert alert-danger"
+               data-form="alert-city"
                *ngIf="city.invalid && city.touched">
-            <div *ngIf="city.hasError('required')">
-              Pole nie może być puste.
-            </div>
+            <span *ngIf="city.hasError('required')">Pole nie może być puste.</span>
           </div>
         </div>
       </div>

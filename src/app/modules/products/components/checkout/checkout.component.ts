@@ -57,8 +57,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   private uploadCartInfo(){
-    // this.subscribePrice = this.cartService.totalPriceSubject.subscribe(data => this.totalPrice = data);
-    // this.subscribeQuantity = this.cartService.totalQuantitySubject.subscribe(data => this.totalQuantity = data);
     this.subscribePrice = this.cartService.totalPrice.subscribe(data => this.totalPrice = data);
     this.subscribeQuantity = this.cartService.totalQuantity.subscribe(data => this.totalQuantity = data);
     this.cartService.computeTotals();
