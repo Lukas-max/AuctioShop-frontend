@@ -45,7 +45,7 @@ export class ProductService {
   }
 
   //search products by name, with pagination:
-  public searchProductsByName(keyWord: string, pageNo: number, size: number): Observable<Product[]> {
+  public searchProductsByName(keyWord: string, pageNo: number, size: number): Observable<ResponseProduct> {
     const httpOptions = {
       params: {
         'page': pageNo.toString(),
@@ -53,7 +53,7 @@ export class ProductService {
     };
 
     return this.http
-      .get<Product[]>(`${API_URL}/${PRODUCTS_URL}/name/${keyWord}`,
+      .get<ResponseProduct>(`${API_URL}/${PRODUCTS_URL}/name/${keyWord}`,
         httpOptions);
   }
 
